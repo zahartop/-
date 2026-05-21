@@ -53,11 +53,19 @@ def main() -> int:
     token = str(data.get("bot_token", "")).strip()
     chat_id = str(data.get("chat_id", "")).strip()
 
-    if not token or "xxxx" in token or token == "YOUR_TOKEN":
+    if not token or "xxxx" in token.lower() or token in ("YOUR_TOKEN", "YOUR_BOT_TOKEN"):
         print("❌ bot_token — заглушка. Получите токен у @BotFather → /newbot")
         return 1
-    if not chat_id or chat_id == "YOUR_CHAT_ID":
+    if not token.isascii():
+        print("❌ bot_token содержит кириллицу или лишние символы — это не токен.")
+        print("   В telegram.local.json вставьте строку вида 123456789:AAH... из @BotFather")
+        print("   (не копируйте текст из telegram.config.example.json)")
+        return 1
+    if not chat_id or chat_id in ("YOUR_CHAT_ID", "ВАШ_CHAT_ID_ЧИСЛОМ"):
         print("❌ chat_id не задан. Напишите боту /start, id узнайте у @userinfobot")
+        return 1
+    if not chat_id.lstrip("-").isdigit():
+        print("❌ chat_id должен быть числом (например -1001234567890)")
         return 1
 
     if not _check_tcp():
@@ -74,6 +82,9 @@ def main() -> int:
         return 130
     except urllib.error.HTTPError as e:
         print(f"❌ Токен неверный (HTTP {e.code}). Создайте нового бота у @BotFather")
+        return 1
+    except UnicodeEncodeError:
+        print("❌ bot_token не латиница — вставьте реальный токен от @BotFather, не текст из example")
         return 1
     except urllib.error.URLError as e:
         reason = str(e.reason or e)
