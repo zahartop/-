@@ -1,0 +1,20 @@
+title = "Z-TECH gitleaks"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Примеры и тестовые заглушки"
+paths = [
+  '''telegram\.config\.example\.json$''',
+  '''\.env\.example$''',
+]
+
+[allowlist.regexes]
+description = "Плейсхолдеры BotFather"
+regexes = [
+  '''YOUR_TOKEN''',
+  '''YOUR_CHAT_ID''',
+  '''ВСТАВЬТЕ_ТОКЕН''',
+  '''123456789:AAHxxxxxxxx''',
+]

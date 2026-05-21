@@ -1,0 +1,14 @@
+.DS_Store
+**/.DS_Store
+
+telegram.local.json
+.env
+.env.local
+node_modules/
+package-lock.json
+
+# Outreach / персональные данные — только локально (не коммитить)
+outreach/
+**/outreach/**
+schools-outreach*.csv
+*.xlsx

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /tg-proxy/
+
+Sitemap: https://z-tech.ru/sitemap.xml

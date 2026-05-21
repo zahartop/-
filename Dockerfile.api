@@ -1,0 +1,17 @@
+FROM python:3.12-alpine
+
+RUN addgroup -S ztech && adduser -S -G ztech -H ztech
+
+WORKDIR /app
+COPY scripts/dev_server.py scripts/security.py /app/scripts/
+
+USER ztech
+ENV PORT=8080
+ENV TRUST_PROXY=1
+ENV RATE_LIMIT_PER_MIN=5
+EXPOSE 8080
+
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s \
+  CMD wget -qO- http://127.0.0.1:8080/health || exit 1
+
+CMD ["python3", "/app/scripts/dev_server.py"]

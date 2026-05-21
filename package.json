@@ -1,0 +1,15 @@
+{
+  "name": "z-tech-portfolio",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i ./css/input.css -o ./css/tailwind.css --minify",
+    "lint:html": "html-validate index.html privacy.html",
+    "lint:py": "python3 -m compileall -q scripts/",
+    "check:repo": "python3 scripts/ci/check_repo.py",
+    "ci": "npm run check:repo && npm run build:css && npm run lint:html && npm run lint:py"
+  },
+  "devDependencies": {
+    "html-validate": "^9.4.1",
+    "tailwindcss": "^3.4.17"
+  }
+}

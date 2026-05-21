@@ -1,0 +1,6 @@
+node_modules
+.git
+telegram.local.json
+outreach
+*.xlsx
+*.csv

@@ -1,0 +1,39 @@
+name: CD
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  deploy-ready:
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+    name: Production artifact
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build production images
+        run: |
+          docker build -t z-tech-web:prod .
+          docker build -f Dockerfile.api -t z-tech-api:prod .
+
+      - name: Prod compose smoke
+        run: |
+          docker compose -f docker-compose.yml -f docker-compose.ci.yml -f docker-compose.prod.yml up -d --build
+          sleep 6
+          curl -fsS http://127.0.0.1:8081/robots.txt | grep -q "Sitemap"
+          curl -fsS http://127.0.0.1:8081/sitemap.xml | grep -q "z-tech.ru"
+          curl -fsS http://127.0.0.1:8081/ | grep -q "FAQPage"
+          docker compose -f docker-compose.yml -f docker-compose.ci.yml -f docker-compose.prod.yml down
+
+      - name: Save web image
+        run: docker save z-tech-web:prod | gzip > z-tech-web-prod.tar.gz
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: z-tech-web-prod-image
+          path: z-tech-web-prod.tar.gz
+          retention-days: 7

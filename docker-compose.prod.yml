@@ -1,0 +1,6 @@
+# Продакшен: docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+services:
+  api:
+    environment:
+      DEBUG_ERRORS: "0"
+      ALLOWED_ORIGINS: "https://z-tech.ru,https://www.z-tech.ru"

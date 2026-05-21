@@ -1,0 +1,106 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  secrets:
+    name: Secrets & sensitive files
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Custom repo guard
+        run: python3 scripts/ci/check_repo.py
+
+      - name: Block outreach data in PR diff
+        if: github.event_name == 'pull_request'
+        run: |
+          set -euo pipefail
+          forbidden=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep -E '^outreach/|telegram\.local\.json$|\.env$' || true)
+          if [ -n "$forbidden" ]; then
+            echo "❌ В PR попали чувствительные файлы:"
+            echo "$forbidden"
+            exit 1
+          fi
+          echo "✓ Чувствительные пути в diff отсутствуют"
+
+  quality:
+    name: Lint & build
+    needs: secrets
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Node deps
+        run: npm install
+
+      - name: Build Tailwind CSS
+        run: npm run build:css
+
+      - name: Verify Tailwind output size
+        run: |
+          size=$(wc -c < css/tailwind.css | tr -d ' ')
+          echo "tailwind.css bytes: $size"
+          if [ "$size" -lt 10000 ]; then
+            echo "❌ tailwind.css слишком маленький — вероятно purge без index.html"
+            exit 1
+          fi
+
+      - name: HTML validate
+        run: npm run lint:html
+
+      - name: Python syntax
+        run: python3 -m compileall -q scripts/
+
+      - name: API smoke (health)
+        run: |
+          python3 scripts/dev_server.py &
+          pid=$!
+          sleep 2
+          curl -fsS http://127.0.0.1:8080/health | grep -q '"ok": true'
+          kill $pid
+
+  docker:
+    name: Docker images
+    needs: quality
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build web image
+        run: docker build -t z-tech-web:ci .
+
+      - name: Build API image
+        run: docker build -f Dockerfile.api -t z-tech-api:ci .
+
+      - name: Smoke test stack
+        run: |
+          docker compose -f docker-compose.yml -f docker-compose.ci.yml up -d --build
+          sleep 5
+          curl -fsS http://127.0.0.1:8081/ | grep -qi "Z-TECH"
+          curl -fsSI http://127.0.0.1:8081/robots.txt | grep -qi "200"
+          docker compose -f docker-compose.yml -f docker-compose.ci.yml down
