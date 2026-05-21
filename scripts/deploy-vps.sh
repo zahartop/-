@@ -11,7 +11,11 @@ if ! docker info >/dev/null 2>&1; then
   exit 1
 fi
 
-COMPOSE_FILES=(-f docker-compose.yml -f docker-compose.prod.yml -f docker-compose.vps.yml)
+# Порт 80 часто занят другим nginx на VPS — по умолчанию публикуем 8081
+COMPOSE_FILES=(-f docker-compose.yml -f docker-compose.prod.yml)
+if [[ "${USE_VPS_PORT:-0}" == "1" ]]; then
+  COMPOSE_FILES+=(-f docker-compose.vps.yml)
+fi
 
 if [[ ! -f telegram.local.json ]]; then
   echo "❌ Нет telegram.local.json"
@@ -21,17 +25,24 @@ fi
 
 chmod 600 telegram.local.json 2>/dev/null || true
 
-echo "→ Сборка и запуск (web :80, домен z-tech.pro)..."
+WEB_PORT="8081"
+[[ "${USE_VPS_PORT:-0}" == "1" ]] && WEB_PORT="80"
+echo "→ Сборка и запуск (web :${WEB_PORT}, домен z-tech.pro)..."
 docker compose "${COMPOSE_FILES[@]}" up -d --build
 
 echo ""
 echo "→ Проверка..."
 sleep 5
-curl -fsS http://127.0.0.1/ | grep -qi "Z-TECH" && echo "✓ http://127.0.0.1/"
+if [[ "${USE_VPS_PORT:-0}" == "1" ]]; then
+  curl -fsS http://127.0.0.1/ | grep -qi "Z-TECH" && echo "✓ http://127.0.0.1/"
+else
+  curl -fsS http://127.0.0.1:8081/ | grep -qi "Z-TECH" && echo "✓ http://127.0.0.1:8081/"
+  echo "  Прокси с 80/443: см. deploy/nginx-z-tech.pro.conf → site_prod-nginx-1"
+fi
 docker compose "${COMPOSE_FILES[@]}" ps
 
 echo ""
 echo "Готово на сервере."
 echo "  DNS: A @ и www → IP этого VPS"
-echo "  Сайт: https://z-tech.pro (после Cloudflare / HTTPS)"
+echo "  Сайт: https://z-tech.pro (nginx site_prod + deploy/nginx-z-tech.pro.conf)"
 echo "  Логи: docker compose ${COMPOSE_FILES[*]} logs -f web api"
