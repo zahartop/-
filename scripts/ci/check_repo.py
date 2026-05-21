@@ -11,11 +11,21 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 
-FORBIDDEN_TRACKED_PREFIXES = (
+FORBIDDEN_TRACKED_EXACT = (
     "telegram.local.json",
     ".env",
     ".env.local",
+)
+
+FORBIDDEN_TRACKED_PREFIXES = (
     "outreach/",
+)
+
+ALLOWED_TRACKED = frozenset(
+    {
+        ".env.example",
+        "telegram.config.example.json",
+    }
 )
 
 FORBIDDEN_TRACKED_SUFFIXES = (
@@ -55,8 +65,14 @@ def check_forbidden_tracked(files: list[str]) -> list[str]:
     errors = []
     for path in files:
         norm = path.replace("\\", "/")
-        if any(norm == p or norm.startswith(p) for p in FORBIDDEN_TRACKED_PREFIXES):
+        if norm in ALLOWED_TRACKED:
+            continue
+        if norm in FORBIDDEN_TRACKED_EXACT:
             errors.append(f"В git отслеживается запрещённый файл: {path}")
+        elif any(norm.startswith(p) for p in FORBIDDEN_TRACKED_PREFIXES):
+            errors.append(f"В git отслеживается запрещённый файл: {path}")
+        elif norm.startswith(".env.") and norm not in ALLOWED_TRACKED:
+            errors.append(f"В git отслеживается env-файл с секретами: {path}")
         if any(norm.endswith(s) for s in FORBIDDEN_TRACKED_SUFFIXES):
             if norm.startswith("outreach/"):
                 errors.append(f"Outreach-данные не должны быть в git: {path}")
