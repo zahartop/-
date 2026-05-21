@@ -145,7 +145,7 @@ python3 scripts/check_telegram.py
 ## Контакты
 
 - **Сайт:** [z-tech.ru](https://z-tech.ru)
-- **Email:** Z-TECH@MAIL.RU
+- **Email:** bannyhzakhar@gmail.com
 - **Telegram:** +7 977 720-31-30
 
 ---
