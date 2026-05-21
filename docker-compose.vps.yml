@@ -1,0 +1,5 @@
+# VPS: публикуем сайт на порту 80 (рядом с Cloudflare или без reverse-proxy)
+services:
+  web:
+    ports:
+      - "80:80"

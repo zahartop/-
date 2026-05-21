@@ -53,30 +53,20 @@ docker compose up -d --build
 
 ---
 
-## Продакшен (VPS)
+## Продакшен (VPS + домен)
+
+**Полная инструкция:** [docs/DEPLOY.md](docs/DEPLOY.md)
+
+Кратко на сервере:
 
 ```bash
 git clone https://github.com/zahartop/-.git z-tech-portfolio
 cd z-tech-portfolio
-cp telegram.config.example.json telegram.local.json
-chmod 600 telegram.local.json
-nano telegram.local.json
-
-docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+# telegram.local.json + chmod 600
+./scripts/deploy-vps.sh
 ```
 
-На сервере для порта **80** добавь локальный `docker-compose.vps.yml`:
-
-```yaml
-services:
-  web:
-    ports:
-      - "80:80"
-```
-
-Домен + HTTPS: Cloudflare (Full SSL) или Caddy reverse_proxy на `127.0.0.1:8081`.
-
-Подробнее — в комментариях к `docker-compose.prod.yml` и `.env.example`.
+DNS: `A` → IP VPS для `@` и `www`. HTTPS: Cloudflare (Full) или `deploy/Caddyfile.example`.
 
 ---
 

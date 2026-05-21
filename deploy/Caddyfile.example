@@ -1,0 +1,11 @@
+# HTTPS на VPS (если не используете Cloudflare SSL на origin).
+# Установка: apt install caddy
+# sudo cp deploy/Caddyfile.example /etc/caddy/Caddyfile && sudo systemctl reload caddy
+#
+# При Caddy оставьте Docker на 8081 (без docker-compose.vps.yml):
+#   docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+
+z-tech.ru, www.z-tech.ru {
+	encode gzip
+	reverse_proxy 127.0.0.1:8081
+}
