@@ -60,10 +60,11 @@ docker compose up -d --build
 Кратко на сервере:
 
 ```bash
+# На VPS (не на Mac):
 git clone https://github.com/zahartop/-.git z-tech-portfolio
 cd z-tech-portfolio
 # telegram.local.json + chmod 600
-./scripts/deploy-vps.sh
+./scripts/deploy-vps.sh   # Docker, порт 80
 ```
 
 DNS: `A` → IP VPS для `@` и `www`. HTTPS: Cloudflare (Full) или `deploy/Caddyfile.example`.
