@@ -76,7 +76,7 @@ DNS: `A` → IP VPS для `@` и `www`. HTTPS: Cloudflare (Full) или `deploy
 |------------|-----|----------|
 | `TELEGRAM_BOT_TOKEN` | сервер / `.env` | Токен бота (не в git) |
 | `TELEGRAM_CHAT_ID` | сервер / `.env` | ID чата для заявок |
-| `ALLOWED_ORIGINS` | prod | `https://z-tech.ru,https://www.z-tech.ru` |
+| `ALLOWED_ORIGINS` | prod | `https://z-tech.pro,https://www.z-tech.pro` |
 | `DEBUG_ERRORS` | dev only | `1` локально, **0** в проде |
 
 Файл `telegram.local.json` монтируется в API-контейнер и **в gitignore**.
@@ -134,7 +134,7 @@ python3 scripts/check_telegram.py
 
 ## Контакты
 
-- **Сайт:** [z-tech.ru](https://z-tech.ru)
+- **Сайт:** [z-tech.pro](https://z-tech.pro)
 - **Email:** bannyhzakhar@gmail.com
 - **Telegram:** +7 977 720-31-30
 

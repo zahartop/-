@@ -3,4 +3,4 @@ services:
   api:
     environment:
       DEBUG_ERRORS: "0"
-      ALLOWED_ORIGINS: "https://z-tech.ru,https://www.z-tech.ru"
+      ALLOWED_ORIGINS: "https://z-tech.pro,https://www.z-tech.pro"

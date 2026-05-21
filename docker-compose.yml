@@ -36,7 +36,7 @@ services:
       DEBUG_ERRORS: "${DEBUG_ERRORS:-0}"
       TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:-}
       TELEGRAM_CHAT_ID: ${TELEGRAM_CHAT_ID:-}
-      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:8081,http://127.0.0.1:8081,https://z-tech.ru,https://www.z-tech.ru}
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:8081,http://127.0.0.1:8081,https://z-tech.pro,https://www.z-tech.pro}
     volumes:
       - ./telegram.local.json:/app/telegram.local.json:ro
     expose:

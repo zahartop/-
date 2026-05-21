@@ -3,4 +3,4 @@ Allow: /
 Disallow: /api/
 Disallow: /tg-proxy/
 
-Sitemap: https://z-tech.ru/sitemap.xml
+Sitemap: https://z-tech.pro/sitemap.xml

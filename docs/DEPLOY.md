@@ -2,7 +2,7 @@
 
 Пошагово: сервер → код → Telegram → Docker → DNS → HTTPS → проверка формы.
 
-**Домен в проекте:** `z-tech.ru`, `www.z-tech.ru`  
+**Домен в проекте:** `z-tech.pro`, `www.z-tech.pro`  
 **Репозиторий:** https://github.com/zahartop/-.git (клонировать в папку `z-tech-portfolio`)
 
 ---
@@ -123,8 +123,8 @@ sudo systemctl enable --now caddy
 Подождите 5–30 мин, проверка:
 
 ```bash
-dig +short z-tech.ru
-dig +short www.z-tech.ru
+dig +short z-tech.pro
+dig +short www.z-tech.pro
 ```
 
 Должен вернуться IP вашего VPS.
@@ -140,7 +140,7 @@ dig +short www.z-tech.ru
 3. SSL/TLS → **Full** или **Full (strict)**.
 4. На VPS Docker слушает **80** (`docker-compose.vps.yml`).
 
-Открыть: https://z-tech.ru
+Открыть: https://z-tech.pro
 
 ### Без Cloudflare — Caddy
 
@@ -154,8 +154,8 @@ dig +short www.z-tech.ru
 
 | Сервис | URL после деплоя |
 |--------|------------------|
-| Google Search Console | `https://z-tech.ru/google3d51010077350b48.html` |
-| Яндекс Вебмастер | `https://z-tech.ru/yandex_99c0be07af079e32.html` |
+| Google Search Console | `https://z-tech.pro/google3d51010077350b48.html` |
+| Яндекс Вебмастер | `https://z-tech.pro/yandex_99c0be07af079e32.html` |
 
 В панелях выберите способ **«HTML-файл»** и нажмите «Проверить» после того, как сайт открывается по HTTPS.
 
@@ -165,15 +165,15 @@ dig +short www.z-tech.ru
 
 | Проверка | Ожидание |
 |----------|----------|
-| https://z-tech.ru | Сайт, стили, заставка (первый визит в вкладке) |
-| https://z-tech.ru/robots.txt | 200 |
+| https://z-tech.pro | Сайт, стили, заставка (первый визит в вкладке) |
+| https://z-tech.pro/robots.txt | 200 |
 | Форма «экспресс-аудит» | Сообщение в Telegram |
 | DevTools → POST `/api/audit` | 200 |
 
 Если форма: «сервер недоступен» или CORS:
 
-- Сайт открыт по **https://z-tech.ru**, не по голому IP.
-- В `docker-compose.prod.yml` уже: `ALLOWED_ORIGINS=https://z-tech.ru,https://www.z-tech.ru`.
+- Сайт открыт по **https://z-tech.pro**, не по голому IP.
+- В `docker-compose.prod.yml` уже: `ALLOWED_ORIGINS=https://z-tech.pro,https://www.z-tech.pro`.
 
 ---
 
