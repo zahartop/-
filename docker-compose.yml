@@ -1,3 +1,6 @@
+# Имя проекта явно: репозиторий на GitHub называется «-», иначе Compose не может вывести name из папки
+name: z-tech
+
 services:
   web:
     build: .
