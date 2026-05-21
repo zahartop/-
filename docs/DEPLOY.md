@@ -78,9 +78,11 @@ python3 scripts/check_telegram.py
 
 ---
 
-## 3. Запуск Docker (прод)
+## 3. Запуск Docker (прод) — только на VPS
 
-**Вариант A — сайт сразу на порту 80** (удобно с Cloudflare):
+> Не запускайте `deploy-vps.sh` на Mac. Локально: `./scripts/start-dev.sh`.
+
+**Вариант A — сайт на порту 80** (удобно с Cloudflare):
 
 ```bash
 chmod +x scripts/deploy-vps.sh
@@ -100,10 +102,10 @@ curl -sI http://127.0.0.1/ | head -1
 curl -s http://127.0.0.1/ | grep -i Z-TECH
 ```
 
-**Вариант B — только 8081 + Caddy с HTTPS** (без Cloudflare на origin):
+**Вариант B — Docker на 8081 + Caddy с HTTPS** (без Cloudflare на origin):
 
 ```bash
-USE_VPS_PORT=0 ./scripts/deploy-vps.sh
+docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
 sudo apt install -y caddy
 sudo cp deploy/Caddyfile.example /etc/caddy/Caddyfile
 sudo systemctl enable --now caddy
