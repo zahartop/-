@@ -24,6 +24,7 @@ FORBIDDEN_TRACKED_PREFIXES = (
 ALLOWED_TRACKED = frozenset(
     {
         ".env.example",
+        ".env.production.example",
         "telegram.config.example.json",
     }
 )

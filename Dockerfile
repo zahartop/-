@@ -12,7 +12,9 @@ RUN rm -f /etc/nginx/conf.d/default.conf
 
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY index.html privacy.html robots.txt sitemap.xml og-image.svg /usr/share/nginx/html/
+COPY index.html privacy.html robots.txt sitemap.xml og-image.svg \
+  google3d51010077350b48.html yandex_99c0be07af079e32.html \
+  /usr/share/nginx/html/
 COPY seo/ /usr/share/nginx/html/seo/
 COPY css/custom.css css/splash.css /usr/share/nginx/html/css/
 COPY --from=css /build/css/tailwind.css /usr/share/nginx/html/css/tailwind.css
