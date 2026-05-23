@@ -17,7 +17,49 @@ MAX_CONTACT_LEN = 120
 MAX_HONEYPOT_LEN = 0
 
 URL_SCHEME_RE = re.compile(r"^https?://", re.I)
-EMAIL_RE = re.compile(r"^[^\s@]+@[^\s@]+\.[^\s@]+$", re.I)
+EMAIL_RE = re.compile(
+    r"^[a-zA-Z0-9](?:[a-zA-Z0-9._%+-]{0,62}[a-zA-Z0-9])?"
+    r"@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$"
+)
+EMAIL_TYPO_TLD_HINTS: dict[str, str] = {
+    "con": ".com",
+    "comm": ".com",
+    "coom": ".com",
+    "cmo": ".com",
+    "comn": ".com",
+    "cpm": ".com",
+    "vom": ".com",
+    "xom": ".com",
+    "ruu": ".ru",
+    "rru": ".ru",
+    "nett": ".net",
+    "ner": ".net",
+    "orgg": ".org",
+    "ogr": ".org",
+}
+EMAIL_BLOCKED_TLDS = frozenset(
+    {
+        "loc",
+        "local",
+        "test",
+        "example",
+        "invalid",
+        "localhost",
+    }
+)
+EMAIL_DOMAIN_TYPOS = frozenset(
+    {
+        "gmial.com",
+        "gmai.com",
+        "gmal.com",
+        "gmil.com",
+        "gnail.com",
+        "yandex.rf",
+        "yndex.ru",
+        "mail.rf",
+        "inbox.rf",
+    }
+)
 PHONE_DIGITS_RE = re.compile(r"\D")
 CONTROL_CHARS_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
 
@@ -99,6 +141,46 @@ def require_site_header(headers) -> bool:
     return (headers.get("X-Z-Tech-Client") or "").strip() == "1"
 
 
+def _validate_email(value: str) -> str | None:
+    email = value.strip()
+    if len(email) > 254:
+        return "Email слишком длинный"
+    if ".." in email or email.startswith(".") or "@." in email or ".@" in email:
+        return "Некорректный email"
+    if email.count("@") != 1:
+        return "Некорректный email"
+    if not EMAIL_RE.match(email):
+        return "Некорректный email"
+
+    local, domain = email.rsplit("@", 1)
+    if len(local) > 64 or len(domain) > 253:
+        return "Некорректный email"
+
+    domain_lower = domain.lower()
+    if domain_lower in EMAIL_DOMAIN_TYPOS:
+        return "Проверьте написание домена почты (например gmail.com, yandex.ru)"
+
+    labels = domain_lower.split(".")
+    tld = labels[-1]
+    if len(labels) < 2 or len(tld) < 2:
+        return "Укажите полный домен почты (например name@mail.ru)"
+    if not tld.isalpha():
+        return "Домен почты должен заканчиваться на буквы (.ru, .com и т.д.)"
+    if tld in EMAIL_BLOCKED_TLDS:
+        return "Некорректный домен email"
+    if tld in EMAIL_TYPO_TLD_HINTS:
+        hint = EMAIL_TYPO_TLD_HINTS[tld]
+        return f"Похоже на опечатку в домене: проверьте окончание {hint} (не .{tld})"
+
+    for label in labels:
+        if not label or len(label) > 63:
+            return "Некорректный домен email"
+        if label.startswith("-") or label.endswith("-"):
+            return "Некорректный домен email"
+
+    return None
+
+
 def sanitize_text(value: str, max_len: int) -> str:
     cleaned = CONTROL_CHARS_RE.sub("", value).strip()
     if len(cleaned) > max_len:
@@ -115,9 +197,7 @@ def _validate_contact(method: str, value: str) -> str | None:
         return "Контакт слишком длинный"
 
     if method == "email":
-        if not EMAIL_RE.match(value):
-            return "Некорректный email"
-        return None
+        return _validate_email(value)
 
     if method in ("phone", "whatsapp"):
         digits = PHONE_DIGITS_RE.sub("", value)

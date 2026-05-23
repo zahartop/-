@@ -199,10 +199,112 @@
   });
 
   const CONTACT_FIELDS = {
-    phone: { type: "tel", placeholder: "+7 (999) 000-00-00", autocomplete: "tel" },
-    email: { type: "email", placeholder: "ваш@email.ru", autocomplete: "email" },
-    telegram: { type: "text", placeholder: "@username или t.me/username", autocomplete: "off" },
-    whatsapp: { type: "tel", placeholder: "+7 (999) 000-00-00", autocomplete: "tel" },
+    phone: { type: "tel", placeholder: "+7 (999) 000-00-00", autocomplete: "tel", inputMode: "tel" },
+    email: {
+      type: "text",
+      placeholder: "name@example.com",
+      autocomplete: "email",
+      inputMode: "email",
+      spellcheck: false,
+    },
+    telegram: { type: "text", placeholder: "@username или t.me/username", autocomplete: "off", inputMode: "text" },
+    whatsapp: { type: "tel", placeholder: "+7 (999) 000-00-00", autocomplete: "tel", inputMode: "tel" },
+  };
+
+  const EMAIL_RE =
+    /^[a-zA-Z0-9](?:[a-zA-Z0-9._%+-]{0,62}[a-zA-Z0-9])?@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+  const EMAIL_TYPO_TLD_HINTS = {
+    con: ".com",
+    comm: ".com",
+    coom: ".com",
+    cmo: ".com",
+    comn: ".com",
+    cpm: ".com",
+    vom: ".com",
+    xom: ".com",
+    ruu: ".ru",
+    rru: ".ru",
+    nett: ".net",
+    ner: ".net",
+    orgg: ".org",
+    ogr: ".org",
+  };
+  const EMAIL_BLOCKED_TLDS = new Set(["loc", "local", "test", "example", "invalid", "localhost"]);
+  const EMAIL_DOMAIN_TYPOS = new Set([
+    "gmial.com",
+    "gmai.com",
+    "gmal.com",
+    "gmil.com",
+    "gnail.com",
+    "yandex.rf",
+    "yndex.ru",
+    "mail.rf",
+    "inbox.rf",
+  ]);
+
+  const validateEmail = (raw) => {
+    const email = String(raw || "").trim();
+    if (!email) return "Укажите email";
+    if (email.length > 254) return "Email слишком длинный";
+    if (email.includes("..") || email.startsWith(".") || email.includes("@.") || email.includes(".@")) {
+      return "Некорректный email";
+    }
+    if ((email.match(/@/g) || []).length !== 1) return "Некорректный email";
+    if (!EMAIL_RE.test(email)) return "Некорректный email";
+
+    const [local, domain] = email.split("@");
+    if (local.length > 64 || domain.length > 253) return "Некорректный email";
+
+    const domainLower = domain.toLowerCase();
+    if (EMAIL_DOMAIN_TYPOS.has(domainLower)) {
+      return "Проверьте написание домена почты (например gmail.com, yandex.ru)";
+    }
+
+    const labels = domainLower.split(".");
+    const tld = labels[labels.length - 1];
+    if (labels.length < 2 || tld.length < 2) {
+      return "Укажите полный домен почты (например name@mail.ru)";
+    }
+    if (!/^[a-z]+$/i.test(tld)) {
+      return "Домен почты должен заканчиваться на буквы (.ru, .com и т.д.)";
+    }
+    if (EMAIL_BLOCKED_TLDS.has(tld)) return "Некорректный домен email";
+    if (EMAIL_TYPO_TLD_HINTS[tld]) {
+      const hint = EMAIL_TYPO_TLD_HINTS[tld];
+      return `Похоже на опечатку в домене: проверьте окончание ${hint} (не .${tld})`;
+    }
+    for (const label of labels) {
+      if (!label || label.length > 63 || label.startsWith("-") || label.endsWith("-")) {
+        return "Некорректный домен email";
+      }
+    }
+    return null;
+  };
+
+  const validatePhone = (raw) => {
+    const digits = String(raw || "").replace(/\D/g, "");
+    if (digits.length < 10 || digits.length > 15) return "Некорректный номер телефона";
+    return null;
+  };
+
+  const validateTelegram = (raw) => {
+    const handle = String(raw || "")
+      .trim()
+      .replace(/^@/, "")
+      .split("/")
+      .pop();
+    if (!handle || handle.length < 3) return "Укажите @username или ссылку t.me/...";
+    return null;
+  };
+
+  const validateContactValue = (method, value) => {
+    const v = String(value || "").trim();
+    if (!v) return "Укажите контакт для связи";
+    if (v.length > 120) return "Контакт слишком длинный";
+    if (method === "email") return validateEmail(v);
+    if (method === "phone" || method === "whatsapp") return validatePhone(v);
+    if (method === "telegram") return validateTelegram(v);
+    return null;
   };
 
   const CONTACT_HINTS = {
@@ -224,6 +326,10 @@
       valueInput.type = cfg.type;
       valueInput.placeholder = cfg.placeholder;
       valueInput.autocomplete = cfg.autocomplete;
+      if (cfg.inputMode) valueInput.inputMode = cfg.inputMode;
+      else valueInput.removeAttribute("inputmode");
+      if (cfg.spellcheck === false) valueInput.spellcheck = false;
+      else valueInput.removeAttribute("spellcheck");
     }
     if (hint) {
       hint.textContent = CONTACT_HINTS[method] || "";
@@ -326,11 +432,13 @@
       }
       return;
     }
-    if (!contact_value) {
+    const contactErr = validateContactValue(contact_method, contact_value);
+    if (contactErr) {
       if (formError) {
-        formError.textContent = "Укажите контакт для связи";
+        formError.textContent = contactErr;
         formError.classList.remove("hidden");
       }
+      $("#contact-value")?.focus();
       return;
     }
     if (!$("#consent-pdn")?.checked) {
