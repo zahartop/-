@@ -67,6 +67,15 @@ body {
   animation: grid-drift 24s linear infinite;
 }
 
+html.fx-paused .grid-bg,
+html.fx-paused .marquee-track,
+html.fx-paused .ambient-orb,
+html.fx-paused .hero-spark,
+html.fx-paused .hero-glow,
+html.fx-paused .hero-scanlines {
+  animation-play-state: paused;
+}
+
 .glass {
   background: rgba(10, 10, 10, 0.85);
   backdrop-filter: blur(20px);

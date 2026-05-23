@@ -209,6 +209,7 @@ ssh root@ВАШ_IP 'chmod 600 ~/z-tech-portfolio/telegram.local.json'
 | Симптом | Решение |
 |---------|---------|
 | Сайт не открывается | `ufw`, порт 80, `docker ps`, DNS |
+| Медленная загрузка | В `site_prod-nginx` включить gzip из `deploy/nginx-z-tech.pro.conf`, `nginx -s reload` |
 | Нет стилей | Открывать по HTTPS; не `file://` |
 | Форма не шлёт | `python3 scripts/check_telegram.py` на VPS |
 | 502 / пусто | `docker compose logs web api` |
@@ -218,5 +219,5 @@ ssh root@ВАШ_IP 'chmod 600 ~/z-tech-portfolio/telegram.local.json'
 
 ## Контакты в проде
 
-- Email на сайте: **Z-TECH@MAIL.RU**
+- Email на сайте: **skskxnddndnx@inbox.ru**
 - Telegram-заявки: только через `telegram.local.json` на сервере

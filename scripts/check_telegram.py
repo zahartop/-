@@ -22,7 +22,7 @@ def _print_network_help() -> None:
     print("  1. Включите VPN (Telegram API часто блокируют без VPN)")
     print("  2. DNS: 1.1.1.1 или 8.8.8.8 в настройках Wi‑Fi / VPN")
     print("  3. Повторите: python3 scripts/check_telegram.py")
-    print("  Пока API недоступен — заявки на Z-TECH@MAIL.RU")
+    print("  Пока API недоступен — заявки на skskxnddndnx@inbox.ru")
 
 
 def _check_tcp() -> bool:

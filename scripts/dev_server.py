@@ -199,7 +199,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 {
                     "ok": False,
                     "error": (
-                        "Сервис временно недоступен. Напишите на Z-TECH@MAIL.RU или в Telegram."
+                        "Сервис временно недоступен. Напишите на skskxnddndnx@inbox.ru или в Telegram."
                         if not DEBUG_ERRORS
                         else (
                             "Telegram не настроен. В telegram.local.json укажите bot_token от @BotFather "
@@ -250,7 +250,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             if "timed out" in reason.lower() or "timeout" in reason.lower():
                 msg = (
                     "Telegram не ответил вовремя. Проверьте интернет/VPN и отправьте снова "
-                    "или напишите на Z-TECH@MAIL.RU / Telegram."
+                    "или напишите на skskxnddndnx@inbox.ru / Telegram."
                 )
             elif DEBUG_ERRORS:
                 msg = reason

@@ -2,12 +2,12 @@
   "use strict";
 
   const SPLASH_MS = {
-    colors: 600,
-    colorsPeak: 2000,
-    brand: 2800,
-    tagline: 3600,
-    reveal: 5000,
-    done: 6000,
+    colors: 350,
+    colorsPeak: 900,
+    brand: 1400,
+    tagline: 1800,
+    reveal: 2400,
+    done: 3000,
   };
 
   const SPLASH_SEEN_KEY = "ztech-splash-seen";
@@ -76,7 +76,15 @@
     });
   };
 
+  let splashTimers = [];
+
+  const cancelSplashTimers = () => {
+    splashTimers.forEach(clearTimeout);
+    splashTimers = [];
+  };
+
   const finishSplash = () => {
+    cancelSplashTimers();
     markSplashSeen();
     const splash = $("#splash-preloader");
     document.body.classList.remove("splash-active");
@@ -86,6 +94,18 @@
     });
     splash?.remove();
     window.dispatchEvent(new CustomEvent("splash-complete"));
+  };
+
+  const skipSplash = () => {
+    const splash = $("#splash-preloader");
+    if (!splash) {
+      finishSplash();
+      return;
+    }
+    cancelSplashTimers();
+    revealSiteChrome();
+    splash.classList.add("is-done");
+    finishSplash();
   };
 
   const initSplash = () => {
@@ -103,32 +123,33 @@
     if (line1) line1.textContent = tagline[0];
     if (line2) line2.textContent = tagline[1];
 
+    $("#splash-skip")?.addEventListener("click", skipSplash);
+
     requestAnimationFrame(() => {
       splash.classList.add("is-visible", "phase-enter");
     });
 
     const schedule = (ms, fn) => window.setTimeout(fn, ms);
-    const timers = [];
 
-    timers.push(schedule(SPLASH_MS.colors, () => splash.classList.replace("phase-enter", "phase-colors")));
-    timers.push(
+    splashTimers.push(schedule(SPLASH_MS.colors, () => splash.classList.replace("phase-enter", "phase-colors")));
+    splashTimers.push(
       schedule(SPLASH_MS.colorsPeak, () => splash.classList.replace("phase-colors", "phase-colors-peak"))
     );
-    timers.push(
+    splashTimers.push(
       schedule(SPLASH_MS.brand, () => splash.classList.replace("phase-colors-peak", "phase-brand"))
     );
-    timers.push(
+    splashTimers.push(
       schedule(SPLASH_MS.tagline, () => splash.classList.replace("phase-brand", "phase-tagline"))
     );
-    timers.push(
+    splashTimers.push(
       schedule(SPLASH_MS.reveal, () => {
         splash.classList.replace("phase-tagline", "phase-fade");
         revealSiteChrome();
       })
     );
-    timers.push(
+    splashTimers.push(
       schedule(SPLASH_MS.done, () => {
-        timers.forEach(clearTimeout);
+        cancelSplashTimers();
         splash.classList.add("is-done");
         finishSplash();
       })
@@ -186,7 +207,7 @@
 
   const CONTACT_HINTS = {
     phone: "Укажите номер — перезвоним в рабочее время.",
-    email: "Ваш email для ответа. Наша почта: Z-TECH@MAIL.RU",
+    email: "Ваш email для ответа. Наша почта: skskxnddndnx@inbox.ru",
     telegram: "Ваш @username — напишем в Telegram.",
     whatsapp: "Номер WhatsApp для быстрой связи.",
   };
@@ -239,7 +260,7 @@
     if (/timed out|timeout|urlopen/i.test(raw)) {
       return (
         "Telegram не ответил вовремя. Проверьте интернет или VPN и отправьте снова. " +
-        "Или напишите на Z-TECH@MAIL.RU / Telegram."
+        "Или напишите на skskxnddndnx@inbox.ru / Telegram."
       );
     }
     return raw || "Не удалось отправить заявку. Перезапустите dev_server.py после настройки Telegram.";
@@ -448,7 +469,7 @@
     hero.classList.add("is-live");
 
     if (sparksRoot && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      const count = window.innerWidth < 768 ? 18 : 32;
+      const count = window.innerWidth < 768 ? 10 : 22;
       for (let i = 0; i < count; i++) {
         const s = document.createElement("span");
         s.className = "hero-spark";
@@ -611,4 +632,10 @@
     hideNearContact();
     window.addEventListener("scroll", hideNearContact, { passive: true });
   }
+
+  const syncDecorPause = () => {
+    document.documentElement.classList.toggle("fx-paused", document.hidden);
+  };
+  document.addEventListener("visibilitychange", syncDecorPause);
+  syncDecorPause();
 })();

@@ -36,6 +36,37 @@ body.splash-active {
   pointer-events: auto;
 }
 
+.splash__skip {
+  position: absolute;
+  top: max(1rem, env(safe-area-inset-top, 0px));
+  right: max(1rem, env(safe-area-inset-right, 0px));
+  z-index: 10;
+  padding: 0.55rem 1rem;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #a3a3a3;
+  background: rgba(10, 10, 10, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.25rem;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.splash__skip:hover {
+  color: #fff;
+  border-color: rgba(225, 29, 72, 0.45);
+  background: rgba(20, 20, 20, 0.9);
+}
+
+.splash__skip:focus-visible {
+  outline: 2px solid #ff2d55;
+  outline-offset: 2px;
+}
+
 .splash {
   position: fixed;
   inset: 0;
@@ -466,6 +497,7 @@ body.splash-active {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .splash__skip { display: none !important; }
   .splash { display: none !important; }
   body.splash-active {
     position: static;
