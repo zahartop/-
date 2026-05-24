@@ -71,13 +71,17 @@ certbot certificates
 
 ---
 
-## Применить конфиг
+## Применить конфиг (автоматически на VPS)
 
-1. Скопировать `deploy/nginx-vps-split.conf` в проект **site_prod** (два файла или один — как удобнее).
-2. Заменить `TVK_UPSTREAM_PORT` на реальный порт ТВК.
-3. Удалить **старые** `server { }` с теми же `server_name`, чтобы не было дублей.
-4. Убрать `default_server` с 443 у ТВК, если z-tech попадал в этот блок.
-5. Проверка и reload:
+```bash
+cd ~/z-tech-portfolio/z-tech-portfolio
+git pull
+sudo bash scripts/apply-nginx-split-vps.sh
+```
+
+Скрипт: диагностика `nginx -T`, копирует `deploy/vhosts/*.conf` в `/root/site_prod/nginx/vhosts/`, убирает дубли `server {}` из `nginx.conf`, `nginx -t` и `reload`.
+
+Вручную: `deploy/nginx-vps-split.conf` или `deploy/vhosts/00-z-tech.pro.conf` + `10-tvk.conf`.
 
 ```bash
 docker exec site_prod-nginx-1 nginx -t
