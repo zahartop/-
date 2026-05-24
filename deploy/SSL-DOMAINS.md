@@ -81,15 +81,24 @@ certbot certificates
 
 ---
 
-## Применить конфиг (автоматически на VPS)
+## Восстановить ТВК (если сломался SSL после фикса Z-TECH)
 
 ```bash
 cd ~/z-tech-portfolio/z-tech-portfolio
 git pull
-sudo bash scripts/fix-z-tech-server.sh
+sudo bash scripts/restore-tvk-nginx.sh
 ```
 
-(или `Z_TECH_ONLY=1 sudo bash scripts/apply-nginx-split-vps.sh`)
+Скрипт **не трогает** сертификат ТВК — поднимает `vhosts/10-tvk.conf` с путём  
+`/etc/letsencrypt/live/xn--80aacf5bc0a3b.xn--p1ai/`.
+
+## Применить конфиг Z-TECH
+
+```bash
+sudo bash scripts/fix-nginx-only.sh
+```
+
+Скрипты больше **не удаляют** блоки ТВК из `nginx.conf`.
 
 Скрипт: диагностика `nginx -T`, копирует `deploy/vhosts/*.conf` в `/root/site_prod/nginx/vhosts/`, убирает дубли `server {}` из `nginx.conf`, `nginx -t` и `reload`.
 

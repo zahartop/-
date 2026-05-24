@@ -60,25 +60,16 @@ else
   echo "→ Z-TECH: только HTTP → :8081 (сертификат в контейнере не найден)"
 fi
 
-# ─── ТВК (только если на этом же VPS) ───────────────────────────────────────
-TVK_PORT="${TVK_UPSTREAM_PORT:-}"
-if [[ "$Z_TECH_ONLY" != "1" ]]; then
-  if [[ -z "$TVK_PORT" ]]; then
-    TVK_PORT="$(docker exec "$NGINX_CONTAINER" nginx -T 2>/dev/null \
-      | grep -oE 'proxy_pass http://127\.0\.0\.1:[0-9]+' \
-      | grep -v ':8081' | head -1 | grep -oE '[0-9]+$' || true)"
-  fi
-  if [[ -n "$TVK_PORT" ]] && [[ -f /etc/letsencrypt/live/xn--80aacf5bc0a3b.xn--p1ai/fullchain.pem ]]; then
-    sed "s/TVK_UPSTREAM_PORT/${TVK_PORT}/g" \
-      "${REPO}/deploy/vhosts/10-tvk.conf" > "${VHOSTS_DIR}/10-tvk.conf"
-    echo "→ ТВК: vhost на порту ${TVK_PORT}"
-  else
-    rm -f "${VHOSTS_DIR}/10-tvk.conf"
-    echo "→ ТВК: пропуск (другой VPS или нет сертификата ТВК на этом хосте)"
-  fi
+# ─── ТВК (если сертификат на этом VPS — восстанавливаем/обновляем vhost) ─────
+TVK_CERT="/etc/letsencrypt/live/xn--80aacf5bc0a3b.xn--p1ai/fullchain.pem"
+if docker exec "$NGINX_CONTAINER" test -f "$TVK_CERT" 2>/dev/null; then
+  TVK_PORT="${TVK_UPSTREAM_PORT:-$(detect_tvk_upstream_port "$NGINX_CONTAINER")}"
+  TVK_HOST="$(detect_upstream_host "$NGINX_CONTAINER" "$TVK_PORT" "ТВК")"
+  apply_upstream_to_vhost "${REPO}/deploy/vhosts/10-tvk.conf" "$TVK_HOST" "$TVK_PORT" \
+    > "${VHOSTS_DIR}/10-tvk.conf"
+  echo "→ ТВК: vhost сохранён (http://${TVK_HOST}:${TVK_PORT}, свой SSL)"
 else
-  rm -f "${VHOSTS_DIR}/10-tvk.conf"
-  echo "→ Z_TECH_ONLY=1 — vhost ТВК не трогаем"
+  echo "→ ТВК: сертификата на этом VPS нет — vhost не меняем (сайт на другом сервере)"
 fi
 
 INCLUDE_LINE='    include /srv/site/nginx/vhosts/*.conf;'
@@ -97,16 +88,14 @@ print("→ Добавлен include vhosts")
 PY
 fi
 
-# Убрать старые server {} — они перехватывают z-tech.pro и редиректят на чужой .рф
+# Убрать только старые Z-TECH / чужой .рф — НЕ трогаем блоки ТВК в nginx.conf
 python3 - "$NGINX_CONF" <<'PY'
 import re, sys
 path = sys.argv[1]
 text = open(path, encoding="utf-8").read()
 markers = (
     "z-tech.pro", "www.z-tech.pro",
-    "твкпластик.рф", "tvkplastic.ru",
-    "xn--80aacf5bc0a3b", "xn--80adtgcd1asdg",
-    "80adtgcd1asdg",  # чужой .рф, на который сейчас редиректит z-tech.pro
+    "xn--80adtgcd1asdg", "80adtgcd1asdg",
 )
 out, i, removed = [], 0, 0
 while i < len(text):
@@ -142,15 +131,12 @@ else:
     print("→ Старые server {} в nginx.conf не найдены")
 PY
 
-# То же для всех .conf в каталоге nginx (не только nginx.conf)
+# Другие .conf — только z-tech / чужой редирект, не ТВК
 python3 - "$SITE_PROD/nginx" <<'PY'
 import re, sys
 from pathlib import Path
 root = Path(sys.argv[1])
-markers = (
-    "z-tech.pro", "xn--80adtgcd1asdg", "80adtgcd1asdg",
-    "xn--80aacf5bc0a3b",
-)
+markers = ("z-tech.pro", "xn--80adtgcd1asdg", "80adtgcd1asdg")
 for path in sorted(root.rglob("*.conf")):
     if path.name == "nginx.conf" or "vhosts" in path.parts:
         continue
@@ -206,8 +192,8 @@ nginx_reload() {
 echo ""
 echo "=== nginx -t ==="
 if ! nginx_reload; then
-  echo "→ HTTPS vhost не прошёл nginx -t — откат на HTTP-only (сайт заработает по http://)"
-  cp "${REPO}/deploy/vhosts/00-z-tech.pro-http-only.conf" "${VHOSTS_DIR}/00-z-tech.pro.conf"
+  echo "→ HTTPS vhost Z-TECH не прошёл nginx -t — откат на HTTP-only"
+  write_ztech_vhost "${REPO}/deploy/vhosts/00-z-tech.pro-http-only.conf"
   HAS_ZTECH_CERT=0
   nginx_reload || {
     echo "❌ nginx -t всё ещё падает. Лог:"
