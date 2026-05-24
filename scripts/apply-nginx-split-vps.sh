@@ -4,6 +4,8 @@
 set -euo pipefail
 
 REPO="${REPO:-$(cd "$(dirname "$0")/.." && pwd)}"
+# shellcheck source=lib/nginx-upstream.sh
+source "${REPO}/scripts/lib/nginx-upstream.sh"
 SITE_PROD="${SITE_PROD:-/root/site_prod}"
 NGINX_CONF="${SITE_PROD}/nginx/nginx.conf"
 VHOSTS_DIR="${SITE_PROD}/nginx/vhosts"
@@ -39,14 +41,22 @@ echo "→ Бэкап: ${BACKUP}"
 mkdir -p "$VHOSTS_DIR" /var/www/certbot
 cp "${REPO}/deploy/vhosts/ssl-params.conf" "${VHOSTS_DIR}/ssl-params.conf"
 
+ZTECH_HOST="$(detect_ztech_upstream_host "$NGINX_CONTAINER")"
+echo "→ Z-TECH upstream для nginx-контейнера: http://${ZTECH_HOST}:8081"
+
+write_ztech_vhost() {
+  local src="$1"
+  apply_upstream_to_vhost "$src" "$ZTECH_HOST" > "${VHOSTS_DIR}/00-z-tech.pro.conf"
+}
+
 # ─── Z-TECH vhost (HTTP-only или HTTP+HTTPS) ─────────────────────────────────
 HAS_ZTECH_CERT=0
 if docker exec "$NGINX_CONTAINER" test -f /etc/letsencrypt/live/z-tech.pro/fullchain.pem 2>/dev/null; then
   HAS_ZTECH_CERT=1
-  cp "${REPO}/deploy/vhosts/00-z-tech.pro.conf" "${VHOSTS_DIR}/00-z-tech.pro.conf"
+  write_ztech_vhost "${REPO}/deploy/vhosts/00-z-tech.pro.conf"
   echo "→ Z-TECH: HTTPS + proxy :8081 (сертификат в контейнере есть)"
 else
-  cp "${REPO}/deploy/vhosts/00-z-tech.pro-http-only.conf" "${VHOSTS_DIR}/00-z-tech.pro.conf"
+  write_ztech_vhost "${REPO}/deploy/vhosts/00-z-tech.pro-http-only.conf"
   echo "→ Z-TECH: только HTTP → :8081 (сертификат в контейнере не найден)"
 fi
 
@@ -213,7 +223,7 @@ if [[ "$HAS_ZTECH_CERT" -eq 0 ]] && command -v certbot >/dev/null 2>&1; then
   if certbot certonly --webroot -w /var/www/certbot \
     -d z-tech.pro -d www.z-tech.pro \
     --agree-tos -m "$CERTBOT_EMAIL" --no-eff-email --non-interactive; then
-    cp "${REPO}/deploy/vhosts/00-z-tech.pro.conf" "${VHOSTS_DIR}/00-z-tech.pro.conf"
+    write_ztech_vhost "${REPO}/deploy/vhosts/00-z-tech.pro.conf"
     docker exec "$NGINX_CONTAINER" nginx -t
     docker exec "$NGINX_CONTAINER" nginx -s reload
     echo "✓ HTTPS vhost включён"
