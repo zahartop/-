@@ -281,6 +281,22 @@
   gap: 0.5rem;
 }
 
+.budget-picker__grid--3 {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 480px) {
+  .budget-picker__grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.budget-picker__grid--3 .budget-option span {
+  font-size: 0.5625rem;
+  line-height: 1.35;
+  padding: 0.75rem 0.5rem;
+}
+
 .budget-option {
   cursor: pointer;
 }

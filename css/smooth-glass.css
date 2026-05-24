@@ -150,38 +150,101 @@ body.cursor-uplab.is-cursor-idle .uplab-cursor__glass-wrap {
   }
 }
 
-/* ── Hero glass prop (Uplab hero) ── */
+/* ── Hero glass prop (Uplab) — крупно, ротация моделей ── */
 .hero-glass-prop {
   display: none;
   position: absolute;
-  right: 4%;
-  top: 18%;
-  width: clamp(200px, 32vw, 380px);
-  height: clamp(200px, 32vw, 380px);
+  left: 52%;
+  top: 38%;
+  width: clamp(220px, 42vw, 480px);
+  height: clamp(220px, 42vw, 480px);
+  margin-left: -8%;
   pointer-events: none;
-  z-index: 3;
-  opacity: 0.92;
+  z-index: 8;
+  opacity: 1;
   will-change: transform;
-  filter: drop-shadow(0 24px 60px rgba(56, 189, 248, 0.15))
-    drop-shadow(0 8px 24px rgba(244, 63, 94, 0.1));
+  filter: drop-shadow(0 28px 70px rgba(56, 189, 248, 0.22))
+    drop-shadow(0 12px 32px rgba(244, 63, 94, 0.18));
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .hero-glass-prop {
     display: block;
   }
 }
 
 .hero-glass-prop__inner {
+  position: relative;
   width: 100%;
   height: 100%;
-  transform: rotate(-18deg);
+  transform: rotate(-14deg);
   transition: transform 0.35s ease-out;
 }
 
-.hero-glass-prop svg {
+.hero-glass-models {
+  position: relative;
   width: 100%;
   height: 100%;
+}
+
+.hero-glass-model {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: scale(0.88) rotate(6deg);
+  transition:
+    opacity 0.65s ease,
+    transform 0.75s var(--linear-ease, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.hero-glass-model.is-active {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.hero-glass-model.is-out {
+  opacity: 0;
+  transform: scale(1.06) rotate(-4deg);
+}
+
+.hero-glass-model .glass-body {
+  fill: rgba(255, 255, 255, 0.1);
+  stroke: rgba(255, 255, 255, 0.5);
+  stroke-width: 1.4;
+}
+
+.hero-glass-model .glass-shine {
+  fill: rgba(255, 255, 255, 0.22);
+  opacity: 0.85;
+}
+
+.hero-glass-model .glass-rim {
+  fill: none;
+  stroke: url(#ztechHeroGlassIrisGlobal);
+  stroke-width: 2.2;
+  opacity: 0.85;
+}
+
+.hero-glass-prop__label {
+  position: absolute;
+  bottom: -0.5rem;
+  right: 12%;
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.5625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #52525b;
+  opacity: 0.85;
+}
+
+/* Глобальный градиент для всех моделей hero */
+.hero-glass-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
 }
 
 /* diagonal cut (Uplab) */

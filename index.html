@@ -16,16 +16,16 @@
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" as="style">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
-  <link rel="stylesheet" href="css/tailwind.css?v=27">
-  <link rel="stylesheet" href="css/custom.css?v=27">
-  <link rel="stylesheet" href="css/studio.css?v=27">
-  <link rel="stylesheet" href="css/studio-premium.css?v=27">
-  <link rel="stylesheet" href="css/linear-tier.css?v=27">
-  <link rel="stylesheet" href="css/ref-studio.css?v=27">
-  <link rel="stylesheet" href="css/ref-agency.css?v=27">
-  <link rel="stylesheet" href="css/smooth-glass.css?v=27">
-  <link rel="stylesheet" href="css/market-plus.css?v=27">
-  <link rel="preload" href="assets/case-tvk-hero.jpg?v=27" as="image" fetchpriority="high">
+  <link rel="stylesheet" href="css/tailwind.css?v=28">
+  <link rel="stylesheet" href="css/custom.css?v=28">
+  <link rel="stylesheet" href="css/studio.css?v=28">
+  <link rel="stylesheet" href="css/studio-premium.css?v=28">
+  <link rel="stylesheet" href="css/linear-tier.css?v=28">
+  <link rel="stylesheet" href="css/ref-studio.css?v=28">
+  <link rel="stylesheet" href="css/ref-agency.css?v=28">
+  <link rel="stylesheet" href="css/smooth-glass.css?v=28">
+  <link rel="stylesheet" href="css/market-plus.css?v=28">
+  <link rel="preload" href="assets/case-tvk-hero.jpg?v=28" as="image" fetchpriority="high">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23e11d48' rx='6' width='32' height='32'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='white' font-family='system-ui' font-weight='800' font-size='18'%3EZ%3C/text%3E%3C/svg%3E">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Z-TECH">
@@ -157,7 +157,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="css/splash.css?v=27">
+  <link rel="stylesheet" href="css/splash.css?v=28">
 </head>
 <body class="design-studio premium-on linear-tier ref-studio font-sans text-zinc-300 antialiased selection:bg-rose-500/30 selection:text-white overflow-x-hidden splash-active">
   <div id="linear-spotlight" aria-hidden="true"></div>
@@ -287,24 +287,51 @@
     <!-- Hero -->
     <section id="hero" class="hero-section relative min-h-[88dvh] sm:min-h-[92vh] flex flex-col justify-center px-5 pt-24 pb-14 sm:pt-28 sm:pb-16 lg:px-10 lg:pt-36 overflow-hidden" aria-labelledby="hero-title">
       <div class="hero-glass-prop" id="hero-glass-prop" aria-hidden="true">
+        <svg class="hero-glass-defs" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="ztechHeroGlassIrisGlobal" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#fda4af"/>
+              <stop offset="40%" stop-color="#bae6fd"/>
+              <stop offset="100%" stop-color="#fb7185"/>
+            </linearGradient>
+          </defs>
+        </svg>
         <div class="hero-glass-prop__inner" id="hero-glass-prop-inner">
-          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="ztechHeroGlassShine" x1="12" y1="8" x2="58" y2="68" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="rgba(255,255,255,0.5)"/>
-                <stop offset="50%" stop-color="rgba(186,230,253,0.2)"/>
-                <stop offset="100%" stop-color="rgba(244,63,94,0.1)"/>
-              </linearGradient>
-              <linearGradient id="ztechHeroGlassIris" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#fda4af"/>
-                <stop offset="40%" stop-color="#bae6fd"/>
-                <stop offset="100%" stop-color="#fb7185"/>
-              </linearGradient>
-            </defs>
-            <path fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.45)" stroke-width="1.5" d="M18 14v46l38-23-38-23z"/>
-            <path fill="url(#ztechHeroGlassShine)" d="M22 20v34l28-17-28-17z"/>
-            <path fill="none" stroke="url(#ztechHeroGlassIris)" stroke-width="2.5" opacity="0.8" d="M18 14v46l38-23-38-23z"/>
-          </svg>
+          <div class="hero-glass-models" id="hero-glass-models">
+            <svg class="hero-glass-model is-active" data-model="cursor" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+              <path class="glass-body" d="M18 14v46l38-23-38-23z"/>
+              <path class="glass-shine" d="M22 20v34l28-17-28-17z"/>
+              <path class="glass-rim" d="M18 14v46l38-23-38-23z"/>
+            </svg>
+            <svg class="hero-glass-model" data-model="triangle" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+              <path class="glass-body" d="M40 12L68 62H12L40 12z"/>
+              <path class="glass-shine" d="M40 18L60 56H20L40 18z"/>
+              <path class="glass-rim" d="M40 12L68 62H12L40 12z"/>
+            </svg>
+            <svg class="hero-glass-model" data-model="ring" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+              <circle class="glass-body" cx="40" cy="40" r="26" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.45)" stroke-width="1.4"/>
+              <circle class="glass-shine" cx="40" cy="40" r="18" fill="rgba(255,255,255,0.14)"/>
+              <circle class="glass-rim" cx="40" cy="40" r="26" fill="none"/>
+            </svg>
+            <svg class="hero-glass-model" data-model="hex" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+              <path class="glass-body" d="M40 10l28 16v28L40 70 12 54V26L40 10z"/>
+              <path class="glass-shine" d="M40 16l22 13v24L40 64 18 53V29L40 16z"/>
+              <path class="glass-rim" d="M40 10l28 16v28L40 70 12 54V26L40 10z"/>
+            </svg>
+            <svg class="hero-glass-model" data-model="diamond" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+              <path class="glass-body" d="M40 8l32 24-32 40-32-40L40 8z"/>
+              <path class="glass-shine" d="M40 14l26 20-26 32-26-32L40 14z"/>
+              <path class="glass-rim" d="M40 8l32 24-32 40-32-40L40 8z"/>
+            </svg>
+            <svg class="hero-glass-model" data-model="cube" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+              <path class="glass-body" d="M22 28l18-10 18 10v24l-18 10-18-10V28z"/>
+              <path class="glass-body" d="M40 18l18 10v24L40 62 22 52V28l18-10z" opacity="0.55"/>
+              <path class="glass-shine" d="M26 32l14-8 14 8v20l-14 8-14-8V32z"/>
+              <path class="glass-rim" d="M22 28l18-10 18 10v24l-18 10-18-10V28z"/>
+              <path class="glass-rim" d="M40 18l18 10v24L40 62 22 52V28l18-10z"/>
+            </svg>
+          </div>
+          <p class="hero-glass-prop__label" id="hero-glass-label">курсор</p>
         </div>
       </div>
       <div class="hero-glow" id="hero-glow" aria-hidden="true"></div>
@@ -384,7 +411,7 @@
                   <span class="browser-frame__url">твкпластик.рф · production</span>
                 </div>
                 <div class="browser-frame__viewport">
-                  <img src="assets/case-tvk-hero.jpg?v=27" width="1024" height="491" alt="Главная страница ТВК ПЛАСТИК — твкпластик.рф" loading="eager" decoding="async" fetchpriority="high">
+                  <img src="assets/case-tvk-hero.jpg?v=28" width="1024" height="491" alt="Главная страница ТВК ПЛАСТИК — твкпластик.рф" loading="eager" decoding="async" fetchpriority="high">
                 </div>
               </div>
             </div>
@@ -544,7 +571,7 @@
                     <span class="browser-frame__url">твкпластик.рф — калькуляторы · SEO · Telegram</span>
                   </div>
                   <div class="browser-frame__viewport">
-                    <img src="assets/case-tvk-hero.jpg?v=27" width="1024" height="491" alt="Главная страница ТВК ПЛАСТИК — твкпластик.рф" loading="lazy" decoding="async">
+                    <img src="assets/case-tvk-hero.jpg?v=28" width="1024" height="491" alt="Главная страница ТВК ПЛАСТИК — твкпластик.рф" loading="lazy" decoding="async">
                   </div>
                 </div>
               </div>
@@ -1250,22 +1277,18 @@
 
               <fieldset class="budget-picker">
                 <legend class="budget-picker__legend">Бюджет проекта</legend>
-                <div class="budget-picker__grid" role="radiogroup" aria-label="Бюджет проекта">
+                <div class="budget-picker__grid budget-picker__grid--3" role="radiogroup" aria-label="Бюджет проекта">
                   <label class="budget-option">
-                    <input type="radio" name="project-budget" value="до 1,5 млн ₽">
-                    <span>до 1,5 млн</span>
+                    <input type="radio" name="project-budget" value="до 150 000 ₽" checked>
+                    <span>до 150 000 рублей</span>
                   </label>
                   <label class="budget-option">
-                    <input type="radio" name="project-budget" value="1–3 млн ₽" checked>
-                    <span>1–3 млн</span>
+                    <input type="radio" name="project-budget" value="до 300 000 ₽">
+                    <span>до 300 000 рублей</span>
                   </label>
                   <label class="budget-option">
-                    <input type="radio" name="project-budget" value="3–5 млн ₽">
-                    <span>3–5 млн</span>
-                  </label>
-                  <label class="budget-option">
-                    <input type="radio" name="project-budget" value="от 5 млн ₽">
-                    <span>от 5 млн</span>
+                    <input type="radio" name="project-budget" value="до 500 000 ₽">
+                    <span>до 500 000 рублей</span>
                   </label>
                 </div>
               </fieldset>
@@ -1353,6 +1376,6 @@
     <a href="#contact" class="fab fab--cta">Начать проект</a>
   </div>
 
-  <script src="js/main.js?v=27" defer></script>
+  <script src="js/main.js?v=28" defer></script>
 </body>
 </html>

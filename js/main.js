@@ -849,15 +849,46 @@
     resetIdle();
   };
 
+  const HERO_GLASS_LABELS = {
+    cursor: "курсор",
+    triangle: "треугольник",
+    ring: "кольцо",
+    hex: "гексагон",
+    diamond: "ромб",
+    cube: "куб",
+  };
+
   const initHeroGlassProp = () => {
     const prop = $("#hero-glass-prop-inner");
     const shell = $("#hero-glass-prop");
     const hero = $("#hero");
+    const modelsWrap = $("#hero-glass-models");
+    const labelEl = $("#hero-glass-label");
     if (!prop || !hero) return;
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    if (reduced || !fine) return;
+    const models = modelsWrap ? $$(".hero-glass-model", modelsWrap) : [];
+
+    if (models.length > 1 && !reduced) {
+      let modelIdx = 0;
+      const setLabel = (model) => {
+        if (!labelEl || !model) return;
+        labelEl.textContent = HERO_GLASS_LABELS[model.dataset.model] || model.dataset.model || "";
+      };
+      setLabel(models[0]);
+
+      window.setInterval(() => {
+        const current = models[modelIdx];
+        const nextIdx = (modelIdx + 1) % models.length;
+        const next = models[nextIdx];
+        current.classList.remove("is-active");
+        current.classList.add("is-out");
+        next.classList.add("is-active");
+        setLabel(next);
+        window.setTimeout(() => current.classList.remove("is-out"), 700);
+        modelIdx = nextIdx;
+      }, 3200);
+    }
 
     let px = 0;
     let py = 0;
@@ -867,9 +898,11 @@
     const tick = () => {
       px = lerp(px, tx, 0.06);
       py = lerp(py, ty, 0.06);
-      const scrollLift = getScrollY() * 0.12;
-      prop.style.transform = `translate3d(${px * 14}px, ${py * 12}px, 0) rotate(${-18 + px * 4}deg)`;
-      if (shell) shell.style.transform = `translate3d(0, ${scrollLift * 0.4}px, 0)`;
+      const scrollLift = getScrollY() * 0.08;
+      prop.style.transform = `translate3d(${px * 18}px, ${py * 14}px, 0) rotate(${-14 + px * 5}deg)`;
+      if (shell) {
+        shell.style.transform = `translate3d(${px * -12}px, ${scrollLift * 0.35 + py * 8}px, 0)`;
+      }
       requestAnimationFrame(tick);
     };
     tick();
