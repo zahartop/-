@@ -223,6 +223,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         lines.append(
             f"<b>Связь ({payload['contact_method']}):</b> {payload['contact_value']}"
         )
+        if payload.get("budget"):
+            lines.append(f"<b>Бюджет:</b> {payload['budget']}")
         lines.extend(["", f"<i>{msk} MSK</i>"])
         text = "\n".join(lines)
 

@@ -16,7 +16,8 @@ COPY index.html privacy.html robots.txt sitemap.xml og-image.svg \
   google3d51010077350b48.html yandex_99c0be07af079e32.html \
   /usr/share/nginx/html/
 COPY seo/ /usr/share/nginx/html/seo/
-COPY css/custom.css css/splash.css /usr/share/nginx/html/css/
+COPY assets/ /usr/share/nginx/html/assets/
+COPY css/custom.css css/studio.css css/studio-premium.css css/linear-tier.css css/ref-studio.css css/ref-agency.css css/smooth-glass.css css/market-plus.css css/splash.css /usr/share/nginx/html/css/
 COPY --from=css /build/css/tailwind.css /usr/share/nginx/html/css/tailwind.css
 COPY js/ /usr/share/nginx/html/js/
 

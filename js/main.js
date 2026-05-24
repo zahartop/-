@@ -69,6 +69,9 @@
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
+  const getScrollY = () => window.scrollY;
+  const lerp = (a, b, t) => a + (b - a) * t;
+
   const revealSiteChrome = () => {
     $$(".site-chrome").forEach((el) => {
       el.classList.remove("site-chrome--hidden");
@@ -172,7 +175,7 @@
 
   if (header) {
     const onScroll = () => {
-      header.classList.toggle("header-scrolled", window.scrollY > 24);
+      header.classList.toggle("header-scrolled", getScrollY() > 24);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -194,7 +197,8 @@
       burger?.classList.remove("is-active");
       burger?.setAttribute("aria-expanded", "false");
       mobileMenu?.classList.remove("is-open");
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      const top = target.getBoundingClientRect().top + getScrollY();
+      target.scrollIntoView({ behavior: "auto", block: "start" });
     });
   });
 
@@ -383,7 +387,7 @@
     return msg || "Не удалось отправить заявку.";
   };
 
-  const sendToTelegram = async ({ url, name, website, contact_method, contact_value }) => {
+  const sendToTelegram = async ({ url, name, website, contact_method, contact_value, budget }) => {
     let response;
     try {
       response = await fetch("/api/audit", {
@@ -398,6 +402,7 @@
           website: website || "",
           contact_method,
           contact_value,
+          budget: budget || "",
         }),
         credentials: "same-origin",
       });
@@ -424,6 +429,8 @@
     const website = $("#website")?.value?.trim() || "";
     const contact_method = getSelectedContactMethod();
     const contact_value = $("#contact-value")?.value?.trim() || "";
+    const budget =
+      document.querySelector('input[name="project-budget"]:checked')?.value?.trim() || "";
 
     if (!url) {
       if (formError) {
@@ -456,7 +463,7 @@
     }
 
     try {
-      await sendToTelegram({ url, name, website, contact_method, contact_value });
+      await sendToTelegram({ url, name, website, contact_method, contact_value, budget });
       auditForm.classList.add("hidden");
       formSuccess?.classList.remove("hidden");
       formSuccess?.focus();
@@ -664,11 +671,288 @@
     }
   };
 
+  const initPremiumFx = () => {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const progress = $("#scroll-progress");
+
+    if (progress && !reduced) {
+      const onScroll = () => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const p = max > 0 ? getScrollY() / max : 0;
+        progress.style.transform = `scaleX(${Math.min(1, p)})`;
+      };
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+    }
+
+    const bindTilt = (el, max = 10) => {
+      if (!el || reduced) return;
+      el.addEventListener(
+        "mousemove",
+        (e) => {
+          const r = el.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5;
+          const y = (e.clientY - r.top) / r.height - 0.5;
+          el.style.setProperty("--ry", `${x * max}deg`);
+          el.style.setProperty("--rx", `${-y * max * 0.6}deg`);
+        },
+        { passive: true }
+      );
+      el.addEventListener(
+        "mouseleave",
+        () => {
+          el.style.removeProperty("--ry");
+          el.style.removeProperty("--rx");
+        },
+        { passive: true }
+      );
+    };
+
+    $$("[data-tilt]").forEach((el) => bindTilt(el, el.classList.contains("browser-frame--lg") ? 6 : 12));
+
+    if (!reduced) {
+      $$(".btn-magnetic").forEach((btn) => {
+        btn.addEventListener(
+          "mousemove",
+          (e) => {
+            const r = btn.getBoundingClientRect();
+            const x = e.clientX - r.left - r.width / 2;
+            const y = e.clientY - r.top - r.height / 2;
+            btn.style.transform = `translate(${x * 0.12}px, ${y * 0.12}px)`;
+          },
+          { passive: true }
+        );
+        btn.addEventListener(
+          "mouseleave",
+          () => {
+            btn.style.transform = "";
+          },
+          { passive: true }
+        );
+      });
+    }
+  };
+
+  const initHeroRotator = () => {
+    const el = $("#hero-rotator");
+    if (!el) return;
+
+    const phrases = [
+      "сайт под ключ",
+      "Telegram-CRM",
+      "контур 152-ФЗ",
+      "B2B-продакшен",
+    ];
+    let idx = 0;
+
+    const cycle = () => {
+      el.classList.add("is-out");
+      window.setTimeout(() => {
+        idx = (idx + 1) % phrases.length;
+        el.textContent = phrases[idx];
+        el.classList.remove("is-out");
+      }, 380);
+    };
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
+    window.setInterval(cycle, 3200);
+  };
+
+  const initUplabCursor = () => {
+    const root = document.body;
+    const wrap = $("#uplab-cursor");
+    const glass = $("#uplab-cursor-glass");
+    const dot = $("#uplab-cursor-dot");
+    if (!wrap || !glass || !dot) return;
+
+    const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!fine || reduced) return;
+
+    root.classList.add("cursor-uplab");
+
+    let dotX = window.innerWidth / 2;
+    let dotY = window.innerHeight / 2;
+    let glassX = dotX;
+    let glassY = dotY;
+    let tx = dotX;
+    let ty = dotY;
+    let angle = -24;
+    let idleTimer = null;
+
+    const placeDot = (x, y) => {
+      dot.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    };
+
+    const placeGlass = (x, y, rot) => {
+      glass.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${rot}deg)`;
+    };
+
+    placeDot(dotX, dotY);
+    placeGlass(glassX, glassY, angle);
+
+    const resetIdle = () => {
+      root.classList.remove("is-cursor-idle");
+      clearTimeout(idleTimer);
+      idleTimer = window.setTimeout(() => root.classList.add("is-cursor-idle"), 1400);
+    };
+
+    const tick = () => {
+      const prevX = glassX;
+      const prevY = glassY;
+      dotX = lerp(dotX, tx, 0.55);
+      dotY = lerp(dotY, ty, 0.55);
+      glassX = lerp(glassX, tx, 0.22);
+      glassY = lerp(glassY, ty, 0.22);
+      const vx = glassX - prevX;
+      const vy = glassY - prevY;
+      if (Math.abs(vx) + Math.abs(vy) > 0.08) {
+        angle = lerp(angle, Math.atan2(vy, vx) * (180 / Math.PI) + 90, 0.12);
+      }
+      placeDot(dotX, dotY);
+      placeGlass(glassX, glassY, angle);
+      requestAnimationFrame(tick);
+    };
+    tick();
+
+    document.addEventListener(
+      "mousemove",
+      (e) => {
+        tx = e.clientX;
+        ty = e.clientY;
+        resetIdle();
+      },
+      { passive: true }
+    );
+
+    const hoverSel =
+      "a, button, .btn-primary, .btn-ghost, .btn-magnetic, input, textarea, select, summary, [data-cursor-hover]";
+    document.addEventListener(
+      "mouseover",
+      (e) => {
+        root.classList.toggle("is-cursor-hover", Boolean(e.target.closest(hoverSel)));
+      },
+      { passive: true }
+    );
+    document.addEventListener("mousedown", () => root.classList.add("is-cursor-down"), {
+      passive: true,
+    });
+    document.addEventListener("mouseup", () => root.classList.remove("is-cursor-down"), {
+      passive: true,
+    });
+    document.addEventListener("mouseleave", () => root.classList.add("is-cursor-hidden"));
+    document.addEventListener("mouseenter", () => {
+      root.classList.remove("is-cursor-hidden");
+      resetIdle();
+    });
+    resetIdle();
+  };
+
+  const initHeroGlassProp = () => {
+    const prop = $("#hero-glass-prop-inner");
+    const shell = $("#hero-glass-prop");
+    const hero = $("#hero");
+    if (!prop || !hero) return;
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (reduced || !fine) return;
+
+    let px = 0;
+    let py = 0;
+    let tx = 0;
+    let ty = 0;
+
+    const tick = () => {
+      px = lerp(px, tx, 0.06);
+      py = lerp(py, ty, 0.06);
+      const scrollLift = getScrollY() * 0.12;
+      prop.style.transform = `translate3d(${px * 14}px, ${py * 12}px, 0) rotate(${-18 + px * 4}deg)`;
+      if (shell) shell.style.transform = `translate3d(0, ${scrollLift * 0.4}px, 0)`;
+      requestAnimationFrame(tick);
+    };
+    tick();
+
+    hero.addEventListener(
+      "mousemove",
+      (e) => {
+        const r = hero.getBoundingClientRect();
+        tx = (e.clientX - r.left) / r.width - 0.5;
+        ty = (e.clientY - r.top) / r.height - 0.5;
+      },
+      { passive: true }
+    );
+  };
+
+  const initScrollParallax = () => {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
+
+    const layers = [{ el: $("#hero-showcase"), factor: 0.02 }].filter((l) => l.el);
+
+    const update = () => {
+      const y = getScrollY();
+      layers.forEach(({ el, factor }) => {
+        el.style.transform = `translate3d(0, ${y * factor}px, 0)`;
+      });
+    };
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+  };
+
+  const initLinearFx = () => {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const spot = $("#linear-spotlight");
+    const beams = $$(".linear-beam");
+
+    if (spot && !reduced) {
+      let sx = 50;
+      let sy = 30;
+      const lerp = (a, b, t) => a + (b - a) * t;
+      let tx = 50;
+      let ty = 30;
+      const tick = () => {
+        sx = lerp(sx, tx, 0.08);
+        sy = lerp(sy, ty, 0.08);
+        spot.style.setProperty("--spot-x", `${sx}%`);
+        spot.style.setProperty("--spot-y", `${sy}%`);
+        requestAnimationFrame(tick);
+      };
+      tick();
+      document.addEventListener(
+        "mousemove",
+        (e) => {
+          tx = (e.clientX / window.innerWidth) * 100;
+          ty = (e.clientY / window.innerHeight) * 100;
+        },
+        { passive: true }
+      );
+    }
+
+    if (!reduced && beams.length) {
+      let angle = 0;
+      const spin = () => {
+        angle = (angle + 0.35) % 360;
+        beams.forEach((b) => b.style.setProperty("--beam-angle", `${angle}deg`));
+        requestAnimationFrame(spin);
+      };
+      spin();
+    }
+  };
+
   const bootMotion = () => {
     initReveal();
     initSectionFx();
     initHeroFx();
     initHeroStats();
+    initPremiumFx();
+    initLinearFx();
+    initHeroRotator();
+    initUplabCursor();
+    initHeroGlassProp();
+    initScrollParallax();
   };
 
   if ($("#splash-preloader")) {
@@ -731,11 +1015,13 @@
 
   const mobileCta = $("#mobile-cta");
   const contactSection = $("#contact");
-  if (mobileCta && contactSection && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const fabStack = $("#fab-stack");
+  if (contactSection) {
     const hideNearContact = () => {
       const rect = contactSection.getBoundingClientRect();
       const near = rect.top < window.innerHeight * 0.55;
-      mobileCta.classList.toggle("is-hidden-near-form", near);
+      mobileCta?.classList.toggle("is-hidden-near-form", near);
+      fabStack?.classList.toggle("is-hidden-near-form", near);
     };
     hideNearContact();
     window.addEventListener("scroll", hideNearContact, { passive: true });

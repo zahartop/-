@@ -223,6 +223,7 @@ def validate_audit_payload(data: dict) -> dict[str, str] | str:
     name = str(data.get("name", "")).strip()
     contact_method = str(data.get("contact_method", "")).strip().lower()
     contact_value = str(data.get("contact_value", "")).strip()
+    budget = str(data.get("budget", "")).strip()
 
     if not project_url:
         return "Укажите URL проекта"
@@ -254,4 +255,5 @@ def validate_audit_payload(data: dict) -> dict[str, str] | str:
         "name": sanitize_text(name, MAX_NAME_LEN) if name else "",
         "contact_method": label,
         "contact_value": sanitize_text(contact_value, MAX_CONTACT_LEN),
+        "budget": sanitize_text(budget, 64) if budget else "",
     }

@@ -4,14 +4,19 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Onest", "system-ui", "sans-serif"],
-        display: ["Geologica", "Onest", "system-ui", "sans-serif"],
+        sans: ["Inter", "Plus Jakarta Sans", "Onest", "system-ui", "sans-serif"],
+        display: ["Inter", "Syne", "Geologica", "system-ui", "sans-serif"],
+        mono: ["IBM Plex Mono", "ui-monospace", "monospace"],
       },
       colors: {
-        void: "#030303",
-        blood: { DEFAULT: "#e11d48", bright: "#ff2d55", dim: "#9f1239" },
+        void: "#08080a",
+        blood: { DEFAULT: "#e11d48", bright: "#fb7185", dim: "#be123c" },
       },
-      maxWidth: { content: "76rem" },
+      borderRadius: {
+        studio: "14px",
+        "studio-lg": "20px",
+      },
+      maxWidth: { content: "72rem" },
     },
   },
   plugins: [],

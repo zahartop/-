@@ -1,22 +1,31 @@
 <!DOCTYPE html>
-<html lang="ru" class="scroll-smooth splash-pending">
+<html lang="ru" class="splash-pending">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="Z-TECH: сайты без конструкторов, Telegram-CRM, воронка заявок, 152-ФЗ. Прямой контракт. Тарифы от 150 000 ₽. Экспресс-аудит за 24 часа.">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="author" content="Z-TECH · Захар Банных">
-  <meta name="theme-color" content="#030303">
+  <meta name="theme-color" content="#09090b">
   <link rel="canonical" href="https://z-tech.pro/">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://z-tech.pro/sitemap.xml">
   <link rel="alternate" hreflang="ru" href="https://z-tech.pro/">
   <title>Z-TECH — разработка сайтов и Telegram-CRM | z-tech.pro</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Geologica:wght@600;700;800&family=Onest:wght@400;500;600;700&display=swap" as="style">
-  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@600;700;800&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Geologica:wght@600;700;800&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
-  <link rel="stylesheet" href="css/tailwind.css?v=17">
-  <link rel="stylesheet" href="css/custom.css?v=17">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="css/tailwind.css?v=27">
+  <link rel="stylesheet" href="css/custom.css?v=27">
+  <link rel="stylesheet" href="css/studio.css?v=27">
+  <link rel="stylesheet" href="css/studio-premium.css?v=27">
+  <link rel="stylesheet" href="css/linear-tier.css?v=27">
+  <link rel="stylesheet" href="css/ref-studio.css?v=27">
+  <link rel="stylesheet" href="css/ref-agency.css?v=27">
+  <link rel="stylesheet" href="css/smooth-glass.css?v=27">
+  <link rel="stylesheet" href="css/market-plus.css?v=27">
+  <link rel="preload" href="assets/case-tvk-hero.jpg?v=27" as="image" fetchpriority="high">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23e11d48' rx='6' width='32' height='32'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='white' font-family='system-ui' font-weight='800' font-size='18'%3EZ%3C/text%3E%3C/svg%3E">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Z-TECH">
@@ -148,9 +157,42 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="css/splash.css?v=17">
+  <link rel="stylesheet" href="css/splash.css?v=27">
 </head>
-<body class="font-sans text-neutral-300 antialiased selection:bg-rose-600/40 selection:text-white overflow-x-hidden splash-active">
+<body class="design-studio premium-on linear-tier ref-studio font-sans text-zinc-300 antialiased selection:bg-rose-500/30 selection:text-white overflow-x-hidden splash-active">
+  <div id="linear-spotlight" aria-hidden="true"></div>
+  <div id="uplab-cursor" aria-hidden="true">
+    <div class="uplab-cursor__glass-wrap" id="uplab-cursor-glass">
+      <svg class="uplab-cursor__glass" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="ztechGlassShine" x1="12" y1="8" x2="58" y2="68" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="rgba(255,255,255,0.55)"/>
+            <stop offset="45%" stop-color="rgba(186,230,253,0.25)"/>
+            <stop offset="100%" stop-color="rgba(244,63,94,0.12)"/>
+          </linearGradient>
+          <linearGradient id="ztechGlassIris" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#fda4af"/>
+            <stop offset="35%" stop-color="#e0f2fe"/>
+            <stop offset="70%" stop-color="#c4b5fd"/>
+            <stop offset="100%" stop-color="#fb7185"/>
+          </linearGradient>
+        </defs>
+        <path class="glass-body" d="M18 14v46l38-23-38-23z"/>
+        <path class="glass-shine" d="M22 20v34l28-17-28-17z"/>
+        <path class="glass-rim" d="M18 14v46l38-23-38-23z"/>
+      </svg>
+      <svg class="uplab-cursor__chrom uplab-cursor__chrom--r" viewBox="0 0 80 80" aria-hidden="true"><path fill="currentColor" d="M18 14v46l38-23-38-23z"/></svg>
+      <svg class="uplab-cursor__chrom uplab-cursor__chrom--b" viewBox="0 0 80 80" aria-hidden="true"><path fill="currentColor" d="M18 14v46l38-23-38-23z"/></svg>
+    </div>
+    <span class="uplab-cursor__dot" id="uplab-cursor-dot"></span>
+  </div>
+  <div class="linear-mesh" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+  <div class="aurora" aria-hidden="true">
+    <span class="aurora__blob aurora__blob--1"></span>
+    <span class="aurora__blob aurora__blob--2"></span>
+    <span class="aurora__blob aurora__blob--3"></span>
+  </div>
   <a href="#main-content" class="skip-link">Перейти к содержимому</a>
 
   <!-- Splash preloader -->
@@ -192,22 +234,29 @@
           Z
           <span class="absolute -inset-px rounded-md bg-rose-500/20 blur-sm"></span>
         </span>
-        <span class="font-display text-sm font-bold tracking-[0.22em] text-white">Z<span class="text-rose-500">-</span>TECH</span>
+        <span class="font-display text-sm font-bold tracking-wide text-white">Z<span class="text-rose-400">·</span>TECH</span>
       </a>
 
-      <nav class="hidden lg:flex items-center gap-10 text-xs font-medium uppercase tracking-widest text-neutral-500" aria-label="Навигация">
-        <a href="#cases" class="nav-link hover:text-rose-400 transition-colors">Эффект</a>
-        <a href="#authority" class="nav-link hover:text-rose-400 transition-colors">Масштаб</a>
-        <a href="#services" class="nav-link hover:text-rose-400 transition-colors">Решения</a>
-        <a href="#compare" class="nav-link hover:text-rose-400 transition-colors">Сравнение</a>
-        <a href="#stack" class="nav-link hover:text-rose-400 transition-colors">Стек</a>
-        <a href="#pricing" class="nav-link hover:text-rose-400 transition-colors">Тарифы</a>
-        <a href="#faq" class="nav-link hover:text-rose-400 transition-colors">FAQ</a>
-        <a href="#contact" class="nav-link hover:text-rose-400 transition-colors">Контакт</a>
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-zinc-500" aria-label="Навигация">
+        <a href="#cases" class="nav-link transition-colors">Кейсы</a>
+        <a href="#authority" class="nav-link transition-colors">Подход</a>
+        <a href="#services" class="nav-link transition-colors">Решения</a>
+        <a href="#compare" class="nav-link transition-colors">Сравнение</a>
+        <a href="#stack" class="nav-link transition-colors">Стек</a>
+        <a href="#industries" class="nav-link transition-colors">Отрасли</a>
+        <a href="#insights" class="nav-link transition-colors">Инсайты</a>
+        <a href="#pricing" class="nav-link transition-colors">Тарифы</a>
+        <a href="#faq" class="nav-link transition-colors">FAQ</a>
+        <a href="#contact" class="nav-link transition-colors">Контакт</a>
       </nav>
 
-      <a href="#contact" class="btn-primary btn-shine hidden lg:inline-flex items-center rounded-sm px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white">
-        Заказать аудит
+      <a href="tel:+79777203130" class="hidden xl:inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-neutral-400 hover:text-rose-400 transition-colors shrink-0">
+        <svg class="h-4 w-4 text-rose-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        +7&nbsp;977&nbsp;720&#8209;31&#8209;30
+      </a>
+      <a href="#contact" class="nav-pitch hidden lg:inline-flex items-center">Презентация</a>
+      <a href="#contact" class="btn-primary hidden lg:inline-flex items-center px-5 py-2.5 text-sm font-semibold text-zinc-950">
+        Начать проект
       </a>
 
       <button id="burger" type="button" class="burger lg:hidden flex flex-col justify-center gap-1.5 w-11 h-11 rounded-sm border border-white/10 bg-white/[0.03]" aria-label="Меню" aria-expanded="false">
@@ -219,11 +268,13 @@
 
     <nav id="mobile-menu" class="lg:hidden border-t border-white/5 bg-black/95 px-5" aria-label="Мобильная навигация">
       <div class="flex flex-col gap-1 py-5 text-sm">
-        <a href="#cases" class="px-3 py-3 text-neutral-400 hover:text-rose-400">Эффект</a>
-        <a href="#authority" class="px-3 py-3 text-neutral-400 hover:text-rose-400">Масштаб</a>
+        <a href="#cases" class="px-3 py-3 text-neutral-400 hover:text-rose-400">Кейсы</a>
+        <a href="#authority" class="px-3 py-3 text-neutral-400 hover:text-rose-400">Подход</a>
         <a href="#services" class="px-3 py-3 text-neutral-400 hover:text-rose-400">Решения</a>
         <a href="#compare" class="px-3 py-3 text-neutral-400 hover:text-rose-400">Сравнение</a>
         <a href="#stack" class="px-3 py-3 text-neutral-400 hover:text-rose-400">Стек</a>
+        <a href="#industries" class="px-3 py-3 text-neutral-400 hover:text-rose-400">Отрасли</a>
+        <a href="#insights" class="px-3 py-3 text-neutral-400 hover:text-rose-400">Инсайты</a>
         <a href="#pricing" class="px-3 py-3 text-neutral-400 hover:text-rose-400">Тарифы</a>
         <a href="#faq" class="px-3 py-3 text-neutral-400 hover:text-rose-400">FAQ</a>
         <a href="#contact" class="btn-primary mt-3 text-center py-3.5 font-bold text-white rounded-sm">Заказать аудит</a>
@@ -235,45 +286,115 @@
 
     <!-- Hero -->
     <section id="hero" class="hero-section relative min-h-[88dvh] sm:min-h-[92vh] flex flex-col justify-center px-5 pt-24 pb-14 sm:pt-28 sm:pb-16 lg:px-10 lg:pt-36 overflow-hidden" aria-labelledby="hero-title">
+      <div class="hero-glass-prop" id="hero-glass-prop" aria-hidden="true">
+        <div class="hero-glass-prop__inner" id="hero-glass-prop-inner">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="ztechHeroGlassShine" x1="12" y1="8" x2="58" y2="68" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="rgba(255,255,255,0.5)"/>
+                <stop offset="50%" stop-color="rgba(186,230,253,0.2)"/>
+                <stop offset="100%" stop-color="rgba(244,63,94,0.1)"/>
+              </linearGradient>
+              <linearGradient id="ztechHeroGlassIris" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#fda4af"/>
+                <stop offset="40%" stop-color="#bae6fd"/>
+                <stop offset="100%" stop-color="#fb7185"/>
+              </linearGradient>
+            </defs>
+            <path fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.45)" stroke-width="1.5" d="M18 14v46l38-23-38-23z"/>
+            <path fill="url(#ztechHeroGlassShine)" d="M22 20v34l28-17-28-17z"/>
+            <path fill="none" stroke="url(#ztechHeroGlassIris)" stroke-width="2.5" opacity="0.8" d="M18 14v46l38-23-38-23z"/>
+          </svg>
+        </div>
+      </div>
       <div class="hero-glow" id="hero-glow" aria-hidden="true"></div>
       <div class="hero-line hero-line--animated top-32" aria-hidden="true"></div>
       <div class="hero-scanlines" aria-hidden="true"></div>
       <div class="hero-sparks" id="hero-sparks" aria-hidden="true"></div>
 
-      <div class="mx-auto w-full max-w-content relative">
-        <div class="reveal hero-badge flex flex-wrap items-center gap-3 mb-8">
-          <span class="inline-flex items-center gap-2 rounded-sm border border-rose-500/30 bg-rose-500/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-rose-400 hero-badge-glow">
-            <span class="h-2 w-2 rounded-full bg-rose-500 pulse-red"></span>
-            Стандарт цифры · Premium B2B
-          </span>
-          <span class="text-[10px] uppercase tracking-widest text-neutral-600 hero-fade-tag">Прямой контракт · без посредников</span>
+      <div class="mx-auto w-full max-w-content relative hero-layout">
+        <div class="hero-copy">
+          <div class="reveal hero-badge flex flex-wrap items-center gap-4 mb-10">
+            <span class="inline-flex items-center gap-2 border border-rose-500/25 bg-rose-500/5 px-4 py-2 text-sm font-medium text-rose-300/90 hero-badge-glow">
+              <span class="h-1.5 w-1.5 rounded-full bg-rose-400 pulse-red"></span>
+              Студия цифровых продуктов · B2B
+            </span>
+            <span class="text-sm text-zinc-500 hero-fade-tag">Прямой контракт · без посредников</span>
+          </div>
+
+          <h1 id="hero-title" class="reveal reveal-delay-1 hero-editorial font-display">
+            <span class="hero-editorial__kicker">Z-TECH · B2B продакшен</span>
+            <span class="hero-rotator-line">Строим&nbsp;<span class="hero-rotator-wrap"><span id="hero-rotator" class="hero-rotator">сайт под ключ</span><span class="hero-rotator-cursor" aria-hidden="true"></span></span></span>
+            <span class="hero-line-in hero-title-line block text-4xl sm:text-5xl md:text-6xl lg:text-[3.5rem] xl:text-6xl" style="--d:0.05s" aria-hidden="true">Цифровая</span>
+            <span class="hero-title-wrap hero-line-in block mt-1" style="--d:0.12s" aria-hidden="true">
+              <span class="hero-title-line hero-title-line--accent text-4xl sm:text-5xl md:text-6xl lg:text-[3.5rem] xl:text-6xl text-gradient-red hero-title-shine">инфраструктура</span>
+              <span class="hero-shimmer-line" aria-hidden="true"></span>
+            </span>
+            <span class="hero-editorial__sub">Авторский код, воронка в Telegram и контур 152-ФЗ — когда заявка <span class="hero-highlight">ценный актив</span>, не строка в таблице.</span>
+            <span class="hero-tags-line reveal reveal-delay-2">
+              <span class="hero-hash">#сайт</span>
+              <span class="hero-hash">#CRM</span>
+              <span class="hero-hash">#152-ФЗ</span>
+              <span class="hero-hash">#DevOps</span>
+              <span class="hero-hash">#SEO</span>
+            </span>
+            <span class="ref-rank-badge reveal reveal-delay-2">
+              <span class="ref-rank-badge__num">B2B</span>
+              <span class="ref-rank-badge__text"><strong>Цифровые сервисы под ключ</strong> — аналитика, дизайн, разработка и продакшен в одном контуре</span>
+            </span>
+          </h1>
+
+          <p class="reveal reveal-delay-2 hero-desc mt-8 max-w-lg text-base text-zinc-400 leading-relaxed border-l-[3px] border-rose-500/40 pl-6">
+            Проектируем, разрабатываем и ведём в продакшене: без конструкторов,
+            с Telegram-CRM и инфраструктурой для совета директоров.
+          </p>
+
+          <div class="reveal reveal-delay-3 mt-10 flex flex-col sm:flex-row gap-3 hero-cta-row">
+            <a href="#contact" class="btn-primary btn-magnetic inline-flex items-center justify-center gap-2 px-8 py-4 text-sm font-semibold text-zinc-950">
+              Экспресс-аудит за 24 часа
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <a href="#cases" class="btn-ghost btn-magnetic inline-flex items-center justify-center px-8 py-4 text-sm font-medium text-zinc-400">
+              Смотреть кейс
+            </a>
+          </div>
+
+          <div class="reveal hero-trust">
+            <span class="hero-trust__item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+              Кейс в продакшене
+            </span>
+            <span class="hero-trust__item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V6l8-3z"/></svg>
+              152-ФЗ контур
+            </span>
+            <span class="hero-trust__item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+              Core Web Vitals
+            </span>
+          </div>
         </div>
 
-        <h1 id="hero-title" class="reveal reveal-delay-1 font-display font-extrabold leading-[0.95] tracking-tight text-white">
-          <span class="hero-line-in block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-stroke-hero hero-word-glow" style="--d:0.05s">ЦИФРОВАЯ</span>
-          <span class="hero-line-in block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-gradient-red hero-title-shine mt-1" style="--d:0.15s">ИМПЕРИЯ</span>
-          <span class="hero-line-in block text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-neutral-500 mt-6 max-w-3xl font-sans font-medium leading-snug tracking-normal" style="--d:0.28s">
-            для бизнеса, где каждая заявка —
-            <span class="hero-highlight"> дорогой актив</span>, а не «ещё одна форма»
-          </span>
-        </h1>
-
-        <p class="reveal reveal-delay-2 hero-desc mt-8 max-w-2xl text-base sm:text-lg text-neutral-500 leading-relaxed border-l-2 border-rose-600 pl-6">
-          Проектируем, строим и ведём закрытые экосистемы: сверхбыстрые сайты без конструкторов,
-          Telegram-CRM уровня enterprise и инфраструктуру, которую не стыдно показать совету и инвестору.
-        </p>
-
-        <div class="reveal reveal-delay-3 mt-12 flex flex-col sm:flex-row gap-4 hero-cta-row">
-          <a href="#contact" class="btn-primary btn-shine inline-flex items-center justify-center gap-3 rounded-sm px-10 py-5 text-sm font-bold uppercase tracking-wider text-white">
-            Экспресс-аудит за 24 часа
-            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
-          <a href="#pricing" class="btn-ghost inline-flex items-center justify-center rounded-sm px-10 py-5 text-sm font-bold uppercase tracking-wider text-neutral-400">
-            Тарифы от 150K
-          </a>
+        <div class="reveal reveal-delay-2 hero-showcase" id="hero-showcase">
+          <div class="linear-beam" id="hero-beam">
+            <div class="linear-beam__inner">
+              <div class="browser-frame" id="hero-browser" data-tilt>
+                <div class="browser-frame__chrome">
+                  <div class="browser-frame__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+                  <span class="browser-frame__url">твкпластик.рф · production</span>
+                </div>
+                <div class="browser-frame__viewport">
+                  <img src="assets/case-tvk-hero.jpg?v=27" width="1024" height="491" alt="Главная страница ТВК ПЛАСТИК — твкпластик.рф" loading="eager" decoding="async" fetchpriority="high">
+                </div>
+              </div>
+            </div>
+          </div>
+          <span class="showcase-float showcase-float--crm"><span class="showcase-float__dot" aria-hidden="true"></span>Telegram CRM</span>
+          <span class="showcase-float showcase-float--lcp">LCP &lt; 1 с</span>
+          <span class="showcase-float showcase-float--live">● В продакшене</span>
         </div>
 
-        <dl id="hero-stats" class="reveal reveal-delay-3 mt-20 grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 rounded-lg overflow-hidden border border-white/5 stat-grid-glow">
+        <dl id="hero-stats" class="reveal reveal-delay-3 lg:col-span-2 mt-4 lg:mt-8 grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 rounded-2xl overflow-hidden border border-white/5 stat-grid-glow">
           <div class="stat-cell bg-black/40 p-6 lg:p-8">
             <dt class="stat-number text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-white stat-num-glow">
               <span class="stat-prefix">до </span><span class="stat-counter" data-target="99.9" data-decimals="1">0</span><span class="text-rose-500">%</span>
@@ -298,10 +419,78 @@
           </div>
         </dl>
       </div>
+      <a href="#cases" class="hero-scroll-hint hidden lg:block" aria-hidden="true">↓ скролл</a>
+    </section>
+
+    <!-- Linear-style stack strip -->
+    <section class="linear-pipeline site-chrome site-chrome--hidden" aria-label="Технологический стек">
+      <div class="linear-pipeline__inner mx-auto max-w-content">
+        <div class="linear-pipeline__track">
+          <span class="is-hot">Docker</span><span>nginx</span><span>PostgreSQL</span><span>Telegram API</span><span>152-ФЗ</span><span>Core Web Vitals</span><span>SEO B2B</span><span>Zero constructors</span><span>HTTPS</span><span>DevOps 24/7</span>
+          <span class="is-hot">Docker</span><span>nginx</span><span>PostgreSQL</span><span>Telegram API</span><span>152-ФЗ</span><span>Core Web Vitals</span><span>SEO B2B</span><span>Zero constructors</span><span>HTTPS</span><span>DevOps 24/7</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="ref-trust-marquee site-chrome site-chrome--hidden" aria-label="Отрасли и фокус">
+      <div class="ref-trust-marquee__track">
+        <span class="is-live">твкпластик.рф · live</span>
+        <span>Промышленный B2B</span>
+        <span>Снабжение</span>
+        <span>Инженерные калькуляторы</span>
+        <span>Telegram-CRM</span>
+        <span>152-ФЗ</span>
+        <span>Core Web Vitals</span>
+        <span>Прямой контракт</span>
+        <span class="is-live">твкпластик.рф · live</span>
+        <span>Промышленный B2B</span>
+        <span>Снабжение</span>
+        <span>Инженерные калькуляторы</span>
+        <span>Telegram-CRM</span>
+        <span>152-ФЗ</span>
+        <span>Core Web Vitals</span>
+        <span>Прямой контракт</span>
+      </div>
+    </section>
+
+    <section class="ref-metrics ref-facts site-chrome site-chrome--hidden" aria-label="Ключевые показатели">
+      <div class="mx-auto max-w-content ref-metrics__grid">
+        <div class="ref-metrics__cell reveal">
+          <span class="ref-metrics__val">от 150K</span>
+          <span class="ref-metrics__key">старт проекта</span>
+        </div>
+        <div class="ref-metrics__cell reveal reveal-delay-1">
+          <span class="ref-metrics__val">2–6 нед</span>
+          <span class="ref-metrics__key">до запуска</span>
+        </div>
+        <div class="ref-metrics__cell reveal reveal-delay-2">
+          <span class="ref-metrics__val">24ч</span>
+          <span class="ref-metrics__key">экспресс-аудит</span>
+        </div>
+        <div class="ref-metrics__cell reveal reveal-delay-3">
+          <span class="ref-metrics__val">0</span>
+          <span class="ref-metrics__key">потерь в CRM</span>
+        </div>
+        <div class="ref-metrics__cell reveal">
+          <span class="ref-metrics__val">1</span>
+          <span class="ref-metrics__key">команда · 1 договор</span>
+        </div>
+        <div class="ref-metrics__cell reveal reveal-delay-1">
+          <span class="ref-metrics__val">∞</span>
+          <span class="ref-metrics__key">production-first</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="ref-roles site-chrome site-chrome--hidden" aria-label="Роли в проекте">
+      <div class="ref-roles__track">
+        <span class="is-role-hot">DevOps</span><span>Frontend</span><span>Backend</span><span>UX/UI</span><span>SEO B2B</span><span>Telegram API</span><span>152-ФЗ</span><span>Product</span><span>QA</span><span>Docker</span><span>nginx</span><span>PostgreSQL</span>
+        <span class="is-role-hot">DevOps</span><span>Frontend</span><span>Backend</span><span>UX/UI</span><span>SEO B2B</span><span>Telegram API</span><span>152-ФЗ</span><span>Product</span><span>QA</span><span>Docker</span><span>nginx</span><span>PostgreSQL</span>
+      </div>
     </section>
 
     <!-- Marquee -->
-    <section class="border-y border-white/5 bg-black/60 py-4 overflow-hidden" aria-label="Девизы Z-TECH">
+    <section class="marquee-section border-y border-white/5 py-4 overflow-hidden" aria-label="Девизы Z-TECH">
       <div class="marquee-track text-xs uppercase tracking-[0.18em] whitespace-nowrap">
         <span class="marquee-word--hot">Скорость решает</span> <span class="text-rose-900/80">◆</span>
         <span class="marquee-word">Контроль без хаоса</span> <span class="text-rose-900/80">◆</span>
@@ -330,30 +519,263 @@
       </div>
     </section>
 
-    <!-- Effect -->
+    <!-- Cases -->
     <section id="cases" class="fx-section px-5 py-24 lg:px-10 border-t border-white/5">
       <div class="mx-auto max-w-content">
-        <div class="reveal max-w-2xl">
-          <p class="fx-label text-xs font-bold uppercase tracking-[0.25em] text-rose-500">Эффект</p>
-          <h2 class="fx-title mt-4 font-display text-3xl sm:text-4xl font-bold text-white">Что меняется после внедрения</h2>
-          <p class="mt-4 text-neutral-500 text-sm">Без выдуманных историй — только стандарты, которые закладываем в каждый проект.</p>
-        </div>
-        <div class="fx-stagger mt-12 grid md:grid-cols-3 gap-6">
+        <header class="sec-head reveal">
+          <p class="sec-head__index">01</p>
+          <p class="sec-head__tag">РАБОТЫ</p>
+          <h2 class="sec-head__title">Живой кейс <em>в продакшене</em></h2>
+          <p class="sec-head__lead">
+            Реальный B2B-проект: от старого витринного сайта до цифровой витрины с инженерными калькуляторами,
+            SEO и воронкой заявок в Telegram.
+          </p>
+        </header>
+
+        <article class="reveal fx-card case-spotlight linear-surface mt-12 glass-card glow-border rounded-2xl overflow-hidden border border-rose-500/20">
+          <div class="case-spotlight__glow" aria-hidden="true"></div>
+          <div class="case-preview-band">
+            <span class="case-live-pill"><span class="showcase-float__dot" aria-hidden="true"></span> Live · твкпластик.рф</span>
+            <div class="linear-beam linear-beam--case">
+              <div class="linear-beam__inner">
+                <div class="browser-frame browser-frame--lg" data-tilt>
+                  <div class="browser-frame__chrome">
+                    <div class="browser-frame__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+                    <span class="browser-frame__url">твкпластик.рф — калькуляторы · SEO · Telegram</span>
+                  </div>
+                  <div class="browser-frame__viewport">
+                    <img src="assets/case-tvk-hero.jpg?v=27" width="1024" height="491" alt="Главная страница ТВК ПЛАСТИК — твкпластик.рф" loading="lazy" decoding="async">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="grid lg:grid-cols-12 gap-0">
+            <div class="lg:col-span-5 p-8 lg:p-10 border-b lg:border-b-0 lg:border-r border-white/5 bg-gradient-to-br from-rose-950/40 to-black/80">
+              <p class="text-[10px] font-bold uppercase tracking-widest text-rose-400">01 · ПРОМЫШЛЕННЫЙ B2B</p>
+              <h3 class="mt-3 font-display text-2xl sm:text-3xl font-bold text-white">ТВК ПЛАСТИК</h3>
+              <div class="ref-case-tags">
+                <span>Инженерный B2B</span>
+                <span>SEO</span>
+                <span>Telegram API</span>
+                <span>Калькуляторы</span>
+                <span>152-ФЗ</span>
+              </div>
+              <div class="ref-case-hash">
+                <span>Аналитика</span><span>Фронтенд</span><span>Бэкенд</span><span>Дизайн</span><span>1C-интеграции</span>
+              </div>
+              <div class="ref-case-kpi">
+                <div class="ref-case-kpi__cell">
+                  <span class="ref-case-kpi__val">с нуля</span>
+                  <span class="ref-case-kpi__key">код и UI</span>
+                </div>
+                <div class="ref-case-kpi__cell">
+                  <span class="ref-case-kpi__val">24/7</span>
+                  <span class="ref-case-kpi__key">заявки в TG</span>
+                </div>
+                <div class="ref-case-kpi__cell">
+                  <span class="ref-case-kpi__val">72ч</span>
+                  <span class="ref-case-kpi__key">отгрузка</span>
+                </div>
+              </div>
+              <p class="ref-case-editorial">
+                Официальный представитель труб ИЗОКОМ. Сайт работает как инженерный и коммерческий инструмент —
+                не визитка, а витрина с расчётом, PDF и воронкой «КП в день обращения».
+              </p>
+              <div class="case-migration mt-8 space-y-3">
+                <div class="case-migration__row">
+                  <span class="case-migration__label">Было</span>
+                  <a href="https://tvkplastic.ru/" target="_blank" rel="noopener noreferrer" class="case-migration__url">tvkplastic.ru</a>
+                </div>
+                <div class="case-migration__arrow" aria-hidden="true">↓</div>
+                <div class="case-migration__row case-migration__row--new">
+                  <span class="case-migration__label">Стало</span>
+                  <a href="https://твкпластик.рф" target="_blank" rel="noopener noreferrer" class="case-migration__url case-migration__url--hot">твкпластик.рф</a>
+                </div>
+              </div>
+              <ul class="case-metrics mt-8 grid grid-cols-2 gap-3">
+                <li class="case-metric">
+                  <span class="case-metric__val">с нуля</span>
+                  <span class="case-metric__key">код и дизайн</span>
+                </li>
+                <li class="case-metric">
+                  <span class="case-metric__val">SEO</span>
+                  <span class="case-metric__key">структура и семантика</span>
+                </li>
+                <li class="case-metric">
+                  <span class="case-metric__val">72ч</span>
+                  <span class="case-metric__key">отгрузка с завода</span>
+                </li>
+                <li class="case-metric">
+                  <span class="case-metric__val">24/7</span>
+                  <span class="case-metric__key">заявки в Telegram</span>
+                </li>
+              </ul>
+            </div>
+            <div class="lg:col-span-7 p-8 lg:p-10">
+              <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-500">Что сделали в Z-TECH</p>
+              <ul class="case-deliverables mt-5 flex flex-wrap gap-2">
+                <li class="case-chip">Сайт с нуля на своём стеке</li>
+                <li class="case-chip">SEO-продвижение и индексация</li>
+                <li class="case-chip">Telegram-бот заявок (масштабируемый API)</li>
+                <li class="case-chip">Калькулятор спецификации ГПИ ИЗОКОМ</li>
+                <li class="case-chip">Гидравлический калькулятор DN</li>
+                <li class="case-chip">Ведомость → PDF / спецификация</li>
+                <li class="case-chip">Stress-test симулятор режимов</li>
+                <li class="case-chip">Каталог линеек и документы</li>
+                <li class="case-chip">Воронка «КП в день обращения»</li>
+                <li class="case-chip">152-ФЗ · политика ПДн</li>
+                <li class="case-chip">Docker · nginx · HTTPS</li>
+              </ul>
+              <div class="case-story mt-8 space-y-4 text-sm text-neutral-500 leading-relaxed">
+                <p>
+                  <strong class="text-neutral-300">Задача:</strong> уйти от устаревшей витрины, дать инженеру и снабженцу
+                  инструменты на сайте (расчёт, спецификация, PDF), не терять заявки с рекламы и поиска.
+                </p>
+                <p>
+                  <strong class="text-neutral-300">Решение:</strong> единая цифровая витрина — каталог, калькуляторы,
+                  ведомость в PDF, формы с маршрутизацией в Telegram; контур готов к росту трафика и новым линейкам продукции.
+                </p>
+                <p>
+                  <strong class="text-neutral-300">Итог:</strong> клиент получает КП-воронку «в день обращения», а не
+                  статичную «визитку» — сайт работает как инженерный и коммерческий инструмент.
+                </p>
+              </div>
+              <a href="https://твкпластик.рф" target="_blank" rel="noopener noreferrer" class="case-cta-link mt-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-rose-400 hover:text-rose-300">
+                Открыть живой проект
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <div class="fx-stagger mt-10 grid md:grid-cols-3 gap-6">
           <article class="reveal fx-card fx-stagger-item glass-card glow-border rounded-lg p-8">
             <p class="text-[10px] uppercase tracking-widest text-rose-400">Воронка</p>
             <p class="mt-4 text-2xl font-display font-bold text-white"><span class="fx-metric">0 потерь</span> <span class="text-sm text-neutral-500 font-sans font-normal">в мессенджере</span></p>
-            <p class="mt-3 text-sm text-neutral-500">Заявка → Telegram → статус → ответственный. Никакого «потерялось в чате».</p>
+            <p class="mt-3 text-sm text-neutral-500">Заявка → Telegram → статус → ответственный. Как в кейсе ТВК ПЛАСТИК.</p>
           </article>
           <article class="reveal reveal-delay-1 fx-card fx-stagger-item glass-card glow-border rounded-lg p-8">
             <p class="text-[10px] uppercase tracking-widest text-rose-400">Скорость</p>
             <p class="mt-4 text-2xl font-display font-bold text-white"><span class="fx-metric">Green Zone</span> <span class="text-sm text-neutral-500 font-sans font-normal">Web Vitals</span></p>
-            <p class="mt-3 text-sm text-neutral-500">Собственный стек вместо конструктора. Mobile-first — клиент не уходит с первого экрана.</p>
+            <p class="mt-3 text-sm text-neutral-500">Собственный код вместо конструктора — быстрый первый экран на мобильном.</p>
           </article>
           <article class="reveal reveal-delay-2 fx-card fx-stagger-item glass-card glow-border rounded-lg p-8">
             <p class="text-[10px] uppercase tracking-widest text-rose-400">Контур</p>
             <p class="mt-4 text-2xl font-display font-bold text-white"><span class="fx-metric">1 команда</span> <span class="text-sm text-neutral-500 font-sans font-normal">аудит → prod</span></p>
-            <p class="mt-3 text-sm text-neutral-500">Прямой договор, прозрачные этапы, один ответственный — без субподрядчиков.</p>
+            <p class="mt-3 text-sm text-neutral-500">Один подрядчик на сайт, ботов, SEO и продакшен — без цепочки студий.</p>
           </article>
+        </div>
+
+        <div class="ref-releases reveal">
+          <p class="ref-releases__label">Релизы в продакшене</p>
+          <div class="ref-releases__row">
+            <a href="https://твкпластик.рф" target="_blank" rel="noopener noreferrer" class="ref-releases__link">твкпластик.рф</a>
+            <span class="ref-releases__next">следующий релиз — ваш проект</span>
+          </div>
+        </div>
+
+        <ul class="ref-creds reveal" aria-label="Компетенции Z-TECH">
+          <li class="ref-creds__item"><span class="ref-creds__mark">PROD</span> кейс в бою</li>
+          <li class="ref-creds__item"><span class="ref-creds__mark">152</span> контур ПДн</li>
+          <li class="ref-creds__item"><span class="ref-creds__mark">CWV</span> mobile-first</li>
+          <li class="ref-creds__item"><span class="ref-creds__mark">CRM</span> Telegram API</li>
+          <li class="ref-creds__item"><span class="ref-creds__mark">0</span> конструкторов</li>
+        </ul>
+
+        <blockquote class="case-quote reveal">
+          <p class="case-quote__text">«Нужен был не лендинг, а инструмент для снабжения и проектировщиков — с заявками в Telegram и без потерь с рекламы».</p>
+          <cite class="case-quote__author">Задача клиента · промышленный B2B</cite>
+        </blockquote>
+
+        <div class="nda-panel reveal">
+          <p class="nda-panel__title">Больше работ — под NDA</p>
+          <p class="nda-panel__text">Как у AGIMA и Only: часть проектов не публикуем. На созвоне покажем релевантные кейсы под вашу отрасль и масштаб.</p>
+          <div class="nda-cards" aria-hidden="true">
+            <div class="nda-card">
+              <span class="nda-card__tag">NDA · B2B</span>
+              <span class="nda-card__name">Корпоративный портал</span>
+              <span class="nda-card__blur"></span>
+            </div>
+            <div class="nda-card">
+              <span class="nda-card__tag">NDA · CRM</span>
+              <span class="nda-card__name">Telegram + 1С</span>
+              <span class="nda-card__blur"></span>
+            </div>
+            <div class="nda-card">
+              <span class="nda-card__tag">NDA · e-com</span>
+              <span class="nda-card__name">Каталог + ЛК</span>
+              <span class="nda-card__blur"></span>
+            </div>
+          </div>
+          <a href="#contact" class="btn-ghost btn-magnetic inline-flex mt-6 px-6 py-3 text-sm font-medium text-zinc-400">Запросить кейсы на звонке</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Industries -->
+    <section id="industries" class="fx-section px-5 py-20 lg:px-10 border-t border-white/5">
+      <div class="mx-auto max-w-content">
+        <header class="sec-head reveal">
+          <p class="sec-head__index">02</p>
+          <p class="sec-head__tag">ОТРАСЛИ</p>
+          <h2 class="sec-head__title">Фокус на <em>B2B</em></h2>
+          <p class="sec-head__lead">Как Only — работаем с лидерами ниш, где заявка = деньги. Честно: сейчас публичный кейс — промышленность; остальное под NDA или в работе.</p>
+        </header>
+        <div class="industry-grid mt-12 reveal">
+          <div class="industry-grid__cell">
+            <span class="industry-grid__count">1</span>
+            <span class="industry-grid__label">кейс в проде · промышленность</span>
+          </div>
+          <div class="industry-grid__cell">
+            <span class="industry-grid__count">B2B</span>
+            <span class="industry-grid__label">снабжение · инжиниринг</span>
+          </div>
+          <div class="industry-grid__cell">
+            <span class="industry-grid__count">CRM</span>
+            <span class="industry-grid__label">Telegram-воронки</span>
+          </div>
+          <div class="industry-grid__cell">
+            <span class="industry-grid__count">152</span>
+            <span class="industry-grid__label">контур ПДн</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Founder -->
+    <section id="founder" class="fx-section px-5 py-20 lg:px-10 border-t border-white/5 bg-black/30">
+      <div class="mx-auto max-w-content">
+        <div class="reveal founder-panel linear-surface glass-card glow-border rounded-2xl p-8 lg:p-10 founder-premium">
+          <div class="founder-portrait" aria-hidden="true">
+            <div class="founder-portrait__mesh"></div>
+            <span class="founder-portrait__initials">ZB</span>
+            <span class="founder-portrait__badge">Founder · Z-TECH</span>
+          </div>
+          <div>
+            <p class="fx-label text-xs font-bold uppercase tracking-[0.25em] text-rose-500">Основатель</p>
+            <h2 class="mt-3 font-display text-2xl sm:text-3xl font-bold text-white">Захар Банных</h2>
+            <p class="mt-1 text-sm text-zinc-500">DevOps · веб-разработка · прямой контракт</p>
+            <p class="mt-4 text-sm text-zinc-400 leading-relaxed max-w-2xl">
+              Веду проекты лично: от аудита URL до релиза в Docker. Кейс
+              <a href="https://твкпластик.рф" target="_blank" rel="noopener noreferrer" class="text-rose-400 hover:text-rose-300">твкпластик.рф</a>
+              — B2B-сайт как инструмент продаж, не визитка на хостинге.
+            </p>
+            <div class="founder-creds">
+              <span class="founder-cred">Docker · nginx</span>
+              <span class="founder-cred">Telegram API</span>
+              <span class="founder-cred">152-ФЗ</span>
+              <span class="founder-cred">SEO B2B</span>
+            </div>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="tel:+79777203130" class="btn-primary btn-magnetic inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-zinc-950">
+                Позвонить
+              </a>
+              <a href="#contact" class="btn-ghost btn-magnetic inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-zinc-400">
+                Аудит за 24ч
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -361,20 +783,33 @@
     <!-- Authority -->
     <section id="authority" class="fx-section px-5 py-24 lg:px-10 lg:py-32">
       <div class="mx-auto max-w-content">
-        <div class="lg:grid lg:grid-cols-2 lg:gap-16 lg:items-start">
-          <div class="reveal">
-            <div class="divider-red fx-line-draw mb-6"></div>
-            <p class="fx-label text-xs font-bold uppercase tracking-[0.25em] text-rose-500">Философия</p>
-            <h2 class="fx-title mt-4 font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
-              Не подрядчик.<br>
-              <span class="fx-headline-dim text-neutral-600">Инфраструктурный партнёр.</span>
-            </h2>
-          </div>
-          <p class="reveal reveal-delay-1 mt-8 lg:mt-0 text-neutral-500 text-lg leading-relaxed">
+        <header class="sec-head reveal">
+          <p class="sec-head__index">03</p>
+          <p class="sec-head__tag">КАК МЫ РАБОТАЕМ</p>
+          <h2 class="sec-head__title">Не подрядчик — <em>инфраструктурный партнёр</em></h2>
+          <p class="sec-head__lead">
             Пока другие рисуют макеты, мы выводим в продакшен системы, которые держат
             <strong class="text-white font-medium">поток заявок без потерь</strong>.
             Production-grade стек: Docker, PostgreSQL, мониторинг, шифрование, резервные копии.
           </p>
+        </header>
+
+        <div class="ref-workflow mt-14 reveal" aria-label="Три шага работы">
+          <div class="ref-workflow__step">
+            <span class="ref-workflow__num">01</span>
+            <span class="ref-workflow__title">Слушаем</span>
+            <p class="ref-workflow__text">Аудит URL, воронки и KPI. Один созвон — понятная картина за 24 часа.</p>
+          </div>
+          <div class="ref-workflow__step">
+            <span class="ref-workflow__num">02</span>
+            <span class="ref-workflow__title">Проектируем</span>
+            <p class="ref-workflow__text">Архитектура, UI и Telegram-CRM под ваш процесс — без шаблонов конструкторов.</p>
+          </div>
+          <div class="ref-workflow__step">
+            <span class="ref-workflow__num">03</span>
+            <span class="ref-workflow__title">Запускаем</span>
+            <p class="ref-workflow__text">Docker, HTTPS, 152-ФЗ, SEO-база. Прямой договор и сопровождение после релиза.</p>
+          </div>
         </div>
 
         <div class="fx-stagger mt-16 grid md:grid-cols-3 gap-6">
@@ -400,26 +835,55 @@
     <!-- Services -->
     <section id="services" class="fx-section px-5 py-24 lg:px-10 bg-black/50 border-y border-white/5">
       <div class="mx-auto max-w-content">
-        <div class="reveal max-w-3xl">
-          <p class="fx-label text-xs font-bold uppercase tracking-[0.25em] text-rose-500">Экосистема</p>
-          <h2 class="fx-title mt-4 font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-white text-balance">Три уровня контроля над цифровой инфраструктурой</h2>
+        <header class="sec-head reveal">
+          <p class="sec-head__index">04</p>
+          <p class="sec-head__tag">НАПРАВЛЕНИЯ</p>
+          <h2 class="sec-head__title">Аналитика, дизайн <em>и разработка</em></h2>
+          <p class="sec-head__lead">Как у Only и Uplab — полный цикл в одной команде: от исследования до поддержки в продакшене.</p>
+        </header>
+
+        <div class="ref-directions reveal" aria-label="Четыре направления">
+          <article class="ref-directions__item">
+            <span class="ref-directions__num">01</span>
+            <span class="ref-directions__title">Продукт и аналитика</span>
+            <p class="ref-directions__text">Аудит URL, KPI воронки, структура сайта под B2B-заявки.</p>
+          </article>
+          <article class="ref-directions__item">
+            <span class="ref-directions__num">02</span>
+            <span class="ref-directions__title">Дизайн и витрина</span>
+            <p class="ref-directions__text">Премиум UI, mobile-first, калькуляторы и каталоги.</p>
+          </article>
+          <article class="ref-directions__item">
+            <span class="ref-directions__num">03</span>
+            <span class="ref-directions__title">Разработка и CRM</span>
+            <p class="ref-directions__text">Собственный код, Telegram-CRM, интеграции API.</p>
+          </article>
+          <article class="ref-directions__item">
+            <span class="ref-directions__num">04</span>
+            <span class="ref-directions__title">Поддержка и рост</span>
+            <p class="ref-directions__text">DevOps, SEO, 152-ФЗ, сопровождение после релиза.</p>
+          </article>
         </div>
 
-        <div class="fx-stagger mt-14 grid lg:grid-cols-3 gap-6">
-          <article class="reveal fx-card fx-stagger-item tech-card glow-border glass-card rounded-lg p-10">
-            <span class="fx-num text-5xl font-display font-extrabold text-rose-600/30">01</span>
-            <h3 class="mt-6 font-display text-xl font-bold text-white">Премиум-витрина</h3>
-            <p class="mt-4 text-sm text-neutral-500 leading-relaxed">Сайты премиум-уровня с первого экрана. Mobile-first, скорость, воронка «заявка → сделка».</p>
+        <div class="fx-stagger bento-services mt-14">
+          <article class="reveal fx-card fx-stagger-item bento-card tech-card glow-border glass-card rounded-2xl p-10">
+            <span class="bento-card__icon" aria-hidden="true">◆</span>
+            <span class="fx-num text-4xl font-display font-extrabold text-rose-600/25">01</span>
+            <h3 class="mt-4 font-display text-xl font-bold text-white">Премиум-витрина</h3>
+            <p class="mt-4 text-sm text-zinc-500 leading-relaxed">Сайты с первого экрана. Mobile-first, скорость, воронка «заявка → сделка».</p>
+            <p class="mt-6 text-xs text-zinc-600">Лендинг · корпоратив · каталог</p>
           </article>
-          <article class="reveal reveal-delay-1 fx-card fx-stagger-item tech-card glow-border glass-card rounded-lg p-10 ring-1 ring-rose-500/20">
-            <span class="fx-num fx-num--hot text-5xl font-display font-extrabold text-rose-500/50">02</span>
-            <h3 class="mt-6 font-display text-xl font-bold text-white">Telegram-CRM</h3>
-            <p class="mt-4 text-sm text-neutral-500 leading-relaxed">Двусторонний бот: лиды, статусы, напоминания. Команда работает из смартфона — без SAP и без боли.</p>
+          <article class="reveal reveal-delay-1 fx-card fx-stagger-item bento-card bento-card--featured tech-card glow-border glass-card rounded-2xl p-10 ring-1 ring-rose-500/15">
+            <span class="bento-card__icon" aria-hidden="true">↗</span>
+            <span class="fx-num fx-num--hot text-4xl font-display font-extrabold text-rose-500/40">02</span>
+            <h3 class="mt-4 font-display text-xl font-bold text-white">Telegram-CRM</h3>
+            <p class="mt-4 text-sm text-zinc-500 leading-relaxed">Лиды, статусы, напоминания. Команда из смартфона — без SAP.</p>
           </article>
-          <article class="reveal reveal-delay-2 fx-card fx-stagger-item tech-card glow-border glass-card rounded-lg p-10">
-            <span class="fx-num text-5xl font-display font-extrabold text-rose-600/30">03</span>
-            <h3 class="mt-6 font-display text-xl font-bold text-white">Security &amp; 152-ФЗ</h3>
-            <p class="mt-4 text-sm text-neutral-500 leading-relaxed">Шифрование, бэкапы, DDoS-база, политики ПДн. Юридический контур закрыт с первого дня.</p>
+          <article class="reveal reveal-delay-2 fx-card fx-stagger-item bento-card tech-card glow-border glass-card rounded-2xl p-10">
+            <span class="bento-card__icon" aria-hidden="true">◇</span>
+            <span class="fx-num text-4xl font-display font-extrabold text-rose-600/25">03</span>
+            <h3 class="mt-4 font-display text-xl font-bold text-white">Security &amp; 152-ФЗ</h3>
+            <p class="mt-4 text-sm text-zinc-500 leading-relaxed">Шифрование, бэкапы, политики ПДн. Юридический контур с первого дня.</p>
           </article>
         </div>
       </div>
@@ -451,12 +915,50 @@
     <!-- Stack -->
     <section id="stack" class="fx-section px-5 py-24 lg:px-10 lg:py-32">
       <div class="mx-auto max-w-content">
-        <div class="reveal flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-          <div>
-            <p class="fx-label text-xs font-bold uppercase tracking-[0.25em] text-rose-500">Инфраструктура</p>
-            <h2 class="fx-title mt-4 font-display text-3xl sm:text-4xl font-bold text-white">Продакшен-класс</h2>
+        <header class="sec-head reveal">
+          <p class="sec-head__index">05</p>
+          <p class="sec-head__tag">ТЕХНОЛОГИИ</p>
+          <h2 class="sec-head__title">Продакшен-класс <em>стек</em></h2>
+          <p class="sec-head__lead">Production-grade уровень — без лишней сложности для заказчика. Готовы к нестандартным интеграциям.</p>
+        </header>
+
+        <div class="ref-stack mt-14 reveal">
+          <div class="ref-stack__group">
+            <p class="ref-stack__label">Runtime &amp; deploy</p>
+            <div class="ref-stack__chips">
+              <span class="ref-stack__chip">Docker</span>
+              <span class="ref-stack__chip">nginx</span>
+              <span class="ref-stack__chip">HTTPS</span>
+              <span class="ref-stack__chip">Zero constructors</span>
+            </div>
           </div>
-          <p class="text-neutral-600 max-w-md text-sm">Production-grade уровень — без лишней сложности для заказчика.</p>
+          <div class="ref-stack__group">
+            <p class="ref-stack__label">Data &amp; API</p>
+            <div class="ref-stack__chips">
+              <span class="ref-stack__chip">PostgreSQL</span>
+              <span class="ref-stack__chip">Telegram API</span>
+              <span class="ref-stack__chip">REST</span>
+              <span class="ref-stack__chip">152-ФЗ</span>
+            </div>
+          </div>
+          <div class="ref-stack__group">
+            <p class="ref-stack__label">Frontend &amp; SEO</p>
+            <div class="ref-stack__chips">
+              <span class="ref-stack__chip">Core Web Vitals</span>
+              <span class="ref-stack__chip">SEO B2B</span>
+              <span class="ref-stack__chip">Mobile-first</span>
+              <span class="ref-stack__chip">Semantic HTML</span>
+            </div>
+          </div>
+          <div class="ref-stack__group">
+            <p class="ref-stack__label">Ops &amp; support</p>
+            <div class="ref-stack__chips">
+              <span class="ref-stack__chip">DevOps 24/7</span>
+              <span class="ref-stack__chip">Backups</span>
+              <span class="ref-stack__chip">Monitoring</span>
+              <span class="ref-stack__chip">SLA uptime</span>
+            </div>
+          </div>
         </div>
 
         <div class="fx-stagger mt-14 grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -542,7 +1044,7 @@
 
           <div class="reveal reveal-delay-2 fx-stagger-item pricing-flagship-shell md:col-span-2 lg:col-span-1">
             <span class="pricing-flagship-badge" aria-hidden="true">Флагман</span>
-            <article class="fx-card fx-flagship pricing-featured pricing-card glow-border is-featured rounded-lg p-8 lg:p-10 flex flex-col h-full">
+            <article class="fx-card fx-flagship pricing-featured pricing-card pricing-shimmer glow-border is-featured rounded-2xl p-8 lg:p-10 flex flex-col h-full">
             <p class="text-[10px] font-bold uppercase tracking-widest text-rose-400 pt-1">Ecosystem</p>
             <h3 class="mt-2 font-display text-2xl lg:text-3xl font-bold text-white">Рост / Экосистема</h3>
             <p class="mt-4 text-sm text-neutral-400">Сайт + CRM + инфраструктура под сезон набора.</p>
@@ -562,22 +1064,79 @@
             </article>
           </div>
         </div>
+        <p class="ref-pricing-note reveal">Точная цена зависит от объёма интеграций и анимаций. Финальную смету называем после экспресс-аудита — без скрытых доплат на старте.</p>
       </div>
     </section>
 
     <!-- Process -->
     <section id="process" class="fx-section px-5 py-24 lg:px-10 border-t border-white/5">
       <div class="mx-auto max-w-content">
-        <div class="reveal">
-          <p class="fx-label text-xs font-bold uppercase tracking-[0.25em] text-rose-500">Протокол</p>
-          <h2 class="fx-title mt-4 font-display text-3xl font-bold text-white">Как работает машина</h2>
-        </div>
-        <ol class="fx-process fx-stagger mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <header class="sec-head reveal">
+          <p class="sec-head__index">04</p>
+          <p class="sec-head__tag">ПРОЦЕСС</p>
+          <h2 class="sec-head__title">От брифа <em>до запуска</em></h2>
+          <p class="sec-head__lead">Без бесконечных согласований. Только этапы, которые двигают заявки и продакшен.</p>
+        </header>
+        <ol class="ref-timeline mt-14 reveal" aria-label="Этапы проекта">
+          <li class="ref-timeline__item">
+            <span class="ref-timeline__day">Этап 1</span>
+            <span class="ref-timeline__title">Бриф и аудит</span>
+            <p class="ref-timeline__text">Разбор сайта, воронки и KPI. Экспресс-ответ за 24 часа.</p>
+          </li>
+          <li class="ref-timeline__item">
+            <span class="ref-timeline__day">Этап 2</span>
+            <span class="ref-timeline__title">Архитектура и UI</span>
+            <p class="ref-timeline__text">ТЗ, прототип, согласование с заказчиком — понятно, нравится или нет.</p>
+          </li>
+          <li class="ref-timeline__item">
+            <span class="ref-timeline__day">Этап 3</span>
+            <span class="ref-timeline__title">Сборка</span>
+            <p class="ref-timeline__text">Верстка, CRM, аналитика, домен. Тесты на мобильном.</p>
+          </li>
+          <li class="ref-timeline__item">
+            <span class="ref-timeline__day">Этап 4</span>
+            <span class="ref-timeline__title">Релиз</span>
+            <p class="ref-timeline__text">Deploy, договор ИП, обучение команды и сопровождение.</p>
+          </li>
+        </ol>
+        <ol class="fx-process fx-stagger mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6" aria-hidden="true">
           <li class="reveal fx-card fx-process-step fx-stagger-item glass-card p-8 rounded-lg"><span class="fx-num font-display text-4xl font-extrabold text-rose-600/40">01</span><h3 class="mt-4 font-bold text-white text-sm uppercase tracking-wider">Аудит</h3><p class="mt-2 text-xs text-neutral-600">Разбор сайта и воронки. KPI продаж.</p></li>
           <li class="reveal reveal-delay-1 fx-card fx-process-step fx-stagger-item glass-card p-8 rounded-lg"><span class="fx-num font-display text-4xl font-extrabold text-rose-600/40">02</span><h3 class="mt-4 font-bold text-white text-sm uppercase tracking-wider">Архитектура</h3><p class="mt-2 text-xs text-neutral-600">ТЗ + UI. Согласование с заказчиком.</p></li>
           <li class="reveal reveal-delay-2 fx-card fx-process-step fx-stagger-item glass-card p-8 rounded-lg"><span class="fx-num font-display text-4xl font-extrabold text-rose-600/40">03</span><h3 class="mt-4 font-bold text-white text-sm uppercase tracking-wider">Код</h3><p class="mt-2 text-xs text-neutral-600">Чистый стек. Тесты на iPhone.</p></li>
           <li class="reveal reveal-delay-3 fx-card fx-process-step fx-stagger-item glass-card p-8 rounded-lg"><span class="fx-num font-display text-4xl font-extrabold text-rose-600/40">04</span><h3 class="mt-4 font-bold text-white text-sm uppercase tracking-wider">Релиз и Сопровождение</h3><p class="mt-2 text-xs text-neutral-600">Deploy. Договор ИП. Обучение команды.</p></li>
         </ol>
+      </div>
+    </section>
+
+    <!-- Insights -->
+    <section id="insights" class="fx-section px-5 py-24 lg:px-10 border-t border-white/5">
+      <div class="mx-auto max-w-content">
+        <header class="sec-head reveal">
+          <p class="sec-head__index">07</p>
+          <p class="sec-head__tag">ИНСАЙТЫ</p>
+          <h2 class="sec-head__title">Практика <em>из продакшена</em></h2>
+          <p class="sec-head__lead">Как контент-хаб у AGIMA — короткие тезисы для директора и коммерции. Полный блог — в работе.</p>
+        </header>
+        <div class="insight-grid mt-12 reveal">
+          <a href="#compare" class="insight-card">
+            <span class="insight-card__meta">#разработка · 5 мин</span>
+            <span class="insight-card__title">Почему конструктор ломает B2B-воронку</span>
+            <p class="insight-card__excerpt">Скорость, безопасность и CRM — что теряет бизнес на Tilda/Wix при росте заявок.</p>
+            <span class="insight-card__more">Сравнение →</span>
+          </a>
+          <a href="#stack" class="insight-card">
+            <span class="insight-card__meta">#инфраструктура · 4 мин</span>
+            <span class="insight-card__title">Docker и 152-ФЗ с первого дня</span>
+            <p class="insight-card__excerpt">Как собрать контур без «допилим потом»: HTTPS, бэкапы, политика ПДн, Telegram API.</p>
+            <span class="insight-card__more">Стек →</span>
+          </a>
+          <a href="#cases" class="insight-card">
+            <span class="insight-card__meta">#кейс · 6 мин</span>
+            <span class="insight-card__title">Сайт как инженерный инструмент</span>
+            <p class="insight-card__excerpt">ТВК ПЛАСТИК: калькуляторы, PDF, SEO и заявки в Telegram — не визитка ради галочки.</p>
+            <span class="insight-card__more">Кейс →</span>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -669,11 +1228,47 @@
               <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-rose-400">Экспресс-аудит</p>
               <p class="mt-2 font-display text-lg font-bold text-white">5 точек роста за 24 часа</p>
               <p class="mt-1 text-xs text-neutral-500">Заполните форму — вернёмся с конкретикой, не «менеджер перезвонит».</p>
+              <div class="form-flow mt-5" aria-label="Что будет после заявки">
+                <div class="form-flow__step">
+                  <span class="form-flow__num">01</span>
+                  <span class="form-flow__text">Разбор URL</span>
+                </div>
+                <div class="form-flow__step">
+                  <span class="form-flow__num">02</span>
+                  <span class="form-flow__text">5 правок в Telegram</span>
+                </div>
+                <div class="form-flow__step">
+                  <span class="form-flow__num">03</span>
+                  <span class="form-flow__text">Созвон / смета</span>
+                </div>
+              </div>
             </div>
             <form id="audit-form" class="space-y-4 contact-form-fields" novalidate>
               <input type="text" name="website" id="website" value="" tabindex="-1" autocomplete="off" aria-hidden="true" class="absolute -left-[9999px] h-px w-px opacity-0 pointer-events-none">
               <input type="url" id="project-url" name="project-url" required placeholder="https://ваш-проект.ru" autocomplete="url" class="w-full rounded-sm border border-white/10 bg-black/80 px-5 py-4 text-sm text-white placeholder:text-neutral-700 focus:border-rose-500 focus:ring-1 focus:ring-rose-500 outline-none transition">
               <input type="text" id="contact-name" name="contact-name" placeholder="Имя / должность" autocomplete="name" class="w-full rounded-sm border border-white/10 bg-black/80 px-5 py-4 text-sm text-white placeholder:text-neutral-700 focus:border-rose-500 outline-none transition">
+
+              <fieldset class="budget-picker">
+                <legend class="budget-picker__legend">Бюджет проекта</legend>
+                <div class="budget-picker__grid" role="radiogroup" aria-label="Бюджет проекта">
+                  <label class="budget-option">
+                    <input type="radio" name="project-budget" value="до 1,5 млн ₽">
+                    <span>до 1,5 млн</span>
+                  </label>
+                  <label class="budget-option">
+                    <input type="radio" name="project-budget" value="1–3 млн ₽" checked>
+                    <span>1–3 млн</span>
+                  </label>
+                  <label class="budget-option">
+                    <input type="radio" name="project-budget" value="3–5 млн ₽">
+                    <span>3–5 млн</span>
+                  </label>
+                  <label class="budget-option">
+                    <input type="radio" name="project-budget" value="от 5 млн ₽">
+                    <span>от 5 млн</span>
+                  </label>
+                </div>
+              </fieldset>
 
               <div class="space-y-3">
                 <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-500">Как с вами связаться</p>
@@ -700,7 +1295,7 @@
               </div>
               <label class="flex items-start gap-3 text-xs text-neutral-500 cursor-pointer">
                 <input type="checkbox" id="consent-pdn" name="consent-pdn" required class="mt-0.5 rounded border-white/20 bg-black text-rose-600 focus:ring-rose-500">
-                <span>Согласен с <a href="privacy.html" class="text-rose-400 underline hover:text-rose-300">политикой обработки ПДн</a> (ФЗ-152)</span>
+                <span>Согласен с <a href="/privacy" class="text-rose-400 underline hover:text-rose-300">политикой обработки ПДн</a> (ФЗ-152)</span>
               </label>
               <button type="submit" id="audit-submit" class="btn-primary w-full rounded-sm py-5 text-xs font-bold uppercase tracking-[0.15em] text-white">
                 Запустить экспресс-аудит
@@ -732,10 +1327,10 @@
   </main>
 
   <footer class="relative z-10 border-t border-white/5 px-5 py-10 lg:px-10 bg-black site-chrome site-chrome--hidden" aria-label="Подвал сайта">
-    <div class="mx-auto max-w-content flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-xs text-neutral-600 uppercase tracking-widest">
-      <p>© <span id="year"></span> Z-TECH · Прямой контракт без посредников</p>
+    <div class="mx-auto max-w-content flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm text-zinc-500">
+      <p>© <span id="year"></span> Z-TECH · Прямой контракт</p>
       <p class="flex flex-wrap gap-x-4 gap-y-2">
-        <a href="privacy.html" class="hover:text-rose-400 transition-colors">Политика ПДн</a>
+        <a href="/privacy" class="hover:text-rose-400 transition-colors">Политика ПДн</a>
         <a href="tel:+79777203130" class="hover:text-rose-400 transition-colors">+7&nbsp;977&nbsp;720&#8209;31&#8209;30</a>
         <a href="mailto:skskxnddndnx@inbox.ru" class="hover:text-rose-400 transition-colors">skskxnddndnx@inbox.ru</a>
       </p>
@@ -745,12 +1340,19 @@
   <a
     href="#contact"
     id="mobile-cta"
-    class="mobile-cta-bar site-chrome site-chrome--hidden lg:hidden fixed bottom-0 inset-x-0 z-40 flex items-center justify-center gap-2 border-t border-rose-500/30 bg-black/90 px-5 py-3.5 text-xs font-bold uppercase tracking-[0.15em] text-white backdrop-blur-md"
+    class="mobile-cta-bar site-chrome site-chrome--hidden lg:hidden fixed bottom-0 inset-x-0 z-40 flex items-center justify-center gap-2 border-t border-white/10 bg-zinc-950/90 px-5 py-4 text-sm font-semibold text-white backdrop-blur-md"
   >
-    Экспресс-аудит за 24ч
+    Начать проект
     <svg class="h-4 w-4 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
   </a>
 
-  <script src="js/main.js?v=17" defer></script>
+  <div id="fab-stack" class="fab-stack site-chrome site-chrome--hidden">
+    <a href="https://t.me/+79777203130" target="_blank" rel="noopener noreferrer" class="fab fab--tg" aria-label="Написать в Telegram">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+    </a>
+    <a href="#contact" class="fab fab--cta">Начать проект</a>
+  </div>
+
+  <script src="js/main.js?v=27" defer></script>
 </body>
 </html>

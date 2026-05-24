@@ -1,0 +1,327 @@
+/**
+ * Z-TECH — блоки уровня лидеров рынка (Only / ITSPACE / Uplab / AGIMA)
+ */
+
+/* ── FAB (Only / Uplab «начать проект») ── */
+.fab-stack {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 45;
+  display: none;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.65rem;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+@media (min-width: 1024px) {
+  .fab-stack {
+    display: flex;
+  }
+}
+
+.fab-stack.is-hidden-near-form {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+}
+
+.fab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.fab:hover {
+  transform: translateY(-2px);
+}
+
+.fab--cta {
+  padding: 0.85rem 1.35rem;
+  background: var(--linear-accent, #f43f5e);
+  color: #09090b;
+  box-shadow: 0 8px 32px rgba(244, 63, 94, 0.35);
+}
+
+.fab--tg {
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--linear-border);
+  background: rgba(9, 9, 11, 0.85);
+  color: #38bdf8;
+  backdrop-filter: blur(12px);
+}
+
+/* ── Отрасли (Only) ── */
+.industry-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--linear-border);
+  border: 1px solid var(--linear-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .industry-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.industry-grid__cell {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 1.35rem 1.15rem;
+  transition: background 0.2s ease;
+}
+
+.industry-grid__cell:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.industry-grid__count {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: var(--linear-text);
+}
+
+.industry-grid__label {
+  display: block;
+  margin-top: 0.35rem;
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #52525b;
+}
+
+/* ── NDA кейсы (Neura / AGIMA) ── */
+.nda-panel {
+  margin-top: 2.5rem;
+  padding: 2rem 1.75rem;
+  border: 1px dashed var(--linear-border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.nda-panel__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--linear-text);
+}
+
+.nda-panel__text {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--linear-muted);
+  max-width: 36rem;
+}
+
+.nda-cards {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .nda-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.nda-card {
+  padding: 1.25rem;
+  border-radius: 10px;
+  border: 1px solid var(--linear-border);
+  background: rgba(0, 0, 0, 0.35);
+  filter: blur(0);
+}
+
+.nda-card__tag {
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.5625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #52525b;
+}
+
+.nda-card__name {
+  display: block;
+  margin-top: 0.65rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #71717a;
+}
+
+.nda-card__blur {
+  margin-top: 0.75rem;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #3f3f46, #27272a, #3f3f46);
+  opacity: 0.8;
+}
+
+/* ── Инсайты (AGIMA контент-хаб) ── */
+.insight-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .insight-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.insight-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  border: 1px solid var(--linear-border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.insight-card:hover {
+  border-color: rgba(244, 63, 94, 0.35);
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-2px);
+}
+
+.insight-card__meta {
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.5625rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #52525b;
+}
+
+.insight-card__title {
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--linear-text);
+}
+
+.insight-card__excerpt {
+  margin-top: 0.65rem;
+  flex: 1;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--linear-muted);
+}
+
+.insight-card__more {
+  margin-top: 1rem;
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.625rem;
+  color: var(--linear-accent);
+}
+
+/* ── Цитата кейса (Aeroidea / Only) ── */
+.case-quote {
+  margin-top: 2rem;
+  padding: 1.5rem 1.75rem;
+  border-left: 3px solid var(--linear-accent);
+  background: rgba(244, 63, 94, 0.06);
+  border-radius: 0 10px 10px 0;
+}
+
+.case-quote__text {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: #d4d4d8;
+  font-style: italic;
+}
+
+.case-quote__author {
+  display: block;
+  margin-top: 0.85rem;
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #71717a;
+}
+
+/* ── Бюджет в форме (ITSPACE / Uplab) ── */
+.budget-picker {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.budget-picker__legend {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #52525b;
+  margin-bottom: 0.65rem;
+}
+
+.budget-picker__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.budget-option {
+  cursor: pointer;
+}
+
+.budget-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.budget-option span {
+  display: block;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--linear-border);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.625rem;
+  text-align: center;
+  color: #a1a1aa;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.budget-option input:checked + span {
+  border-color: rgba(244, 63, 94, 0.5);
+  color: var(--linear-text);
+  background: rgba(244, 63, 94, 0.1);
+}
+
+.budget-option:hover span {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ── Презентация в шапке ── */
+.nav-pitch {
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  color: #71717a !important;
+}
+
+.nav-pitch:hover {
+  color: var(--linear-accent) !important;
+}

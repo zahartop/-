@@ -1,0 +1,408 @@
+/**
+ * Z-TECH — лучшие приёмы Neura / ITECH / Aeroidea
+ */
+
+/* ── Hero editorial (Neura) ── */
+.hero-editorial {
+  max-width: 42rem;
+}
+
+.hero-editorial__kicker {
+  display: block;
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #52525b;
+  margin-bottom: 1.25rem;
+}
+
+.hero-rotator-line {
+  display: block;
+  font-size: clamp(2.25rem, 6vw, 4.25rem);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 1.05;
+  color: var(--linear-text, #ededed);
+}
+
+.hero-rotator-wrap {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.12em;
+  min-height: 1.15em;
+}
+
+.hero-rotator {
+  display: inline-block;
+  background: linear-gradient(180deg, #fff 0%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: opacity 0.35s ease, transform 0.45s var(--linear-ease, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.hero-rotator.is-out {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.hero-rotator-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.9em;
+  margin-left: 2px;
+  background: var(--linear-accent, #f43f5e);
+  animation: ref-cursor-blink 1s step-end infinite;
+  vertical-align: baseline;
+}
+
+@keyframes ref-cursor-blink {
+  50% { opacity: 0; }
+}
+
+.hero-editorial__sub {
+  display: block;
+  margin-top: 1.25rem;
+  max-width: 28rem;
+  font-size: 1.125rem;
+  line-height: 1.55;
+  color: var(--linear-muted, #8b8b93);
+}
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  color: #3f3f46;
+  animation: ref-scroll-hint 2.5s ease-in-out infinite;
+}
+
+@keyframes ref-scroll-hint {
+  0%, 100% { opacity: 0.35; transform: translateX(-50%) translateY(0); }
+  50% { opacity: 0.85; transform: translateX(-50%) translateY(6px); }
+}
+
+body.ref-studio.linear-tier .hero-title-line,
+body.ref-studio.linear-tier .hero-title-wrap,
+body.ref-studio.linear-tier .hero-shimmer-line {
+  display: none !important;
+}
+
+body.ref-studio .hero-desc {
+  border: none;
+  padding: 0;
+  max-width: 32rem;
+}
+
+/* ── Section index (Neura 01 / 02) ── */
+.sec-head {
+  display: grid;
+  gap: 0.75rem 1.5rem;
+  max-width: 40rem;
+}
+
+@media (min-width: 768px) {
+  .sec-head {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto auto;
+    column-gap: 1.5rem;
+  }
+
+  .sec-head__index {
+    grid-row: 1 / span 3;
+  }
+}
+
+.sec-head__index {
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--linear-accent, #f43f5e);
+}
+
+.sec-head__tag {
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.625rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #52525b;
+}
+
+.sec-head__title {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  color: var(--linear-text, #ededed);
+}
+
+.sec-head__title em {
+  font-style: normal;
+  color: #71717a;
+}
+
+.sec-head__lead {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--linear-muted, #8b8b93);
+  max-width: 36rem;
+}
+
+@media (min-width: 768px) {
+  .sec-head__lead {
+    grid-column: 2;
+  }
+}
+
+/* ── Ref metrics band (ITECH) ── */
+.ref-metrics {
+  border-y: 1px solid var(--linear-border, rgba(255, 255, 255, 0.09));
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.ref-metrics__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--linear-border);
+}
+
+@media (min-width: 1024px) {
+  .ref-metrics__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.ref-metrics__cell {
+  background: var(--linear-bg, #09090b);
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+}
+
+.ref-metrics__val {
+  display: block;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: var(--linear-text, #ededed);
+}
+
+.ref-metrics__key {
+  display: block;
+  margin-top: 0.35rem;
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #52525b;
+}
+
+/* ── Case tags (Neura slash tags) ── */
+.ref-case-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+  margin-top: 1rem;
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.6875rem;
+  color: #71717a;
+}
+
+.ref-case-tags span:not(:last-child)::after {
+  content: "/";
+  margin-left: 0.5rem;
+  color: #3f3f46;
+}
+
+.ref-case-editorial {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--linear-border);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--linear-muted);
+}
+
+/* ── Workflow 3 steps (Neura) ── */
+.ref-workflow {
+  display: grid;
+  gap: 1px;
+  background: var(--linear-border);
+  border: 1px solid var(--linear-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .ref-workflow {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.ref-workflow__step {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 2rem 1.75rem;
+  transition: background 0.25s ease;
+}
+
+.ref-workflow__step:hover {
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.ref-workflow__num {
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.6875rem;
+  color: var(--linear-accent);
+}
+
+.ref-workflow__title {
+  display: block;
+  margin-top: 1rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--linear-text);
+}
+
+.ref-workflow__text {
+  margin-top: 0.65rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--linear-muted);
+}
+
+/* ── Timeline process (Neura week style) ── */
+.ref-timeline {
+  display: grid;
+  gap: 0;
+  border: 1px solid var(--linear-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .ref-timeline {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.ref-timeline__item {
+  position: relative;
+  padding: 1.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid var(--linear-border);
+}
+
+@media (min-width: 1024px) {
+  .ref-timeline__item {
+    border-bottom: none;
+    border-right: 1px solid var(--linear-border);
+  }
+
+  .ref-timeline__item:last-child {
+    border-right: none;
+  }
+}
+
+.ref-timeline__day {
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #52525b;
+}
+
+.ref-timeline__title {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--linear-text);
+}
+
+.ref-timeline__text {
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--linear-muted);
+}
+
+/* ── Stack grid ITECH ── */
+.ref-stack {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .ref-stack {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+.ref-stack__group {
+  border: 1px solid var(--linear-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.ref-stack__label {
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #52525b;
+  margin-bottom: 1rem;
+}
+
+.ref-stack__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ref-stack__chip {
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid var(--linear-border);
+  background: rgba(0, 0, 0, 0.25);
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.6875rem;
+  color: #a1a1aa;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.ref-stack__chip:hover {
+  border-color: var(--linear-border-hover);
+  color: var(--linear-text);
+}
+
+/* ── Pricing note (Neura clarity) ── */
+.ref-pricing-note {
+  margin-top: 2rem;
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.75rem;
+  color: #52525b;
+  max-width: 36rem;
+}
+
+/* Hide duplicate legacy when ref-studio on */
+body.ref-studio .fx-process.fx-stagger.grid {
+  display: none;
+}
+
+body.ref-studio #stack .fx-stagger.grid {
+  display: none;
+}
+
+body.ref-studio .marquee-section {
+  display: none;
+}

@@ -1,0 +1,422 @@
+/**
+ * Z-TECH — AGIMA · Digital Lab · Only · ITSPACE · Uplab
+ */
+
+/* ── Uplab-style cursor ── */
+#uplab-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+body.cursor-uplab #uplab-cursor {
+  opacity: 1;
+}
+
+body.cursor-uplab.is-cursor-hidden #uplab-cursor {
+  opacity: 0;
+}
+
+.uplab-cursor__ring {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: rgba(244, 63, 94, 0.06);
+  mix-blend-mode: difference;
+  transition:
+    width 0.35s var(--linear-ease, cubic-bezier(0.16, 1, 0.3, 1)),
+    height 0.35s var(--linear-ease),
+    margin 0.35s var(--linear-ease),
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.uplab-cursor__dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 50%;
+  background: var(--linear-accent, #f43f5e);
+  box-shadow: 0 0 12px rgba(244, 63, 94, 0.65);
+  transition: transform 0.35s var(--linear-ease), opacity 0.25s ease;
+}
+
+body.cursor-uplab.is-cursor-hover .uplab-cursor__ring {
+  width: 52px;
+  height: 52px;
+  margin: -26px 0 0 -26px;
+  border-color: rgba(244, 63, 94, 0.75);
+  background: rgba(244, 63, 94, 0.14);
+}
+
+body.cursor-uplab.is-cursor-hover .uplab-cursor__dot {
+  transform: scale(0.35);
+  opacity: 0.5;
+}
+
+body.cursor-uplab.is-cursor-down .uplab-cursor__ring {
+  transform: scale(0.92);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.cursor-uplab,
+  body.cursor-uplab * {
+    cursor: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #uplab-cursor {
+    display: none !important;
+  }
+}
+
+/* ── ITSPACE hero hashtags ── */
+.hero-tags-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.65rem;
+  margin-top: 1.25rem;
+}
+
+.hero-hash {
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  color: #52525b;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--linear-border);
+  border-radius: 4px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.hero-hash:hover {
+  color: var(--linear-accent);
+  border-color: rgba(244, 63, 94, 0.35);
+}
+
+/* ── Only-style rank badge (честно, без фейковых «1 место») ── */
+.ref-rank-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 0.65rem 1rem 0.65rem 0.65rem;
+  border: 1px solid var(--linear-border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.ref-rank-badge__num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  height: 2.75rem;
+  padding: 0 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: var(--linear-text);
+  border-radius: 8px;
+  background: var(--linear-accent-soft);
+  border: 1px solid rgba(244, 63, 94, 0.25);
+}
+
+.ref-rank-badge__text {
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--linear-muted);
+  max-width: 14rem;
+}
+
+.ref-rank-badge__text strong {
+  color: var(--linear-text);
+  font-weight: 500;
+}
+
+/* ── ITSPACE trust marquee ── */
+.ref-trust-marquee {
+  border-bottom: 1px solid var(--linear-border);
+  background: rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  padding: 1.1rem 0;
+}
+
+.ref-trust-marquee__track {
+  display: flex;
+  gap: 2.5rem;
+  width: max-content;
+  animation: ref-trust-scroll 42s linear infinite;
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #52525b;
+}
+
+.ref-trust-marquee__track span {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.ref-trust-marquee__track .is-live {
+  color: var(--linear-accent);
+}
+
+@keyframes ref-trust-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── AGIMA roles strip ── */
+.ref-roles {
+  border-y: 1px solid var(--linear-border);
+  overflow: hidden;
+  padding: 0.85rem 0;
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.ref-roles__track {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+  animation: ref-roles-scroll 55s linear infinite;
+}
+
+.ref-roles__track span {
+  flex-shrink: 0;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--linear-border);
+  border-radius: 999px;
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.625rem;
+  color: #71717a;
+  white-space: nowrap;
+}
+
+.ref-roles__track span.is-role-hot {
+  color: var(--linear-text);
+  border-color: rgba(244, 63, 94, 0.3);
+}
+
+@keyframes ref-roles-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── ITSPACE case hashtags ── */
+.ref-case-hash {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.ref-case-hash span {
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.625rem;
+  color: #52525b;
+}
+
+.ref-case-hash span::before {
+  content: "#";
+  color: var(--linear-accent);
+  margin-right: 1px;
+}
+
+/* ── ITSPACE releases ── */
+.ref-releases {
+  margin-top: 2.5rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--linear-border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.ref-releases__label {
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #52525b;
+}
+
+.ref-releases__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  margin-top: 0.85rem;
+}
+
+.ref-releases__link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--linear-text);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(244, 63, 94, 0.35);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.ref-releases__link:hover {
+  color: var(--linear-accent);
+  border-color: var(--linear-accent);
+}
+
+.ref-releases__next {
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.6875rem;
+  color: #3f3f46;
+}
+
+/* ── Uplab creds / Only awards (честные факты) ── */
+.ref-creds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.ref-creds__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid var(--linear-border);
+  border-radius: 8px;
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.625rem;
+  letter-spacing: 0.04em;
+  color: #a1a1aa;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.ref-creds__mark {
+  font-weight: 600;
+  color: var(--linear-accent);
+}
+
+/* ── Uplab extended facts (6 cells) ── */
+.ref-facts .ref-metrics__grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 768px) {
+  .ref-facts .ref-metrics__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .ref-facts .ref-metrics__grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* ── Only directions (4 направления) ── */
+.ref-directions {
+  display: grid;
+  gap: 1px;
+  margin-top: 2.5rem;
+  background: var(--linear-border);
+  border: 1px solid var(--linear-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .ref-directions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .ref-directions {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.ref-directions__item {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 1.5rem 1.35rem;
+  transition: background 0.25s ease;
+}
+
+.ref-directions__item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.ref-directions__num {
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.625rem;
+  color: var(--linear-accent);
+}
+
+.ref-directions__title {
+  display: block;
+  margin-top: 0.65rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--linear-text);
+}
+
+.ref-directions__text {
+  margin-top: 0.45rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--linear-muted);
+}
+
+/* ── Uplab case KPI strip ── */
+.ref-case-kpi {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 1.25rem;
+  background: var(--linear-border);
+  border: 1px solid var(--linear-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.ref-case-kpi__cell {
+  background: rgba(0, 0, 0, 0.25);
+  padding: 1rem 0.75rem;
+  text-align: center;
+}
+
+.ref-case-kpi__val {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--linear-text);
+}
+
+.ref-case-kpi__key {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: var(--linear-mono, monospace);
+  font-size: 0.5625rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #52525b;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ref-trust-marquee__track,
+  .ref-roles__track {
+    animation: none;
+  }
+}

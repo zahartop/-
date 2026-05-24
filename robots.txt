@@ -3,4 +3,7 @@ Allow: /
 Disallow: /api/
 Disallow: /tg-proxy/
 
+# Основной зеркал для Яндекса (каноникал — https://z-tech.pro/)
+Host: z-tech.pro
+
 Sitemap: https://z-tech.pro/sitemap.xml

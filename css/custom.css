@@ -41,7 +41,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
@@ -500,6 +500,209 @@ html.fx-paused .hero-scanlines {
 .font-display {
   font-feature-settings: "ss01" on, "liga" on;
   letter-spacing: -0.02em;
+}
+
+/* ── Case study: ТВК ПЛАСТИК ── */
+.case-spotlight {
+  position: relative;
+  overflow: hidden;
+}
+
+.case-spotlight__glow {
+  position: absolute;
+  inset: -20% -10% auto auto;
+  width: 50%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(225, 29, 72, 0.2), transparent 65%);
+  pointer-events: none;
+}
+
+.case-migration__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.case-migration__row--new {
+  border-color: rgba(225, 29, 72, 0.35);
+  background: rgba(225, 29, 72, 0.08);
+}
+
+.case-migration__label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #737373;
+}
+
+.case-migration__url {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #d4d4d4;
+  word-break: break-all;
+  transition: color 0.2s ease;
+}
+
+.case-migration__url:hover {
+  color: #fff;
+}
+
+.case-migration__url--hot {
+  color: #fb7185;
+}
+
+.case-migration__url--hot:hover {
+  color: #fff;
+}
+
+.case-migration__arrow {
+  text-align: center;
+  font-size: 1rem;
+  color: rgba(225, 29, 72, 0.7);
+  line-height: 1;
+}
+
+.case-metric {
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.case-metric__val {
+  display: block;
+  font-family: Geologica, Onest, system-ui, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.case-metric__key {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #737373;
+}
+
+.case-chip {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #e5e5e5;
+  border-radius: 999px;
+  border: 1px solid rgba(225, 29, 72, 0.25);
+  background: rgba(225, 29, 72, 0.08);
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.case-chip:hover {
+  border-color: rgba(225, 29, 72, 0.5);
+  background: rgba(225, 29, 72, 0.16);
+  transform: translateY(-1px);
+}
+
+.case-cta-link {
+  transition: gap 0.2s ease;
+}
+
+.case-cta-link:hover {
+  gap: 0.65rem;
+}
+
+.case-spotlight:hover {
+  border-color: rgba(225, 29, 72, 0.45);
+}
+
+/* ── Founder ── */
+.founder-panel {
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(8, 8, 8, 0.98) 60%);
+}
+
+.founder-avatar {
+  position: relative;
+  width: 5.5rem;
+  height: 5.5rem;
+  flex-shrink: 0;
+}
+
+.founder-avatar__letter {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-family: Geologica, Onest, system-ui, sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  border-radius: 0.75rem;
+  background: linear-gradient(145deg, #e11d48, #9f1239);
+  box-shadow: 0 12px 32px rgba(225, 29, 72, 0.35);
+}
+
+.founder-avatar__ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(225, 29, 72, 0.45);
+  animation: founder-ring-pulse 3s ease-in-out infinite;
+}
+
+@keyframes founder-ring-pulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+/* ── After form steps ── */
+.form-flow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.form-flow__step {
+  text-align: center;
+  padding: 0.65rem 0.35rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.form-flow__num {
+  display: block;
+  font-family: Geologica, Onest, system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #fb7185;
+}
+
+.form-flow__text {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.58rem;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #737373;
+}
+
+@media (max-width: 480px) {
+  .form-flow {
+    grid-template-columns: 1fr;
+  }
 }
 
 .hero-glow {
@@ -1223,6 +1426,9 @@ html.fx-paused .hero-scanlines {
   .stat-label-live, .stat-grid-glow::after, .stat-pulse-247, .stat-grid-active .stat-cell,
   .hero-title-shine, .hero-scanlines, .hero-spark, .hero-line--animated, .btn-shine::after,
   .hero-highlight, .hero-badge-glow, .hero-desc, .hero-word-glow, .hero-fade-tag,
+  .founder-avatar__ring, .case-spotlight__glow {
+    animation: none;
+  }
   .fx-flagship, .fx-headline-dim, .compare-item-enter, .fx-faq > p {
     opacity: 1;
     transform: none;

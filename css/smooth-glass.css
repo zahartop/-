@@ -1,0 +1,229 @@
+/**
+ * Z-TECH — Uplab glass cursor + buttery scroll
+ */
+
+html.is-smooth-scroll {
+  scroll-behavior: auto !important;
+}
+
+html.is-smooth-scroll body {
+  overflow-x: hidden;
+}
+
+/* ── Glass cursor (Uplab) ── */
+#uplab-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform;
+  transition: opacity 0.45s ease;
+}
+
+body.cursor-uplab #uplab-cursor {
+  opacity: 1;
+}
+
+body.cursor-uplab.is-cursor-hidden #uplab-cursor {
+  opacity: 0;
+}
+
+#uplab-cursor {
+  transform: translate3d(0, 0, 0);
+}
+
+.uplab-cursor__glass-wrap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 72px;
+  height: 72px;
+  margin: -8px 0 0 -6px;
+  transform: rotate(-24deg);
+  transition:
+    width 0.55s var(--linear-ease, cubic-bezier(0.16, 1, 0.3, 1)),
+    height 0.55s var(--linear-ease),
+    margin 0.55s var(--linear-ease),
+    transform 0.65s var(--linear-ease),
+    opacity 0.4s ease;
+  filter: drop-shadow(0 12px 40px rgba(56, 189, 248, 0.18))
+    drop-shadow(0 4px 16px rgba(244, 63, 94, 0.12));
+}
+
+.uplab-cursor__glass {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.uplab-cursor__glass .glass-body {
+  fill: rgba(255, 255, 255, 0.1);
+  stroke: rgba(255, 255, 255, 0.55);
+  stroke-width: 1.2;
+}
+
+.uplab-cursor__glass .glass-shine {
+  fill: url(#ztechGlassShine);
+  opacity: 0.85;
+}
+
+.uplab-cursor__glass .glass-rim {
+  fill: none;
+  stroke: url(#ztechGlassIris);
+  stroke-width: 2;
+  opacity: 0.75;
+}
+
+.uplab-cursor__chrom {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.55;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.uplab-cursor__chrom--r {
+  transform: translate(2px, -1px);
+  color: rgba(255, 100, 120, 0.35);
+}
+
+.uplab-cursor__chrom--b {
+  transform: translate(-2px, 1px);
+  color: rgba(100, 200, 255, 0.4);
+}
+
+.uplab-cursor__dot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background: #fafafa;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35), 0 0 20px rgba(255, 255, 255, 0.35);
+  z-index: 2;
+  transition: transform 0.35s var(--linear-ease), opacity 0.25s ease;
+}
+
+body.cursor-uplab.is-cursor-hover .uplab-cursor__glass-wrap {
+  width: 96px;
+  height: 96px;
+  margin: -12px 0 0 -8px;
+  transform: rotate(-16deg) scale(1.05);
+}
+
+body.cursor-uplab.is-cursor-hover .uplab-cursor__dot {
+  transform: scale(1.35);
+}
+
+body.cursor-uplab.is-cursor-down .uplab-cursor__glass-wrap {
+  transform: rotate(-20deg) scale(0.94);
+}
+
+body.cursor-uplab.is-cursor-idle .uplab-cursor__glass-wrap {
+  opacity: 0.55;
+  transform: rotate(-28deg) scale(0.88);
+}
+
+/* hide old ring */
+.uplab-cursor__ring {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.cursor-uplab,
+  body.cursor-uplab * {
+    cursor: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #uplab-cursor,
+  .hero-glass-prop {
+    display: none !important;
+  }
+}
+
+/* ── Hero glass prop (Uplab hero) ── */
+.hero-glass-prop {
+  display: none;
+  position: absolute;
+  right: 4%;
+  top: 18%;
+  width: clamp(200px, 32vw, 380px);
+  height: clamp(200px, 32vw, 380px);
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0.92;
+  will-change: transform;
+  filter: drop-shadow(0 24px 60px rgba(56, 189, 248, 0.15))
+    drop-shadow(0 8px 24px rgba(244, 63, 94, 0.1));
+}
+
+@media (min-width: 1024px) {
+  .hero-glass-prop {
+    display: block;
+  }
+}
+
+.hero-glass-prop__inner {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-18deg);
+  transition: transform 0.35s ease-out;
+}
+
+.hero-glass-prop svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* diagonal cut (Uplab) */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    165deg,
+    transparent 42%,
+    rgba(56, 189, 248, 0.04) 48%,
+    rgba(9, 9, 11, 0.6) 52%
+  );
+  clip-path: polygon(0 0, 100% 0, 100% 72%, 0 100%);
+}
+
+.hero-layout {
+  position: relative;
+  z-index: 4;
+}
+
+/* global motion polish */
+body.cursor-uplab .fx-section,
+body.cursor-uplab .site-chrome {
+  transition: opacity 0.6s var(--linear-ease), transform 0.6s var(--linear-ease);
+}
+
+/* Плавность UI — умеренная, без «ватного» скролла */
+body.cursor-uplab .btn-primary,
+body.cursor-uplab .btn-ghost,
+body.cursor-uplab .btn-magnetic {
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* parallax layers */
+[data-parallax] {
+  will-change: transform;
+}
