@@ -5,9 +5,19 @@
 - `https://z-tech.pro` — ошибка сертификата (чужой CN, например ТВК).
 - Редирект или контент с [твкпластик.рф](https://твкпластик.рф) вместо Z-TECH.
 
-## Причина (типично)
+## Причина (у вас на проде)
 
-На одном nginx **443** один `server` с `default_server` или **один** `ssl_certificate` на все домены, а `proxy_pass` ведёт на ТВК. Браузер видит несоответствие имени или отдаётся не тот сайт.
+1. **Docker Z-TECH на сервере, скорее всего, в порядке** (`curl http://127.0.0.1:8081/` → Z-TECH), как на Mac.
+2. **Внешний nginx** (`site_prod` на `91.229.8.112`) **не знает** `z-tech.pro` — запрос попадает в **чужой** `server {}` и уходит на `https://xn--80adtgcd1asdg.xn--p1ai/` (чужой `.рф`, не z-tech.pro).
+3. **ТВК** сейчас на **другом IP** (`tvkplastic.ru` → `194.58.112.9`), поэтому там всё ок, а z-tech.pro → `91.229.8.112` — нужен **свой** vhost и certbot.
+
+Проверка с Mac:
+
+```bash
+curl -sI http://z-tech.pro | grep -i location
+# Плохо: Location: https://xn--80adtgcd1asdg.xn--p1ai/
+# Хорошо: Location: https://z-tech.pro/ или proxy без чужого домена
+```
 
 ## Решение
 
@@ -76,8 +86,10 @@ certbot certificates
 ```bash
 cd ~/z-tech-portfolio/z-tech-portfolio
 git pull
-sudo bash scripts/apply-nginx-split-vps.sh
+sudo bash scripts/fix-z-tech-server.sh
 ```
+
+(или `Z_TECH_ONLY=1 sudo bash scripts/apply-nginx-split-vps.sh`)
 
 Скрипт: диагностика `nginx -T`, копирует `deploy/vhosts/*.conf` в `/root/site_prod/nginx/vhosts/`, убирает дубли `server {}` из `nginx.conf`, `nginx -t` и `reload`.
 

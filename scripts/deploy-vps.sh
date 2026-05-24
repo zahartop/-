@@ -41,8 +41,16 @@ else
 fi
 docker compose "${COMPOSE_FILES[@]}" ps
 
+if [[ -d /root/site_prod/nginx ]]; then
+  echo ""
+  echo "→ Nginx: раздельный vhost z-tech.pro (ТВК на другом IP — Z_TECH_ONLY)..."
+  Z_TECH_ONLY=1 bash scripts/apply-nginx-split-vps.sh || {
+    echo "⚠ Nginx не обновлён. На VPS вручную: sudo bash scripts/fix-z-tech-server.sh"
+  }
+fi
+
 echo ""
 echo "Готово на сервере."
-echo "  DNS: A @ и www → IP этого VPS"
-echo "  Сайт: https://z-tech.pro (nginx site_prod + deploy/nginx-z-tech.pro.conf)"
+echo "  DNS: z-tech.pro → IP ЭТОГО VPS (не IP tvkplastic.ru)"
+echo "  Если сайт ломается: sudo bash scripts/fix-z-tech-server.sh"
 echo "  Логи: docker compose ${COMPOSE_FILES[*]} logs -f web api"
