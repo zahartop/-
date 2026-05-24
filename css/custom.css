@@ -420,10 +420,86 @@ html.fx-paused .hero-scanlines {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
 }
 
+.pricing-flagship-shell {
+  position: relative;
+  padding-top: 1rem;
+  overflow: visible;
+}
+
+.pricing-flagship-badge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 5;
+  transform: translate(-50%, 0);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 1.1rem;
+  font-family: Geologica, Onest, system-ui, sans-serif;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+  background: linear-gradient(135deg, #ff2d55 0%, #e11d48 45%, #9f1239 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  box-shadow:
+    0 8px 24px rgba(225, 29, 72, 0.45),
+    0 0 0 4px rgba(3, 3, 3, 0.9);
+}
+
+.pricing-card {
+  position: relative;
+  transition:
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-6px);
+}
+
 .pricing-featured {
-  background: linear-gradient(165deg, rgba(225, 29, 72, 0.2) 0%, rgba(10, 10, 10, 0.95) 50%);
-  border-color: rgba(225, 29, 72, 0.4) !important;
+  background: linear-gradient(165deg, rgba(225, 29, 72, 0.22) 0%, rgba(10, 10, 10, 0.96) 48%);
+  border-color: rgba(225, 29, 72, 0.45) !important;
   box-shadow: 0 0 60px rgba(225, 29, 72, 0.2), 0 32px 64px rgba(0, 0, 0, 0.55);
+  margin-top: 0.75rem;
+}
+
+.pricing-flagship-shell .pricing-featured:hover {
+  transform: translateY(-8px);
+}
+
+.contact-section-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 50% at 20% 50%, rgba(225, 29, 72, 0.14), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 90% 80%, rgba(159, 18, 57, 0.1), transparent 50%);
+}
+
+.contact-form-panel {
+  background: linear-gradient(145deg, rgba(225, 29, 72, 0.08) 0%, rgba(8, 8, 8, 0.95) 55%);
+  border-color: rgba(225, 29, 72, 0.25);
+}
+
+.contact-trust li {
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.contact-trust li:hover {
+  color: rgb(212 212 212);
+  transform: translateX(4px);
+}
+
+.font-display {
+  font-feature-settings: "ss01" on, "liga" on;
+  letter-spacing: -0.02em;
 }
 
 .hero-glow {
@@ -1119,11 +1195,10 @@ html.fx-paused .hero-scanlines {
     padding: 1.5rem !important;
   }
 
-  .pricing-featured > .absolute {
-    top: -0.5rem;
-    right: 1rem;
-    font-size: 9px;
-    padding: 0.35rem 0.65rem;
+  .pricing-flagship-badge {
+    font-size: 0.58rem;
+    padding: 0.4rem 0.85rem;
+    letter-spacing: 0.16em;
   }
 
   #mobile-menu.is-open {

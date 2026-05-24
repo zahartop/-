@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        display: ["Syne", "Inter", "sans-serif"],
+        sans: ["Onest", "system-ui", "sans-serif"],
+        display: ["Geologica", "Onest", "system-ui", "sans-serif"],
       },
       colors: {
         void: "#030303",

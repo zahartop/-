@@ -42,7 +42,7 @@ body.splash-active {
   right: max(1rem, env(safe-area-inset-right, 0px));
   z-index: 10;
   padding: 0.55rem 1rem;
-  font-family: Inter, system-ui, sans-serif;
+  font-family: Onest, system-ui, sans-serif;
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -383,7 +383,7 @@ body.splash-active {
 }
 
 .splash__z {
-  font-family: "Syne", "Inter", system-ui, sans-serif;
+  font-family: Geologica, Onest, system-ui, sans-serif;
   font-weight: 800;
   font-size: var(--splash-z-font);
   line-height: 1;
@@ -409,7 +409,7 @@ body.splash-active {
 
 .splash__brand {
   margin-top: clamp(1rem, 3vw, 1.5rem);
-  font-family: "Syne", "Inter", system-ui, sans-serif;
+  font-family: Geologica, Onest, system-ui, sans-serif;
   font-size: clamp(1.125rem, 4vw, 1.5rem);
   font-weight: 800;
   letter-spacing: 0.28em;
@@ -466,7 +466,7 @@ body.splash-active {
 }
 
 .splash__footer-lead {
-  font-family: Inter, system-ui, sans-serif;
+  font-family: Onest, system-ui, sans-serif;
   font-size: clamp(0.95rem, 3.2vw, 1.2rem);
   font-weight: 500;
   line-height: 1.45;

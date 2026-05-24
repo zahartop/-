@@ -12,11 +12,11 @@
   <title>Z-TECH — разработка сайтов и Telegram-CRM | z-tech.pro</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" as="style">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet"></noscript>
-  <link rel="stylesheet" href="css/tailwind.css?v=15">
-  <link rel="stylesheet" href="css/custom.css?v=15">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Geologica:wght@600;700;800&family=Onest:wght@400;500;600;700&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@600;700;800&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Geologica:wght@600;700;800&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="css/tailwind.css?v=17">
+  <link rel="stylesheet" href="css/custom.css?v=17">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23e11d48' rx='6' width='32' height='32'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='white' font-family='system-ui' font-weight='800' font-size='18'%3EZ%3C/text%3E%3C/svg%3E">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Z-TECH">
@@ -148,7 +148,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="css/splash.css?v=15">
+  <link rel="stylesheet" href="css/splash.css?v=17">
 </head>
 <body class="font-sans text-neutral-300 antialiased selection:bg-rose-600/40 selection:text-white overflow-x-hidden splash-active">
   <a href="#main-content" class="skip-link">Перейти к содержимому</a>
@@ -503,7 +503,7 @@
         </div>
 
         <div class="fx-stagger mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8 max-w-6xl">
-          <article class="reveal fx-card fx-stagger-item glass-card glow-border rounded-lg p-8 lg:p-10 flex flex-col">
+          <article class="reveal fx-card fx-stagger-item pricing-card glass-card glow-border rounded-lg p-8 lg:p-10 flex flex-col">
             <p class="text-[10px] font-bold uppercase tracking-widest text-neutral-600">Lite</p>
             <h3 class="mt-2 font-display text-2xl lg:text-3xl font-bold text-white">Базовый</h3>
             <p class="mt-4 text-sm text-neutral-500">Быстрый старт: витрина и заявки без лишнего.</p>
@@ -522,7 +522,7 @@
             <a href="#contact" class="btn-ghost mt-8 text-center py-4 rounded-sm text-xs font-bold uppercase tracking-wider">Запросить Базовый</a>
           </article>
 
-          <article class="reveal reveal-delay-1 fx-card fx-stagger-item glass-card glow-border rounded-lg p-8 lg:p-10 flex flex-col">
+          <article class="reveal reveal-delay-1 fx-card fx-stagger-item pricing-card glass-card glow-border rounded-lg p-8 lg:p-10 flex flex-col">
             <p class="text-[10px] font-bold uppercase tracking-widest text-neutral-600">Entry</p>
             <h3 class="mt-2 font-display text-2xl lg:text-3xl font-bold text-white">Старт</h3>
             <p class="mt-4 text-sm text-neutral-500">Полноценный сайт под ключ и базовый контур 152-ФЗ.</p>
@@ -540,9 +540,10 @@
             <a href="#contact" class="btn-ghost mt-10 text-center py-4 rounded-sm text-xs font-bold uppercase tracking-wider">Запросить Старт</a>
           </article>
 
-          <article class="reveal reveal-delay-2 fx-card fx-stagger-item fx-flagship pricing-featured glow-border is-featured rounded-lg p-8 lg:p-10 flex flex-col relative md:col-span-2 lg:col-span-1">
-            <span class="absolute -top-3 right-8 rounded-sm bg-rose-600 px-4 py-1 text-[10px] font-bold uppercase tracking-widest text-white">Флагман</span>
-            <p class="text-[10px] font-bold uppercase tracking-widest text-rose-400">Ecosystem</p>
+          <div class="reveal reveal-delay-2 fx-stagger-item pricing-flagship-shell md:col-span-2 lg:col-span-1">
+            <span class="pricing-flagship-badge" aria-hidden="true">Флагман</span>
+            <article class="fx-card fx-flagship pricing-featured pricing-card glow-border is-featured rounded-lg p-8 lg:p-10 flex flex-col h-full">
+            <p class="text-[10px] font-bold uppercase tracking-widest text-rose-400 pt-1">Ecosystem</p>
             <h3 class="mt-2 font-display text-2xl lg:text-3xl font-bold text-white">Рост / Экосистема</h3>
             <p class="mt-4 text-sm text-neutral-400">Сайт + CRM + инфраструктура под сезон набора.</p>
             <p class="mt-6 flex items-baseline gap-2">
@@ -557,7 +558,9 @@
               <li class="flex gap-3"><span class="text-rose-400 font-bold">▸</span> DevOps 24/7</li>
             </ul>
             <a href="#contact" class="btn-primary btn-shine mt-10 text-center py-4 rounded-sm text-xs font-bold uppercase tracking-wider text-white">Забронировать слот</a>
-          </article>
+            <p class="mt-3 text-center text-[10px] text-rose-400/80 uppercase tracking-widest">2 слота в месяц · ответ за 24ч</p>
+            </article>
+          </div>
         </div>
       </div>
     </section>
@@ -634,14 +637,20 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="px-5 py-24 lg:px-10 lg:pb-32">
-      <div class="mx-auto max-w-content">
+    <section id="contact" class="contact-section px-5 py-24 lg:px-10 lg:pb-32 relative overflow-hidden">
+      <div class="contact-section-glow" aria-hidden="true"></div>
+      <div class="mx-auto max-w-content relative z-[1]">
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           <div class="reveal">
             <div class="divider-red mb-6"></div>
             <p class="text-xs font-bold uppercase tracking-[0.25em] text-rose-500">Доступ</p>
             <h2 class="mt-4 font-display text-3xl sm:text-4xl font-bold text-white">Получите аудит.<br>Без обязательств.</h2>
             <p class="mt-4 text-neutral-500 text-sm">Оставьте URL проекта — за 24 часа вернём 5 точек роста для созвона.</p>
+            <ul class="contact-trust mt-8 space-y-3 text-sm text-neutral-400">
+              <li class="flex gap-3 items-start"><span class="text-rose-500 font-bold shrink-0">✓</span> Разбор вашего URL и воронки — не шаблонная презентация</li>
+              <li class="flex gap-3 items-start"><span class="text-rose-500 font-bold shrink-0">✓</span> Смета и этапы под ваш B2B — без скрытых доплат на старте</li>
+              <li class="flex gap-3 items-start"><span class="text-rose-500 font-bold shrink-0">✓</span> Прямой контакт с командой, которая пишет код и отвечает за релиз</li>
+            </ul>
             <div class="mt-8 flex flex-col sm:flex-row gap-4">
               <a href="tel:+79777203130" class="btn-primary inline-flex items-center justify-center gap-2 rounded-sm px-8 py-4 text-sm font-bold text-white">
                 8&nbsp;(977)&nbsp;720&#8209;31&#8209;30
@@ -656,7 +665,12 @@
           </div>
 
           <div class="reveal reveal-delay-1">
-            <form id="audit-form" class="space-y-4" novalidate>
+            <div class="contact-form-panel glass-card glow-border rounded-lg p-6 lg:p-8 mb-4">
+              <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-rose-400">Экспресс-аудит</p>
+              <p class="mt-2 font-display text-lg font-bold text-white">5 точек роста за 24 часа</p>
+              <p class="mt-1 text-xs text-neutral-500">Заполните форму — вернёмся с конкретикой, не «менеджер перезвонит».</p>
+            </div>
+            <form id="audit-form" class="space-y-4 contact-form-fields" novalidate>
               <input type="text" name="website" id="website" value="" tabindex="-1" autocomplete="off" aria-hidden="true" class="absolute -left-[9999px] h-px w-px opacity-0 pointer-events-none">
               <input type="url" id="project-url" name="project-url" required placeholder="https://ваш-проект.ru" autocomplete="url" class="w-full rounded-sm border border-white/10 bg-black/80 px-5 py-4 text-sm text-white placeholder:text-neutral-700 focus:border-rose-500 focus:ring-1 focus:ring-rose-500 outline-none transition">
               <input type="text" id="contact-name" name="contact-name" placeholder="Имя / должность" autocomplete="name" class="w-full rounded-sm border border-white/10 bg-black/80 px-5 py-4 text-sm text-white placeholder:text-neutral-700 focus:border-rose-500 outline-none transition">
@@ -737,6 +751,6 @@
     <svg class="h-4 w-4 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
   </a>
 
-  <script src="js/main.js?v=16" defer></script>
+  <script src="js/main.js?v=17" defer></script>
 </body>
 </html>
