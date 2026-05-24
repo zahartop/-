@@ -4,6 +4,9 @@
 # С Mac: bash scripts/check-nginx-domains.sh z-tech.pro
 
 set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+# shellcheck source=lib/curl-check.sh
+source "${SCRIPT_DIR}/lib/curl-check.sh"
 
 Z_HOST="${1:-z-tech.pro}"
 TVK_HOST="${2:-твкпластик.рф}"
@@ -13,7 +16,7 @@ ss -tlnp 2>/dev/null | grep -E ':80 |:443 ' || netstat -tlnp 2>/dev/null | grep 
 
 echo ""
 echo "=== Z-TECH backend :8081 ==="
-if curl -fsS --max-time 3 "http://127.0.0.1:8081/" | grep -qi "Z-TECH"; then
+if curl_body_has_ztech "http://127.0.0.1:8081/" 5; then
   echo "OK: 127.0.0.1:8081 отдаёт Z-TECH"
 else
   echo "FAIL: 127.0.0.1:8081 не отвечает или нет Z-TECH в HTML"

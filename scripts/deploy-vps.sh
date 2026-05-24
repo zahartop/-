@@ -3,6 +3,8 @@
 # На Mac не запускайте — там ./scripts/start-dev.sh или docker compose up (порт 8081).
 set -euo pipefail
 cd "$(dirname "$0")/.."
+# shellcheck source=lib/curl-check.sh
+source "$(dirname "$0")/lib/curl-check.sh"
 
 if ! docker info >/dev/null 2>&1; then
   echo "❌ Docker не запущен или нет прав."
@@ -34,10 +36,10 @@ echo ""
 echo "→ Проверка..."
 sleep 5
 if [[ "${USE_VPS_PORT:-0}" == "1" ]]; then
-  curl -fsS http://127.0.0.1/ | grep -qi "Z-TECH" && echo "✓ http://127.0.0.1/"
+  curl_body_has_ztech "http://127.0.0.1/" && echo "✓ http://127.0.0.1/"
 else
-  curl -fsS http://127.0.0.1:8081/ | grep -qi "Z-TECH" && echo "✓ http://127.0.0.1:8081/"
-  echo "  Прокси с 80/443: см. deploy/nginx-z-tech.pro.conf → site_prod-nginx-1"
+  curl_body_has_ztech "http://127.0.0.1:8081/" && echo "✓ http://127.0.0.1:8081/"
+  echo "  Прокси с 80/443: sudo bash scripts/fix-z-tech-server.sh"
 fi
 docker compose "${COMPOSE_FILES[@]}" ps
 

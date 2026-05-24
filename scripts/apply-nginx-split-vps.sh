@@ -95,6 +95,7 @@ markers = (
     "z-tech.pro", "www.z-tech.pro",
     "твкпластик.рф", "tvkplastic.ru",
     "xn--80aacf5bc0a3b", "xn--80adtgcd1asdg",
+    "80adtgcd1asdg",  # чужой .рф, на который сейчас редиректит z-tech.pro
 )
 out, i, removed = [], 0, 0
 while i < len(text):
