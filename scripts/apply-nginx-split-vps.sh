@@ -37,16 +37,17 @@ cp -a "$NGINX_CONF" "$BACKUP"
 echo "→ Бэкап: ${BACKUP}"
 
 mkdir -p "$VHOSTS_DIR" /var/www/certbot
+cp "${REPO}/deploy/vhosts/ssl-params.conf" "${VHOSTS_DIR}/ssl-params.conf"
 
 # ─── Z-TECH vhost (HTTP-only или HTTP+HTTPS) ─────────────────────────────────
 HAS_ZTECH_CERT=0
-if [[ -f /etc/letsencrypt/live/z-tech.pro/fullchain.pem ]]; then
+if docker exec "$NGINX_CONTAINER" test -f /etc/letsencrypt/live/z-tech.pro/fullchain.pem 2>/dev/null; then
   HAS_ZTECH_CERT=1
   cp "${REPO}/deploy/vhosts/00-z-tech.pro.conf" "${VHOSTS_DIR}/00-z-tech.pro.conf"
-  echo "→ Z-TECH: HTTPS + proxy :8081 (сертификат z-tech.pro есть)"
+  echo "→ Z-TECH: HTTPS + proxy :8081 (сертификат в контейнере есть)"
 else
   cp "${REPO}/deploy/vhosts/00-z-tech.pro-http-only.conf" "${VHOSTS_DIR}/00-z-tech.pro.conf"
-  echo "→ Z-TECH: только HTTP → :8081 (пока нет certbot для z-tech.pro)"
+  echo "→ Z-TECH: только HTTP → :8081 (сертификат в контейнере не найден)"
 fi
 
 # ─── ТВК (только если на этом же VPS) ───────────────────────────────────────
@@ -183,11 +184,27 @@ if [[ -f "${VHOSTS_DIR}/00-z-tech.pro.conf" ]]; then
   touch "${VHOSTS_DIR}/00-z-tech.pro.conf"
 fi
 
+nginx_reload() {
+  if docker exec "$NGINX_CONTAINER" nginx -t 2>&1; then
+    docker exec "$NGINX_CONTAINER" nginx -s reload
+    echo "✓ nginx reload"
+    return 0
+  fi
+  return 1
+}
+
 echo ""
 echo "=== nginx -t ==="
-docker exec "$NGINX_CONTAINER" nginx -t
-docker exec "$NGINX_CONTAINER" nginx -s reload
-echo "✓ nginx reload"
+if ! nginx_reload; then
+  echo "→ HTTPS vhost не прошёл nginx -t — откат на HTTP-only (сайт заработает по http://)"
+  cp "${REPO}/deploy/vhosts/00-z-tech.pro-http-only.conf" "${VHOSTS_DIR}/00-z-tech.pro.conf"
+  HAS_ZTECH_CERT=0
+  nginx_reload || {
+    echo "❌ nginx -t всё ещё падает. Лог:"
+    docker exec "$NGINX_CONTAINER" nginx -t 2>&1 || true
+    exit 1
+  }
+fi
 
 # Certbot для z-tech.pro
 if [[ "$HAS_ZTECH_CERT" -eq 0 ]] && command -v certbot >/dev/null 2>&1; then
