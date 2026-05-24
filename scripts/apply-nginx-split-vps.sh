@@ -131,6 +131,58 @@ else:
     print("→ Старые server {} в nginx.conf не найдены")
 PY
 
+# То же для всех .conf в каталоге nginx (не только nginx.conf)
+python3 - "$SITE_PROD/nginx" <<'PY'
+import re, sys
+from pathlib import Path
+root = Path(sys.argv[1])
+markers = (
+    "z-tech.pro", "xn--80adtgcd1asdg", "80adtgcd1asdg",
+    "xn--80aacf5bc0a3b",
+)
+for path in sorted(root.rglob("*.conf")):
+    if path.name == "nginx.conf" or "vhosts" in path.parts:
+        continue
+    text = path.read_text(encoding="utf-8")
+    if not any(m in text for m in markers):
+        continue
+    out, i, removed = [], 0, 0
+    while i < len(text):
+        m = re.search(r"\bserver\s*\{", text[i:])
+        if not m:
+            out.append(text[i:])
+            break
+        start = i + m.start()
+        out.append(text[i:start])
+        depth, j = 0, start
+        while j < len(text):
+            if text[j] == "{":
+                depth += 1
+            elif text[j] == "}":
+                depth -= 1
+                if depth == 0:
+                    block = text[start : j + 1]
+                    if any(x in block for x in markers):
+                        out.append(f"\n# removed from {path.name} ({removed + 1})\n")
+                        removed += 1
+                    else:
+                        out.append(block)
+                    i = j + 1
+                    break
+            j += 1
+        else:
+            out.append(text[start:])
+            break
+    if removed:
+        path.write_text("".join(out), encoding="utf-8")
+        print(f"→ {path}: удалено server {{}}: {removed}")
+PY
+
+# z-tech vhost должен подключаться первым
+if [[ -f "${VHOSTS_DIR}/00-z-tech.pro.conf" ]]; then
+  touch "${VHOSTS_DIR}/00-z-tech.pro.conf"
+fi
+
 echo ""
 echo "=== nginx -t ==="
 docker exec "$NGINX_CONTAINER" nginx -t
