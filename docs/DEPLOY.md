@@ -210,6 +210,7 @@ ssh root@ВАШ_IP 'chmod 600 ~/z-tech-portfolio/telegram.local.json'
 |---------|---------|
 | Сайт не открывается | `ufw`, порт 80, `docker ps`, DNS |
 | Медленная загрузка | В `site_prod-nginx` включить gzip из `deploy/nginx-z-tech.pro.conf`, `nginx -s reload` |
+| z-tech.pro → ошибка SSL / открывается ТВК | Разделить vhost: `deploy/nginx-vps-split.conf`, `deploy/SSL-DOMAINS.md`, `scripts/check-nginx-domains.sh` |
 | Нет стилей | Открывать по HTTPS; не `file://` |
 | Форма не шлёт | `python3 scripts/check_telegram.py` на VPS |
 | 502 / пусто | `docker compose logs web api` |
