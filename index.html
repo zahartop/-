@@ -445,7 +445,7 @@
           </div>
         </dl>
       </div>
-      <a href="#cases" class="hero-scroll-hint hidden lg:block" aria-hidden="true">↓ скролл</a>
+      <p class="hero-scroll-hint hidden lg:block" aria-hidden="true">↓ скролл</p>
     </section>
 
     <!-- Linear-style stack strip -->
@@ -694,13 +694,15 @@
           </div>
         </div>
 
-        <ul class="ref-creds reveal" aria-label="Компетенции Z-TECH">
+        <section class="reveal" aria-label="Компетенции Z-TECH">
+        <ul class="ref-creds">
           <li class="ref-creds__item"><span class="ref-creds__mark">PROD</span> кейс в бою</li>
           <li class="ref-creds__item"><span class="ref-creds__mark">152</span> контур ПДн</li>
           <li class="ref-creds__item"><span class="ref-creds__mark">CWV</span> mobile-first</li>
           <li class="ref-creds__item"><span class="ref-creds__mark">CRM</span> Telegram API</li>
           <li class="ref-creds__item"><span class="ref-creds__mark">0</span> конструкторов</li>
         </ul>
+        </section>
 
         <blockquote class="case-quote reveal">
           <p class="case-quote__text">«Нужен был не лендинг, а инструмент для снабжения и проектировщиков — с заявками в Telegram и без потерь с рекламы».</p>
@@ -813,7 +815,7 @@
           </p>
         </header>
 
-        <div class="ref-workflow mt-14 reveal" aria-label="Три шага работы">
+        <section class="ref-workflow mt-14 reveal" aria-label="Три шага работы">
           <div class="ref-workflow__step">
             <span class="ref-workflow__num">01</span>
             <span class="ref-workflow__title">Слушаем</span>
@@ -829,7 +831,7 @@
             <span class="ref-workflow__title">Запускаем</span>
             <p class="ref-workflow__text">Docker, HTTPS, 152-ФЗ, SEO-база. Прямой договор и сопровождение после релиза.</p>
           </div>
-        </div>
+        </section>
 
         <div class="fx-stagger mt-16 grid md:grid-cols-3 gap-6">
           <blockquote class="reveal fx-card fx-stagger-item glass-card glow-border rounded-lg p-8 border-l-4 border-l-rose-600">
@@ -861,7 +863,7 @@
           <p class="sec-head__lead">Как у Only и Uplab — полный цикл в одной команде: от исследования до поддержки в продакшене.</p>
         </header>
 
-        <div class="ref-directions reveal" aria-label="Четыре направления">
+        <section class="ref-directions reveal" aria-label="Четыре направления">
           <article class="ref-directions__item">
             <span class="ref-directions__num">01</span>
             <span class="ref-directions__title">Продукт и аналитика</span>
@@ -882,7 +884,7 @@
             <span class="ref-directions__title">Поддержка и рост</span>
             <p class="ref-directions__text">DevOps, SEO, 152-ФЗ, сопровождение после релиза.</p>
           </article>
-        </div>
+        </section>
 
         <div class="fx-stagger bento-services mt-14">
           <article class="reveal fx-card accent-block fx-stagger-item bento-card tech-card glow-border glass-card rounded-2xl p-10">
@@ -1096,7 +1098,8 @@
           <h2 class="sec-head__title">От брифа <em>до запуска</em></h2>
           <p class="sec-head__lead">Без бесконечных согласований. Только этапы, которые двигают заявки и продакшен.</p>
         </header>
-        <ol class="ref-timeline mt-14 reveal" aria-label="Этапы проекта">
+        <section class="ref-timeline-wrap mt-14 reveal" aria-label="Этапы проекта">
+        <ol class="ref-timeline">
           <li class="ref-timeline__item">
             <span class="ref-timeline__day">Этап 1</span>
             <span class="ref-timeline__title">Бриф и аудит</span>
@@ -1118,6 +1121,7 @@
             <p class="ref-timeline__text">Deploy, договор ИП, обучение команды и сопровождение.</p>
           </li>
         </ol>
+        </section>
         <ol class="fx-process fx-stagger mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6" aria-hidden="true">
           <li class="reveal fx-card fx-process-step fx-stagger-item glass-card p-8 rounded-lg"><span class="fx-num font-display text-4xl font-extrabold text-rose-600/40">01</span><h3 class="mt-4 font-bold text-white text-sm uppercase tracking-wider">Аудит</h3><p class="mt-2 text-xs text-neutral-600">Разбор сайта и воронки. KPI продаж.</p></li>
           <li class="reveal reveal-delay-1 fx-card fx-process-step fx-stagger-item glass-card p-8 rounded-lg"><span class="fx-num font-display text-4xl font-extrabold text-rose-600/40">02</span><h3 class="mt-4 font-bold text-white text-sm uppercase tracking-wider">Архитектура</h3><p class="mt-2 text-xs text-neutral-600">ТЗ + UI. Согласование с заказчиком.</p></li>
@@ -1247,7 +1251,7 @@
               <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-rose-400">Экспресс-аудит</p>
               <p class="mt-2 font-display text-lg font-bold text-white">5 точек роста за 24 часа</p>
               <p class="mt-1 text-xs text-neutral-500">Заполните форму — вернёмся с конкретикой, не «менеджер перезвонит».</p>
-              <div class="form-flow mt-5" aria-label="Что будет после заявки">
+              <div class="form-flow mt-5" role="group" aria-label="Что будет после заявки">
                 <div class="form-flow__step">
                   <span class="form-flow__num">01</span>
                   <span class="form-flow__text">Разбор URL</span>
