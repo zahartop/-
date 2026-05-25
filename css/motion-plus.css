@@ -1,0 +1,285 @@
+/**
+ * Z-TECH — hover lift + Uplab text roll + вход на сайт
+ */
+
+/* ── Uplab text roll ── */
+.text-roll {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  line-height: 1.25;
+  height: 1.25em;
+}
+
+.text-roll__inner {
+  display: block;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.text-roll__line {
+  display: block;
+  height: 1.25em;
+  line-height: 1.25em;
+}
+
+.text-roll:hover .text-roll__inner,
+.text-roll:focus-visible .text-roll__inner,
+.nav-link:hover .text-roll__inner,
+.nav-link:focus-visible .text-roll__inner {
+  transform: translateY(-50%);
+}
+
+.nav-link.text-roll {
+  color: #71717a;
+}
+
+.nav-link.text-roll:hover,
+.nav-link.text-roll:focus-visible {
+  color: #f43f5e;
+}
+
+/* text-roll в кнопках / pill — не inline-block 1.25em (режет кириллицу) */
+.btn-primary.text-roll,
+.btn-ghost.text-roll,
+.nav-pitch.text-roll,
+.fab.text-roll {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  height: 1.5em;
+  line-height: 1.5;
+  overflow: hidden;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.btn-primary.text-roll .text-roll__line,
+.btn-ghost.text-roll .text-roll__line,
+.nav-pitch.text-roll .text-roll__line,
+.fab.text-roll .text-roll__line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.5em;
+  line-height: 1.5em;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+/* Шапка: статичный текст, без text-roll и без сдвига */
+body.ref-studio #site-header .header-cta,
+body.ref-studio #site-header .nav-pitch {
+  transform: none !important;
+}
+
+body.ref-studio #site-header .nav-pitch {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #a1a1aa;
+  transition: color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.ref-studio #site-header .nav-pitch:hover {
+  color: #fafafa;
+}
+
+body.ref-studio #site-header .header-cta {
+  min-height: 2.5rem;
+  line-height: 1.25;
+  transition:
+    background 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.ref-studio #site-header .header-cta:hover {
+  transform: none !important;
+  background: #fff;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* ── Hover lift (медленно, везде) ── */
+body.ref-studio .glass-card,
+body.ref-studio .fx-card,
+body.ref-studio .insight-card,
+body.ref-studio .ref-workflow__step,
+body.ref-studio .ref-directions__item,
+body.ref-studio .ref-timeline__item,
+body.ref-studio .ref-metrics__cell,
+body.ref-studio .industry-grid__cell,
+body.ref-studio .budget-option span,
+body.ref-studio .contact-method-option span,
+body.ref-studio .btn-ghost,
+body.ref-studio .fab,
+body.ref-studio .ref-rank-badge,
+body.ref-studio .hero-hash,
+body.ref-studio .ref-creds__item,
+body.ref-studio .case-chip,
+body.ref-studio .browser-frame,
+body.ref-studio .founder-panel,
+body.ref-studio .compare-panel,
+body.ref-studio .pricing-card,
+body.ref-studio .stat-cell,
+body.ref-studio #mobile-menu a,
+body.ref-studio .ref-stack__col,
+body.ref-studio .compare-toggle,
+body.ref-studio .compare-panel,
+body.ref-studio .hero-showcase,
+body.ref-studio .showcase-float,
+body.ref-studio .pricing-featured,
+body.ref-studio .pricing-flagship-shell,
+body.ref-studio footer a,
+body.ref-studio .burger,
+body.ref-studio label.budget-option {
+  transition:
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s ease,
+    background 0.35s ease,
+    color 0.25s ease;
+}
+
+body.ref-studio .glass-card:hover,
+body.ref-studio .fx-card:hover,
+body.ref-studio .insight-card:hover,
+body.ref-studio .ref-workflow__step:hover,
+body.ref-studio .ref-directions__item:hover,
+body.ref-studio .ref-timeline__item:hover,
+body.ref-studio .ref-metrics__cell:hover,
+body.ref-studio .industry-grid__cell:hover,
+body.ref-studio .budget-option:hover span,
+body.ref-studio .contact-method-option:hover span,
+body.ref-studio .btn-primary:hover,
+body.ref-studio .btn-ghost:hover,
+body.ref-studio .fab:hover,
+body.ref-studio .ref-rank-badge:hover,
+body.ref-studio .hero-hash:hover,
+body.ref-studio .ref-creds__item:hover,
+body.ref-studio .case-chip:hover,
+body.ref-studio .browser-frame:hover,
+body.ref-studio .founder-panel:hover,
+body.ref-studio .compare-panel:hover,
+body.ref-studio .pricing-card:hover,
+body.ref-studio .stat-cell:hover,
+body.ref-studio #mobile-menu a:hover,
+body.ref-studio .ref-stack__col:hover,
+body.ref-studio .compare-toggle:hover,
+body.ref-studio .compare-panel:hover,
+body.ref-studio .hero-showcase:hover,
+body.ref-studio .showcase-float:hover,
+body.ref-studio .pricing-featured:hover,
+body.ref-studio .pricing-flagship-shell:hover,
+body.ref-studio footer a:hover,
+body.ref-studio .burger:hover,
+body.ref-studio label.budget-option:hover {
+  transform: translateY(-5px);
+}
+
+body.ref-studio .btn-primary:hover,
+body.ref-studio .fab--cta:hover {
+  box-shadow: 0 12px 40px rgba(244, 63, 94, 0.35);
+}
+
+/* FAQ: без translateY — блоки не наезжают друг на друга */
+body.ref-studio details.fx-faq {
+  position: relative;
+  z-index: 0;
+  margin: 0;
+  transition:
+    border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.35s ease;
+}
+
+body.ref-studio details.fx-faq:hover,
+body.ref-studio details.fx-faq[open] {
+  z-index: 1;
+  transform: none;
+}
+
+body.ref-studio details.fx-faq:hover {
+  border-color: rgba(244, 63, 94, 0.28);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+body.ref-studio .glass-card.fx-card.fx-faq:hover,
+body.linear-tier .glass-card.fx-faq:hover {
+  transform: none;
+}
+
+body.ref-studio #faq .fx-stagger {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+body.ref-studio #faq .fx-faq.reveal {
+  transform: none;
+  filter: none;
+}
+
+body.ref-studio #faq .fx-faq.reveal.is-visible {
+  transform: none;
+  filter: none;
+}
+
+/* ── Курсор: стекло только в hero ── */
+body.is-cursor-minimal .uplab-cursor__glass-wrap {
+  opacity: 0 !important;
+  transform: scale(0.4) !important;
+}
+
+body.is-cursor-minimal .uplab-cursor__dot {
+  transform: scale(1.15);
+}
+
+/* Hero glass prop не вылезает в FAQ */
+#hero {
+  isolation: isolate;
+}
+
+.hero-glass-prop.is-offscreen {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+/* ── Вход после splash ── */
+body.site-entered .site-chrome--revealing,
+body.site-entered .site-chrome:not(.site-chrome--hidden) {
+  animation: site-enter-rise 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+body.site-entered #site-header {
+  animation: site-enter-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes site-enter-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.site-entered .site-chrome,
+  body.site-entered #site-header {
+    animation: none;
+  }
+
+  .text-roll__inner {
+    transition: none;
+  }
+
+  body.ref-studio .glass-card:hover,
+  body.ref-studio .fx-card:hover,
+  body.ref-studio #mobile-menu a:hover,
+  body.ref-studio .compare-toggle:hover {
+    transform: none;
+  }
+}

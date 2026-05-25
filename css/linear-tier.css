@@ -360,6 +360,10 @@ body.linear-tier .glass-card:hover {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 20px 40px -24px rgba(0, 0, 0, 0.5);
 }
 
+body.linear-tier .glass-card.fx-faq:hover {
+  transform: none;
+}
+
 body.linear-tier .glow-border::before {
   display: none;
 }

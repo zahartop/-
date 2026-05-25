@@ -2,12 +2,12 @@
   "use strict";
 
   const SPLASH_MS = {
-    colors: 350,
-    colorsPeak: 900,
-    brand: 1400,
-    tagline: 1800,
-    reveal: 2400,
-    done: 3000,
+    colors: 320,
+    colorsPeak: 950,
+    brand: 1550,
+    tagline: 2100,
+    reveal: 2700,
+    done: 3400,
   };
 
   const SPLASH_SEEN_KEY = "ztech-splash-seen";
@@ -96,6 +96,7 @@
       el.classList.remove("site-chrome--hidden", "site-chrome--revealing");
     });
     splash?.remove();
+    document.body.classList.add("site-entered");
     window.dispatchEvent(new CustomEvent("splash-complete"));
   };
 
@@ -147,6 +148,7 @@
     splashTimers.push(
       schedule(SPLASH_MS.reveal, () => {
         splash.classList.replace("phase-tagline", "phase-fade");
+        document.body.classList.add("site-entered");
         revealSiteChrome();
       })
     );
@@ -816,11 +818,24 @@
     };
     tick();
 
+    const heroEl = $("#hero");
+    const isInHero = (e) => {
+      if (!heroEl) return false;
+      const r = heroEl.getBoundingClientRect();
+      return (
+        e.clientX >= r.left &&
+        e.clientX <= r.right &&
+        e.clientY >= r.top &&
+        e.clientY <= r.bottom
+      );
+    };
+
     document.addEventListener(
       "mousemove",
       (e) => {
         tx = e.clientX;
         ty = e.clientY;
+        root.classList.toggle("is-cursor-minimal", !isInHero(e));
         resetIdle();
       },
       { passive: true }
@@ -865,6 +880,16 @@
     const modelsWrap = $("#hero-glass-models");
     const labelEl = $("#hero-glass-label");
     if (!prop || !hero) return;
+
+    if (shell && "IntersectionObserver" in window) {
+      const io = new IntersectionObserver(
+        ([entry]) => {
+          shell.classList.toggle("is-offscreen", !entry.isIntersecting);
+        },
+        { threshold: 0.08 }
+      );
+      io.observe(hero);
+    }
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const models = modelsWrap ? $$(".hero-glass-model", modelsWrap) : [];

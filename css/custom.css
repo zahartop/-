@@ -1141,6 +1141,11 @@ html.fx-paused .hero-scanlines {
   border-color: rgba(225, 29, 72, 0.25);
 }
 
+.glass-card.fx-card.fx-faq:hover {
+  transform: none;
+  scale: none;
+}
+
 .fx-metric {
   display: inline-block;
   transition: text-shadow 0.35s ease, color 0.35s ease, transform 0.35s ease;

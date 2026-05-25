@@ -17,7 +17,7 @@ COPY index.html privacy.html robots.txt sitemap.xml og-image.svg \
   /usr/share/nginx/html/
 COPY seo/ /usr/share/nginx/html/seo/
 COPY assets/ /usr/share/nginx/html/assets/
-COPY css/custom.css css/studio.css css/studio-premium.css css/linear-tier.css css/ref-studio.css css/ref-agency.css css/smooth-glass.css css/market-plus.css css/splash.css /usr/share/nginx/html/css/
+COPY css/custom.css css/studio.css css/studio-premium.css css/linear-tier.css css/ref-studio.css css/ref-agency.css css/smooth-glass.css css/market-plus.css css/motion-plus.css css/splash.css /usr/share/nginx/html/css/
 COPY --from=css /build/css/tailwind.css /usr/share/nginx/html/css/tailwind.css
 COPY js/ /usr/share/nginx/html/js/
 
