@@ -150,27 +150,61 @@ body.cursor-uplab.is-cursor-idle .uplab-cursor__glass-wrap {
   }
 }
 
-/* ── Hero glass prop (Uplab) — крупно, ротация моделей ── */
-.hero-glass-prop {
-  display: none;
+/* ── Hero glass prop — в колонке showcase, ротация моделей ── */
+.hero-showcase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-glass-orbit {
   position: absolute;
-  left: 52%;
-  top: 38%;
-  width: clamp(220px, 42vw, 480px);
-  height: clamp(220px, 42vw, 480px);
-  margin-left: -8%;
+  inset: 6% 4%;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: radial-gradient(circle at 50% 50%, rgba(244, 63, 94, 0.08), transparent 68%);
+  animation: hero-glass-orbit-spin 32s linear infinite;
   pointer-events: none;
-  z-index: 3;
+}
+
+.hero-glass-orbit::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  margin-left: -4px;
+  border-radius: 50%;
+  background: #f43f5e;
+  box-shadow: 0 0 20px rgba(244, 63, 94, 0.9);
+}
+
+@keyframes hero-glass-orbit-spin {
+  to { transform: rotate(360deg); }
+}
+
+.hero-showcase .hero-glass-prop {
+  position: relative;
+  left: auto;
+  top: auto;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(240px, 38vw, 520px);
+  height: clamp(240px, 38vw, 520px);
+  max-width: 100%;
+  pointer-events: none;
+  z-index: 2;
   opacity: 1;
   will-change: transform;
   filter: drop-shadow(0 28px 70px rgba(56, 189, 248, 0.22))
     drop-shadow(0 12px 32px rgba(244, 63, 94, 0.18));
 }
 
-@media (min-width: 768px) {
-  .hero-glass-prop {
-    display: block;
-  }
+.hero-glass-prop {
+  display: none;
 }
 
 .hero-glass-prop__inner {
@@ -225,6 +259,16 @@ body.cursor-uplab.is-cursor-idle .uplab-cursor__glass-wrap {
   stroke: url(#ztechHeroGlassIrisGlobal);
   stroke-width: 2.2;
   opacity: 0.85;
+}
+
+.hero-showcase .hero-glass-prop__label {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  right: auto;
+  text-align: center;
+  width: max-content;
 }
 
 .hero-glass-prop__label {

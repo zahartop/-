@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="css/linear-tier.css?v=29">
   <link rel="stylesheet" href="css/ref-studio.css?v=29">
   <link rel="stylesheet" href="css/ref-agency.css?v=29">
-  <link rel="stylesheet" href="css/smooth-glass.css?v=29">
+  <link rel="stylesheet" href="css/smooth-glass.css?v=33">
   <link rel="stylesheet" href="css/market-plus.css?v=29">
   <link rel="stylesheet" href="css/motion-plus.css?v=30">
   <link rel="stylesheet" href="css/layout-full.css?v=31">
@@ -301,54 +301,6 @@
 
     <!-- Hero -->
     <section id="hero" class="hero-section accent-zone accent-zone--hero section-band relative min-h-[88dvh] sm:min-h-[92vh] flex flex-col justify-center pt-24 pb-14 sm:pt-28 sm:pb-16 lg:pt-36 overflow-hidden" aria-labelledby="hero-title">
-      <div class="hero-glass-prop" id="hero-glass-prop" aria-hidden="true">
-        <svg class="hero-glass-defs" aria-hidden="true" focusable="false">
-          <defs>
-            <linearGradient id="ztechHeroGlassIrisGlobal" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#fda4af"/>
-              <stop offset="40%" stop-color="#bae6fd"/>
-              <stop offset="100%" stop-color="#fb7185"/>
-            </linearGradient>
-          </defs>
-        </svg>
-        <div class="hero-glass-prop__inner" id="hero-glass-prop-inner">
-          <div class="hero-glass-models" id="hero-glass-models">
-            <svg class="hero-glass-model is-active" data-model="cursor" viewBox="0 0 80 80" fill="none" aria-hidden="true">
-              <path class="glass-body" d="M18 14v46l38-23-38-23z"/>
-              <path class="glass-shine" d="M22 20v34l28-17-28-17z"/>
-              <path class="glass-rim" d="M18 14v46l38-23-38-23z"/>
-            </svg>
-            <svg class="hero-glass-model" data-model="triangle" viewBox="0 0 80 80" fill="none" aria-hidden="true">
-              <path class="glass-body" d="M40 12L68 62H12L40 12z"/>
-              <path class="glass-shine" d="M40 18L60 56H20L40 18z"/>
-              <path class="glass-rim" d="M40 12L68 62H12L40 12z"/>
-            </svg>
-            <svg class="hero-glass-model" data-model="ring" viewBox="0 0 80 80" fill="none" aria-hidden="true">
-              <circle class="glass-body" cx="40" cy="40" r="26" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.45)" stroke-width="1.4"/>
-              <circle class="glass-shine" cx="40" cy="40" r="18" fill="rgba(255,255,255,0.14)"/>
-              <circle class="glass-rim" cx="40" cy="40" r="26" fill="none"/>
-            </svg>
-            <svg class="hero-glass-model" data-model="hex" viewBox="0 0 80 80" fill="none" aria-hidden="true">
-              <path class="glass-body" d="M40 10l28 16v28L40 70 12 54V26L40 10z"/>
-              <path class="glass-shine" d="M40 16l22 13v24L40 64 18 53V29L40 16z"/>
-              <path class="glass-rim" d="M40 10l28 16v28L40 70 12 54V26L40 10z"/>
-            </svg>
-            <svg class="hero-glass-model" data-model="diamond" viewBox="0 0 80 80" fill="none" aria-hidden="true">
-              <path class="glass-body" d="M40 8l32 24-32 40-32-40L40 8z"/>
-              <path class="glass-shine" d="M40 14l26 20-26 32-26-32L40 14z"/>
-              <path class="glass-rim" d="M40 8l32 24-32 40-32-40L40 8z"/>
-            </svg>
-            <svg class="hero-glass-model" data-model="cube" viewBox="0 0 80 80" fill="none" aria-hidden="true">
-              <path class="glass-body" d="M22 28l18-10 18 10v24l-18 10-18-10V28z"/>
-              <path class="glass-body" d="M40 18l18 10v24L40 62 22 52V28l18-10z" opacity="0.55"/>
-              <path class="glass-shine" d="M26 32l14-8 14 8v20l-14 8-14-8V32z"/>
-              <path class="glass-rim" d="M22 28l18-10 18 10v24l-18 10-18-10V28z"/>
-              <path class="glass-rim" d="M40 18l18 10v24L40 62 22 52V28l18-10z"/>
-            </svg>
-          </div>
-          <p class="hero-glass-prop__label" id="hero-glass-label">курсор</p>
-        </div>
-      </div>
       <div class="hero-glow" id="hero-glow" aria-hidden="true"></div>
       <div class="hero-line hero-line--animated top-32" aria-hidden="true"></div>
       <div class="hero-scanlines" aria-hidden="true"></div>
@@ -418,17 +370,53 @@
         </div>
 
         <div class="reveal reveal-delay-2 hero-showcase" id="hero-showcase">
-          <div class="linear-beam" id="hero-beam">
-            <div class="linear-beam__inner">
-              <div class="browser-frame" id="hero-browser" data-tilt>
-                <div class="browser-frame__chrome">
-                  <div class="browser-frame__dots" aria-hidden="true"><span></span><span></span><span></span></div>
-                  <span class="browser-frame__url">твкпластик.рф · production</span>
-                </div>
-                <div class="browser-frame__viewport">
-                  <img src="assets/case-tvk-hero.jpg?v=29" width="1024" height="491" alt="Главная страница ТВК ПЛАСТИК — твкпластик.рф" loading="eager" decoding="async" fetchpriority="high">
-                </div>
+          <div class="hero-glass-orbit" aria-hidden="true"></div>
+          <div class="hero-glass-prop" id="hero-glass-prop" aria-hidden="true">
+            <svg class="hero-glass-defs" aria-hidden="true" focusable="false">
+              <defs>
+                <linearGradient id="ztechHeroGlassIrisGlobal" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#fda4af"/>
+                  <stop offset="40%" stop-color="#bae6fd"/>
+                  <stop offset="100%" stop-color="#fb7185"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="hero-glass-prop__inner" id="hero-glass-prop-inner">
+              <div class="hero-glass-models" id="hero-glass-models">
+                <svg class="hero-glass-model is-active" data-model="cursor" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+                  <path class="glass-body" d="M18 14v46l38-23-38-23z"/>
+                  <path class="glass-shine" d="M22 20v34l28-17-28-17z"/>
+                  <path class="glass-rim" d="M18 14v46l38-23-38-23z"/>
+                </svg>
+                <svg class="hero-glass-model" data-model="triangle" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+                  <path class="glass-body" d="M40 12L68 62H12L40 12z"/>
+                  <path class="glass-shine" d="M40 18L60 56H20L40 18z"/>
+                  <path class="glass-rim" d="M40 12L68 62H12L40 12z"/>
+                </svg>
+                <svg class="hero-glass-model" data-model="ring" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+                  <circle class="glass-body" cx="40" cy="40" r="26" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.45)" stroke-width="1.4"/>
+                  <circle class="glass-shine" cx="40" cy="40" r="18" fill="rgba(255,255,255,0.14)"/>
+                  <circle class="glass-rim" cx="40" cy="40" r="26" fill="none"/>
+                </svg>
+                <svg class="hero-glass-model" data-model="hex" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+                  <path class="glass-body" d="M40 10l28 16v28L40 70 12 54V26L40 10z"/>
+                  <path class="glass-shine" d="M40 16l22 13v24L40 64 18 53V29L40 16z"/>
+                  <path class="glass-rim" d="M40 10l28 16v28L40 70 12 54V26L40 10z"/>
+                </svg>
+                <svg class="hero-glass-model" data-model="diamond" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+                  <path class="glass-body" d="M40 8l32 24-32 40-32-40L40 8z"/>
+                  <path class="glass-shine" d="M40 14l26 20-26 32-26-32L40 14z"/>
+                  <path class="glass-rim" d="M40 8l32 24-32 40-32-40L40 8z"/>
+                </svg>
+                <svg class="hero-glass-model" data-model="cube" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+                  <path class="glass-body" d="M22 28l18-10 18 10v24l-18 10-18-10V28z"/>
+                  <path class="glass-body" d="M40 18l18 10v24L40 62 22 52V28l18-10z" opacity="0.55"/>
+                  <path class="glass-shine" d="M26 32l14-8 14 8v20l-14 8-14-8V32z"/>
+                  <path class="glass-rim" d="M22 28l18-10 18 10v24l-18 10-18-10V28z"/>
+                  <path class="glass-rim" d="M40 18l18 10v24L40 62 22 52V28l18-10z"/>
+                </svg>
               </div>
+              <p class="hero-glass-prop__label" id="hero-glass-label">курсор</p>
             </div>
           </div>
           <span class="showcase-float showcase-float--crm"><span class="showcase-float__dot" aria-hidden="true"></span>Telegram CRM</span>

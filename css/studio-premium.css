@@ -86,13 +86,13 @@
 
 .hero-showcase {
   position: relative;
-  min-height: 280px;
+  min-height: clamp(280px, 42vw, 480px);
   perspective: 1200px;
 }
 
 @media (min-width: 1024px) {
   .hero-showcase {
-    min-height: 420px;
+    min-height: clamp(360px, 38vw, 520px);
   }
 }
 
