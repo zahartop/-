@@ -1,0 +1,162 @@
+/**
+ * Z-TECH — full-width layout (без узкой колонки и mx-auto)
+ */
+
+body.layout-full {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body.layout-full .page-shell {
+  width: 100%;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: clamp(1.25rem, 4vw, 3.5rem);
+  padding-right: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+body.layout-full .max-w-content {
+  max-width: none !important;
+  width: 100%;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+body.layout-full .section-band {
+  width: 100%;
+}
+
+body.layout-full #site-header > .page-shell,
+body.layout-full #site-header .page-shell {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+body.layout-full .hero-editorial,
+body.layout-full .hero-editorial__sub,
+body.layout-full .hero-desc,
+body.layout-full .sec-head,
+body.layout-full .sec-head__lead,
+body.layout-full .ref-pricing-note,
+body.layout-full .nda-panel__text {
+  max-width: none;
+}
+
+body.layout-full .hero-layout {
+  width: 100%;
+  gap: clamp(2rem, 4vw, 4rem);
+}
+
+@media (min-width: 1280px) {
+  body.layout-full .hero-layout {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: clamp(2.5rem, 5vw, 5rem);
+  }
+}
+
+@media (min-width: 1536px) {
+  body.layout-full .hero-layout {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.05fr);
+  }
+}
+
+body.layout-full .hero-showcase {
+  min-height: clamp(280px, 38vh, 520px);
+}
+
+body.layout-full .ref-metrics__grid {
+  width: 100%;
+}
+
+@media (min-width: 1280px) {
+  body.layout-full .ref-metrics__grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+body.layout-full .ref-metrics__cell {
+  text-align: start;
+  padding-left: clamp(1.25rem, 3vw, 2.5rem);
+  padding-right: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+body.layout-full .linear-pipeline__inner {
+  max-width: none;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+body.layout-full .linear-pipeline__inner.page-shell {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+body.layout-full .faq-list {
+  width: 100%;
+  max-width: none !important;
+}
+
+body.layout-full .pricing-grid {
+  width: 100%;
+  max-width: none !important;
+}
+
+body.layout-full .bento-services {
+  width: 100%;
+}
+
+@media (min-width: 1280px) {
+  body.layout-full .bento-services {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+body.layout-full .ref-stack {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  body.layout-full .ref-stack {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem 3rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  body.layout-full .ref-stack {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+body.layout-full .hero-scroll-hint {
+  left: clamp(1.25rem, 4vw, 3.5rem);
+  transform: none;
+}
+
+@keyframes ref-scroll-hint-full {
+  0%, 100% { opacity: 0.35; transform: translateY(0); }
+  50% { opacity: 0.85; transform: translateY(6px); }
+}
+
+body.layout-full .hero-scroll-hint {
+  animation-name: ref-scroll-hint-full;
+}
+
+body.layout-full .case-spotlight,
+body.layout-full .compare-panel,
+body.layout-full .contact-form-panel {
+  width: 100%;
+}
+
+body.layout-full #contact .grid {
+  gap: clamp(2rem, 4vw, 4rem);
+}
+
+@media (min-width: 1536px) {
+  body.layout-full #contact .grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  }
+}

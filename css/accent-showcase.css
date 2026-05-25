@@ -1,0 +1,190 @@
+/**
+ * Z-TECH — акцентные зоны + анимация блоков (ничего не убираем, только усиливаем)
+ */
+
+/* ── Акцентные зоны (hero · кейс · контакт) ── */
+.accent-zone {
+  position: relative;
+  isolation: isolate;
+}
+
+.accent-zone::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+  transition: opacity 0.8s ease;
+}
+
+.accent-zone--hero::before {
+  background:
+    radial-gradient(ellipse 70% 55% at 12% 35%, rgba(244, 63, 94, 0.22), transparent 62%),
+    radial-gradient(ellipse 50% 45% at 88% 20%, rgba(56, 189, 248, 0.12), transparent 58%);
+  animation: accent-zone-breathe 8s ease-in-out infinite;
+}
+
+.accent-zone--case::before {
+  background: radial-gradient(ellipse 90% 70% at 50% 0%, rgba(244, 63, 94, 0.14), transparent 68%);
+}
+
+.accent-zone--cta::before {
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 40%, rgba(244, 63, 94, 0.2), transparent 65%),
+    radial-gradient(ellipse 40% 40% at 10% 80%, rgba(16, 185, 129, 0.08), transparent 60%);
+  animation: accent-zone-breathe 10s ease-in-out infinite reverse;
+}
+
+@keyframes accent-zone-breathe {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+}
+
+.accent-zone > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Светящая рамка у ключевых блоков ── */
+.accent-block {
+  position: relative;
+  isolation: isolate;
+}
+
+.accent-block::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  background: linear-gradient(
+    125deg,
+    rgba(244, 63, 94, 0.65) 0%,
+    rgba(255, 255, 255, 0.15) 28%,
+    transparent 42%,
+    transparent 58%,
+    rgba(56, 189, 248, 0.35) 72%,
+    rgba(244, 63, 94, 0.5) 100%
+  );
+  background-size: 220% 220%;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: accent-border-flow 6s linear infinite;
+  animation-play-state: paused;
+}
+
+.accent-block:hover::after,
+.accent-block.is-accent-lit::after {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+@keyframes accent-border-flow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* ── Появление блоков после входа ── */
+body.site-entered .accent-block.reveal.is-visible {
+  animation: accent-block-in 1.05s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+body.site-entered .fx-stagger.is-staggered .fx-stagger-item.accent-block.reveal.is-visible {
+  animation: accent-block-in 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes accent-block-in {
+  from {
+    opacity: 0;
+    transform: translateY(36px) scale(0.97);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Метрики — волна подсветки */
+body.site-entered .ref-metrics__cell.reveal.is-visible {
+  animation: accent-metric-pop 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes accent-metric-pop {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  60% {
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body.site-entered .ref-metrics__cell.reveal.is-visible .ref-metrics__val {
+  text-shadow: 0 0 40px rgba(244, 63, 94, 0.35);
+}
+
+/* Hero CTA — пульс после загрузки */
+body.accent-live .hero-cta-row .btn-primary {
+  animation: accent-cta-pulse 3.5s ease-in-out infinite;
+}
+
+@keyframes accent-cta-pulse {
+  0%, 100% {
+    box-shadow: 0 0 32px rgba(244, 63, 94, 0.35), 0 8px 24px rgba(0, 0, 0, 0.55);
+  }
+  50% {
+    box-shadow: 0 0 56px rgba(244, 63, 94, 0.55), 0 12px 36px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Кейс — лёгкое свечение витрины */
+body.accent-live .case-spotlight.accent-block {
+  box-shadow: 0 0 0 1px rgba(244, 63, 94, 0.15), 0 32px 80px rgba(0, 0, 0, 0.55);
+}
+
+body.accent-live .case-spotlight.accent-block::after {
+  opacity: 0.45;
+  animation-play-state: running;
+}
+
+/* Контакт — форма в фокусе */
+body.accent-live .contact-form-panel.accent-block::after {
+  opacity: 0.35;
+  animation-play-state: running;
+}
+
+/* Pricing flagship */
+.pricing-featured.accent-block::after {
+  opacity: 0.5;
+  animation-play-state: running;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accent-zone::before,
+  body.accent-live .hero-cta-row .btn-primary,
+  .accent-block::after {
+    animation: none !important;
+  }
+
+  body.site-entered .accent-block.reveal.is-visible,
+  body.site-entered .ref-metrics__cell.reveal.is-visible {
+    animation: none;
+  }
+}

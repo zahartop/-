@@ -16,7 +16,7 @@ module.exports = {
         studio: "14px",
         "studio-lg": "20px",
       },
-      maxWidth: { content: "72rem" },
+      maxWidth: { content: "100%" },
     },
   },
   plugins: [],

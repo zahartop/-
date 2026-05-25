@@ -2,12 +2,13 @@
   "use strict";
 
   const SPLASH_MS = {
-    colors: 320,
-    colorsPeak: 950,
-    brand: 1550,
-    tagline: 2100,
-    reveal: 2700,
-    done: 3400,
+    colors: 420,
+    colorsPeak: 1200,
+    flash: 1550,
+    brand: 2200,
+    tagline: 3100,
+    reveal: 4000,
+    done: 5000,
   };
 
   const SPLASH_SEEN_KEY = "ztech-splash-seen";
@@ -96,8 +97,24 @@
       el.classList.remove("site-chrome--hidden", "site-chrome--revealing");
     });
     splash?.remove();
-    document.body.classList.add("site-entered");
+    document.body.classList.add("site-entered", "accent-live");
     window.dispatchEvent(new CustomEvent("splash-complete"));
+  };
+
+  const spawnSplashParticles = () => {
+    const root = $("#splash-particles");
+    if (!root) return;
+    const count = window.innerWidth < 768 ? 36 : 64;
+    for (let i = 0; i < count; i++) {
+      const el = document.createElement("span");
+      el.className = "splash__particle";
+      el.style.setProperty("--x", `${Math.random() * 100}%`);
+      el.style.setProperty("--y", `${55 + Math.random() * 45}%`);
+      el.style.setProperty("--dur", `${2 + Math.random() * 3.5}s`);
+      el.style.setProperty("--delay", `${Math.random() * 2}s`);
+      el.style.setProperty("--size", `${2 + Math.random() * 3}px`);
+      root.appendChild(el);
+    }
   };
 
   const skipSplash = () => {
@@ -128,6 +145,7 @@
     if (line2) line2.textContent = tagline[1];
 
     $("#splash-skip")?.addEventListener("click", skipSplash);
+    spawnSplashParticles();
 
     requestAnimationFrame(() => {
       splash.classList.add("is-visible", "phase-enter");
@@ -140,7 +158,10 @@
       schedule(SPLASH_MS.colorsPeak, () => splash.classList.replace("phase-colors", "phase-colors-peak"))
     );
     splashTimers.push(
-      schedule(SPLASH_MS.brand, () => splash.classList.replace("phase-colors-peak", "phase-brand"))
+      schedule(SPLASH_MS.flash, () => splash.classList.replace("phase-colors-peak", "phase-flash"))
+    );
+    splashTimers.push(
+      schedule(SPLASH_MS.brand, () => splash.classList.replace("phase-flash", "phase-brand"))
     );
     splashTimers.push(
       schedule(SPLASH_MS.tagline, () => splash.classList.replace("phase-brand", "phase-tagline"))
@@ -481,6 +502,20 @@
       }
     }
   });
+
+  const initAccentBlocks = () => {
+    const blocks = $$(".accent-block");
+    if (!blocks.length || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle("is-accent-lit", entry.isIntersecting);
+        });
+      },
+      { threshold: 0.28, rootMargin: "0px 0px -8% 0px" }
+    );
+    blocks.forEach((el) => io.observe(el));
+  };
 
   const initReveal = () => {
     const revealEls = $$(".reveal");
@@ -1002,6 +1037,7 @@
 
   const bootMotion = () => {
     initReveal();
+    initAccentBlocks();
     initSectionFx();
     initHeroFx();
     initHeroStats();
