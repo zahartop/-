@@ -899,21 +899,11 @@
     resetIdle();
   };
 
-  const HERO_GLASS_LABELS = {
-    cursor: "курсор",
-    triangle: "треугольник",
-    ring: "кольцо",
-    hex: "гексагон",
-    diamond: "ромб",
-    cube: "куб",
-  };
-
   const initHeroGlassProp = () => {
     const prop = $("#hero-glass-prop-inner");
     const shell = $("#hero-glass-prop");
     const hero = $("#hero");
     const modelsWrap = $("#hero-glass-models");
-    const labelEl = $("#hero-glass-label");
     if (!prop || !hero) return;
 
     if (shell && "IntersectionObserver" in window) {
@@ -931,11 +921,6 @@
 
     if (models.length > 1 && !reduced) {
       let modelIdx = 0;
-      const setLabel = (model) => {
-        if (!labelEl || !model) return;
-        labelEl.textContent = HERO_GLASS_LABELS[model.dataset.model] || model.dataset.model || "";
-      };
-      setLabel(models[0]);
 
       window.setInterval(() => {
         const current = models[modelIdx];
@@ -944,7 +929,6 @@
         current.classList.remove("is-active");
         current.classList.add("is-out");
         next.classList.add("is-active");
-        setLabel(next);
         window.setTimeout(() => current.classList.remove("is-out"), 700);
         modelIdx = nextIdx;
       }, 3200);
