@@ -427,23 +427,18 @@
 
 @media (min-width: 1024px) {
   .bento-services {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto auto;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
     gap: 1.25rem;
-  }
-
-  .bento-services .bento-card:nth-child(1) {
-    grid-row: span 2;
-  }
-
-  .bento-services .bento-card:nth-child(2) {
-    align-self: start;
   }
 }
 
 .bento-card {
   position: relative;
-  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
+  height: 100%;
 }
 
 .bento-card--featured {

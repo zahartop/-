@@ -420,10 +420,23 @@ html.fx-paused .hero-scanlines {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
 }
 
+.pricing-grid.items-stretch > .pricing-card,
+.pricing-grid.items-stretch > .pricing-flagship-shell {
+  height: 100%;
+}
+
 .pricing-flagship-shell {
   position: relative;
+  display: flex;
+  flex-direction: column;
   padding-top: 1rem;
   overflow: visible;
+}
+
+.pricing-flagship-shell .pricing-featured {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .pricing-flagship-badge {
