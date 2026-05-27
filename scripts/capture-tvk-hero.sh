@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Скачивает свежий скрин hero с https://твкпластик.рф (нужен network + chromium).
+# Опционально: скрин главной https://твкпластик.рф (Playwright). На лендинге Z-TECH превью кейса без картинки — файл не используется в index.html.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 OUT="$ROOT/assets/case-tvk-hero.jpg"
