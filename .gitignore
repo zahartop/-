@@ -6,6 +6,8 @@ telegram.local.json
 .env.local
 node_modules/
 package-lock.json
+.venv-assets/
+**/__pycache__/
 
 # Outreach / персональные данные — только локально (не коммитить)
 outreach/
